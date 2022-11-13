@@ -32,9 +32,47 @@ if (!empty($id)) {
     $stmt->execute();
     $stmt = $stmt->fetch();
     $countCarencia_real = $stmt['total'];
-    
+
     if ($countCarencia_real > 0) {
-        $carencia = "Sim";
+        $sql = "SELECT tipo_vaga FROM carencias WHERE id_ref = :id_ref AND tipo_vaga = 'T' ";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(":id_ref", $id);
+        $stmt->execute();
+        $tipo_temp = $stmt->fetch();
+        if ($tipo_temp == null) {
+            $tipo_carencia_T = 0;
+        } else if ($tipo_temp != null) {
+            $tipo_carencia_T = $tipo_temp[0];
+        }
+
+        $sql = "SELECT tipo_vaga FROM carencias WHERE id_ref = :id_ref AND tipo_vaga = 'R' ";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(":id_ref", $id);
+        $stmt->execute();
+        $tipo_real = $stmt->fetch();
+        if ($tipo_real == null) {
+            $tipo_carencia_R = 0;
+        } else if ($tipo_real != null) {
+            $tipo_carencia_R = $tipo_real[0];
+        }
+    }
+
+    if (($countCarencia_real > 0) && ($tipo_carencia_T == "T") && ($tipo_carencia_R == "R")) {
+        $carencia = "T - R";
+        $sql = "UPDATE controle_ntes SET carencia = :carencia WHERE id = :id";
+        $query = $conn->prepare($sql);
+        $query->bindParam(":id", $id);
+        $query->bindParam(":carencia", $carencia);
+        $query->execute();
+    } else if (($countCarencia_real > 0) && ($tipo_carencia_R == "R")) {
+        $carencia = "R";
+        $sql = "UPDATE controle_ntes SET carencia = :carencia WHERE id = :id";
+        $query = $conn->prepare($sql);
+        $query->bindParam(":id", $id);
+        $query->bindParam(":carencia", $carencia);
+        $query->execute();
+    } else if (($countCarencia_real > 0) && ($tipo_carencia_T == "T")) {
+        $carencia = "T";
         $sql = "UPDATE controle_ntes SET carencia = :carencia WHERE id = :id";
         $query = $conn->prepare($sql);
         $query->bindParam(":id", $id);
@@ -51,29 +89,29 @@ if (!empty($id)) {
 
     // Evia para a pagina do NTE a informação de qual nte as informações pertemcem via sessão.
     $_SESSION['id'] = $id;
-        // Soma a quantidade de carencia no matutino passando ref_id como parametro
-        $sql = "SELECT sum(matutino) as total FROM carencias WHERE id_ref = :id_ref AND tipo_vaga = 'T'";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(":id_ref", $id);
-        $stmt->execute();
-        $stmt = $stmt->fetch();
-        $countMatTemp = $stmt['total'];
-    
-        // Soma a quantidade de carencia no vespertino passando ref_id como parametro
-        $sql = "SELECT sum(vespertino) as total FROM carencias WHERE id_ref = :id_ref AND tipo_vaga = 'T'";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(":id_ref", $id);
-        $stmt->execute();
-        $stmt = $stmt->fetch();
-        $countVespTemp = $stmt['total'];
-    
-        // Soma a quantidade de carencia no noturno passando ref_id como parametro
-        $sql = "SELECT sum(noturno) as total FROM carencias WHERE id_ref = :id_ref AND tipo_vaga = 'T'";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(":id_ref", $id);
-        $stmt->execute();
-        $stmt = $stmt->fetch();
-        $countNotTemp = $stmt['total'];
+    // Soma a quantidade de carencia no matutino passando ref_id como parametro
+    $sql = "SELECT sum(matutino) as total FROM carencias WHERE id_ref = :id_ref AND tipo_vaga = 'T'";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(":id_ref", $id);
+    $stmt->execute();
+    $stmt = $stmt->fetch();
+    $countMatTemp = $stmt['total'];
+
+    // Soma a quantidade de carencia no vespertino passando ref_id como parametro
+    $sql = "SELECT sum(vespertino) as total FROM carencias WHERE id_ref = :id_ref AND tipo_vaga = 'T'";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(":id_ref", $id);
+    $stmt->execute();
+    $stmt = $stmt->fetch();
+    $countVespTemp = $stmt['total'];
+
+    // Soma a quantidade de carencia no noturno passando ref_id como parametro
+    $sql = "SELECT sum(noturno) as total FROM carencias WHERE id_ref = :id_ref AND tipo_vaga = 'T'";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(":id_ref", $id);
+    $stmt->execute();
+    $stmt = $stmt->fetch();
+    $countNotTemp = $stmt['total'];
 
     // Soma a quantidade de carencia no matutino passando ref_id como parametro
     $sql = "SELECT sum(matutino) as total FROM carencias WHERE id_ref = :id_ref AND tipo_vaga = 'R'";

@@ -40,14 +40,12 @@ $html = '
         }
         .invoice header {
             padding: 10px 0;
-         
             border-bottom: 1px solid #3989c6
         }
         .invoice .company-details {
             text-align: left;
             font-size: 14px;
             color: #232323
-
         }
         .invoice .company-details .name {
             margin-top: 0;
@@ -69,9 +67,6 @@ $html = '
         .invoice .invoice-details .invoice-id {
             margin-top: 0;
             color: #3989c6
-        }
-        .invoice main {
-           
         }
         .invoice main .thanks {
             margin-top: -100px;
@@ -99,7 +94,6 @@ $html = '
             border-bottom: 1px solid #fff;
             font-size: 13px;
         }
-     
         .invoice table th {
             text-align: center;
             white-space: nowrap;
@@ -182,11 +176,10 @@ $html = '
         }
     </style>
 </head>
-
 <body>
     <div class="row">
         <div class="col">
-            <h3>Carência Escolar</h3>
+            <h3>Carência Escolar - Real</h3>
         </div>
         <div id="invoice">
             <div class="invoice overflow-auto">
@@ -202,12 +195,10 @@ $html = '
                     </header>
                     <main>
                         <div class="row contacts">
-                            <div class="col invoice-to">
-                                
+                            <div class="col invoice-to">  
                             </div>
                             <div class="col invoice-details">
                                 <h3 class="invoice-id"></h3>
-                              
                             </div>
                         </div>
                         <table  border="0" cellspacing="0" cellpadding="0">
@@ -227,7 +218,7 @@ $html = '
                             </thead>
                             <tbody>';
                             foreach ($real_carencias as $real_carencia) { 
-                                
+                                $html.='<tr>';
                                 $html.='<td>'. $real_carencia['disciplina'] . '</td>';
                                 $html.='<td>'. $real_carencia['matutino']. '</td>';
                                 $html.='<td>'. $real_carencia['vespertino']. '</td>';
@@ -236,11 +227,10 @@ $html = '
                                 $html.='<td>'. $real_carencia['nome']. '</td>';
                                 $html.='<td>'. $real_carencia['cadastro']. '</td>';
                                 $html.='<td>'. $real_carencia['motivo_vaga']. '</td>';
-                                $html.='<td>'. $real_carencia['tipo_vaga'] . '</td>';
-                                $html.='<td>'. $real_carencia['inicio_vaga']. '</td>';
-                                
-                            } $html .= '</tr>
-                                <tr>
+                                $html.='<td>'. 'Real' . '</td>';
+                                $html.='<td>'. date('d/m/Y', strtotime($real_carencia['inicio_vaga'] )). '</td>';
+                                $html.='</tr>';
+                            } $html .= '<tr>
                                     <td class="no">TOTAL UEE</td>
                                     <td class="no">18</td>
                                     <td class="no">8</td>
@@ -261,9 +251,7 @@ $html = '
         </div>
     </div>
 </body>
-
 </html>
-
 ';
 
 $dompdf->load_html($html);
@@ -276,13 +264,3 @@ $dompdf->stream(
         "Attachment" => false
     )
 );
-
-
-// FOREACH FUNCIONANDO
-
-$html = '<html><body>';
-
-foreach ($real_carencias as $real_carencia) { 
-    $html.= $real_carencia['disciplina'] . "<br>"; 
-
-} $html .= '</body></html>';

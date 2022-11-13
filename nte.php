@@ -62,7 +62,7 @@ $ntes = $nteDao->getNtes($nte);
                   <td class="text-center"><?= $nte->cod_unidade  ?></td>
                   <td class="text-center"><?= $nte->digitacao  ?></td>
                   <td class="text-center"><?= $nte->homologacao  ?></td>
-                  <td class="text-center">T - R</td>
+                  <td class="text-center"><?= $nte->carencia  ?></td>
                   <td class="text-center"><?= $nte->componente  ?></td>
                   <td class="text-center"><a href="details-nte.php?id=<?= $nte->id  ?>"><button class="btn btn-sm btn-primary"><i class="fas fa-search"></i></button></a></td>
                 </tr>

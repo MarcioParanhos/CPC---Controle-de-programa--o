@@ -1,7 +1,6 @@
 <?php
 // Import dos arquivos necessarios
 include_once('./crud/read-carencia.php');
-include_once('./crud/read-details-nte.php');
 include("layouts/header.php");
 $type_vaga = $_SESSION["tipo_vaga"];
 $usuario = $_SESSION['name'] . " " . $_SESSION['lastname'];
