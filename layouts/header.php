@@ -20,6 +20,7 @@ require_once("./models/Excedentes.php");
 require_once("./models/Diary.php");
 require_once("./models/Contacts.php");
 require_once("./models/Message.php");
+require_once("./models/Carencia.php");
 // Import dos arquivos necessarios
 include_once('./crud/read-users.php');
 require_once('./config/url.php');

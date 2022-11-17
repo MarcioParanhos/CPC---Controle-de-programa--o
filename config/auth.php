@@ -24,6 +24,8 @@ if ($type == "register") {
     $confirm_password = filter_input(INPUT_POST, "confirm_password");
     $cadastro_cpf = filter_input(INPUT_POST, "cadastro_cpf");
 
+    $passwordCodificado = md5($password);
+
     //verificação de dados minimos
     if ($name && $lastname && $password && $email && $cadastro_cpf) {
 
@@ -34,11 +36,10 @@ if ($type == "register") {
 
             // Criação de token e senha
             $userToken = $user->generateToken();
-
             $user->name = $name;
             $user->lastname = $lastname;
             $user->email = $email;
-            $user->password = $password;
+            $user->password = $passwordCodificado;
             $user->cadastro_cpf = $cadastro_cpf;
             $user->token = $userToken;
 
@@ -56,7 +57,8 @@ if ($type == "register") {
 } else if ($type == "login") {
 
     $email = filter_input(INPUT_POST, "email");
-    $password = filter_input(INPUT_POST, "password");
+    $pass = filter_input(INPUT_POST, "password");
+    $password = md5($pass);
 
     $querry = "SELECT * FROM usuarios WHERE email = :email AND password = :password";
     $stmt = $conn->prepare($querry);

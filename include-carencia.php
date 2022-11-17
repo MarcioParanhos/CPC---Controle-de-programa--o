@@ -1,11 +1,24 @@
 <?php
 
-include_once('./crud/read-carencia.php');
+
 include("layouts/header.php");
-include_once("config/url.php");
+require_once("./dao/CarenciaDAO.php");
+require_once("./dao/NteDAO.php");
 
 $_SESSION["tipo_vaga"] = "R";
+$id = $_GET['id'];
 $usuario = $_SESSION['name'] . " " . $_SESSION['lastname'];
+
+// Funções de Read do modulo de carencia 
+$carenciaDao = new CarenciaDAO($conn, $BASE_URL);
+$real_carencias = $carenciaDao->getCarenciasReaisById($id);
+$countMatReal = $carenciaDao->countCarenciaMatById($id);
+$countVespReal = $carenciaDao->countCarenciaVespById($id);
+$countNotReal = $carenciaDao->countCarenciaNotById($id);
+
+$nteDao = new Controle_nteDAO($conn, $BASE_URL);
+$controle_nte = $nteDao->getNtesById($id);
+
 
 ?>
 <!-- Conteudo da Pagina-->
@@ -60,10 +73,11 @@ $usuario = $_SESSION['name'] . " " . $_SESSION['lastname'];
                                 <div class="col-12 grid-margin stretch-card">
                                     <div class="card">
                                         <div class="card-body">
-                                            <form class="navbar-search" action="./crud/read-search-carencia.php" method="post">
+                                            <form class="navbar-search" action="<?= $BASE_URL ?>config/carenciaProcess.php" method="post">
                                                 <label for="cod_unidade">Busque pelo Cod. da Unidade</label>
                                                 <div class="input-group-append">
                                                     <input type="text" name="cod_unidade" id="cod_unidade">
+                                                    <input hidden value="search" name="type" type="text">
                                                     <button class="btn btn-primary" type="submit">
                                                         <i class="fa-solid fa-search"></i>
                                                     </button>
@@ -227,20 +241,20 @@ $usuario = $_SESSION['name'] . " " . $_SESSION['lastname'];
                                                     <tbody>
                                                         <?php foreach ($real_carencias as $real_carencia) : ?>
                                                             <tr class="">
-                                                                <td class="text-center"><?= $real_carencia["tipo_vaga"] ?></td>
-                                                                <td class="text-center"><?= $real_carencia["disciplina"] ?></td>
-                                                                <td class="text-center"><?= $real_carencia["matutino"] ?></td>
-                                                                <td class="text-center"><?= $real_carencia["vespertino"] ?></td>
-                                                                <td class="text-center"><?= $real_carencia["noturno"] ?></td>
-                                                                <td class="text-center"><?= $real_carencia["matutino"] + $real_carencia["vespertino"] + $real_carencia["noturno"] ?></td>
-                                                                <td class="text-center"><?= $real_carencia["cadastro"] ?></td>
-                                                                <td class="text-center"><?= $real_carencia["nome"] ?></td>
-                                                                <td class="text-center"><?= $real_carencia["motivo_vaga"] ?></td>
-                                                                <td class="text-center"><?= date('d/m/Y', strtotime($real_carencia["inicio_vaga"])); ?></td>
+                                                                <td class="text-center"><?= $real_carencia->tipo_vaga ?></td>
+                                                                <td class="text-center"><?= $real_carencia->disciplina ?></td>
+                                                                <td class="text-center"><?= $real_carencia->matutino ?></td>
+                                                                <td class="text-center"><?= $real_carencia->vespertino ?></td>
+                                                                <td class="text-center"><?= $real_carencia->noturno ?></td>
+                                                                <td class="text-center"><?= $real_carencia->matutino + $real_carencia->vespertino + $real_carencia->noturno ?></td>
+                                                                <td class="text-center"><?= $real_carencia->cadastro ?></td>
+                                                                <td class="text-center"><?= $real_carencia->nome ?></td>
+                                                                <td class="text-center"><?= $real_carencia->motivo_vaga ?></td>
+                                                                <td class="text-center"><?= date('d/m/Y', strtotime($real_carencia->inicio_vaga)); ?></td>
                                                                 <td class="text-center">
                                                                     <!-- <a title="Suprir" class="btn btn-primary btn-sm" href="#"><i class="fa-solid fa-user-plus"></i></a> -->
-                                                                    <a title="Detalhar" class="btn btn-primary btn-sm" href="./details-carencia.php?id=<?= $real_carencia["id"] ?>"><i class="fa-solid fa-eye"></i></a>
-                                                                    <a title="Excluir" id="btn-delete" onclick="abrirModal(<?= $real_carencia['id'] ?>)" type="button" class="btn text-white btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a>
+                                                                    <a title="Detalhar" class="btn btn-primary btn-sm" href="./details-carencia.php?id=<?= $real_carencia->id ?>"><i class="fa-solid fa-eye"></i></a>
+                                                                    <a title="Excluir" id="btn-delete" onclick="abrirModal(<?= $real_carencia->id ?>)" type="button" class="btn text-white btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a>
                                                                 </td>
                                                             </tr>
                                                         <?php endforeach; ?>

@@ -1,24 +1,28 @@
 <?php
 
-require_once("../models/Carencia.php");
-require_once("../models/Message.php");
+// require_once("../models/Carencia.php");
+// require_once("../models/Message.php");
 
 
-class CarenciaDAO implements CarenciaDAOInterface {
+class CarenciaDAO implements CarenciaDAOInterface
+{
 
     private $conn;
     private $url;
     private $message;
 
-    public function __construct(PDO $conn, $url) {
+    public function __construct(PDO $conn, $url)
+    {
         $this->conn = $conn;
         $this->url = $url;
         $this->Message = new Message($url);
     }
 
-    public function bildCarencia($data) {
+    public function bildCarencia($data)
+    {
         //Cria o objeto do Carencia
         $carencia = new Carencia();
+        $carencia->id = $data["id"];
         $carencia->id_ref = $data["id_ref"];
         $carencia->nte = $data["nte"];
         $carencia->municipio = $data["municipio"];
@@ -42,7 +46,8 @@ class CarenciaDAO implements CarenciaDAOInterface {
     }
 
     // função de criação onde recebe o parametro Carencia vindo da função Bild
-    public function create(Carencia $carencia) {
+    public function create(Carencia $carencia)
+    {
         $type_vaga = $_SESSION["tipo_vaga"];
         //Sql para insersão no banco
         $stmt = $this->conn->prepare("INSERT INTO carencias (
@@ -118,9 +123,10 @@ class CarenciaDAO implements CarenciaDAOInterface {
         }
     }
 
-    public function update(Carencia $carencia) {
+    public function update(Carencia $carencia)
+    {
 
-            // Sql de alterar os dados no banco
+        // Sql de alterar os dados no banco
         $sql = "UPDATE carencias SET
         nte = :nte,
         municipio = :municipio,
@@ -163,14 +169,63 @@ class CarenciaDAO implements CarenciaDAOInterface {
         $stmt->bindParam(":usuario", $carencia->usuario);
 
         // redireciona para a pagina de registro informando a mensagem de registro
-        if($stmt->execute()){
-        header("Location: ../details-carencia.php?id=".$carencia->id."");
-        $_SESSION["msg"] =  "Registros Alterados com Sucesso";
-        die();
+        if ($stmt->execute()) {
+            header("Location: ../details-carencia.php?id=" . $carencia->id . "");
+            $_SESSION["msg"] =  "Registros Alterados com Sucesso";
+            die();
         } else {
-        echo "Ocorreu um erro: ". $stmt->errorInfo();
+            echo "Ocorreu um erro: " . $stmt->errorInfo();
+        }
+    }
+
+    public function getCarenciasReaisById($id)
+    {
+
+        $real_carencias = [];
+        $stmt = $this->conn->prepare("SELECT * FROM carencias WHERE id_ref = :id AND tipo_vaga = 'R' AND ano_ref = '2022'");
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+
+            $carenciasArray = $stmt->fetchAll();
+
+            foreach ($carenciasArray as $real_carencia) {
+
+                $real_carencias[] = $this->bildCarencia($real_carencia);
+            }
         }
 
+        return $real_carencias;
+    }
 
+    public function countCarenciaMatById($id)
+    {
+
+        $stmt = $this->conn->prepare("SELECT sum(matutino) FROM carencias WHERE id_ref =:id AND tipo_vaga = 'R' ");
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        $countMatReal = $stmt->fetch();
+        return $countMatReal[0];
+    }
+
+    public function countCarenciaVespById($id)
+    {
+        
+        $stmt = $this->conn->prepare("SELECT sum(matutino) FROM carencias WHERE id_ref =:id AND tipo_vaga = 'R' ");
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        $countVespReal = $stmt->fetch();
+        return $countVespReal[0];
+    }
+
+    public function countCarenciaNotById($id)
+    {
+        
+        $stmt = $this->conn->prepare("SELECT sum(matutino) FROM carencias WHERE id_ref =:id AND tipo_vaga = 'R' ");
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        $countNotReal = $stmt->fetch();
+        return $countNotReal[0];
     }
 }

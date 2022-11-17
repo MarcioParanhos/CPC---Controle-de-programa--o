@@ -1,6 +1,7 @@
 <?php
 
-class Carencia {
+class Carencia
+{
 
     public $id;
     public $id_ref;
@@ -23,11 +24,14 @@ class Carencia {
     public $usuario;
 }
 
-interface CarenciaDAOInterface {
+interface CarenciaDAOInterface
+{
 
     public function bildCarencia($data);
     public function create(Carencia $carencia);
     public function update(Carencia $carencia);
-   
-
+    public function getCarenciasReaisById($id);
+    public function countCarenciaMatById($id);
+    public function countCarenciaVespById($id);
+    public function countCarenciaNotById($id);
 }

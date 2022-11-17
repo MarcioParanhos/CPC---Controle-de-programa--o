@@ -13,11 +13,11 @@ if (!empty($_GET)) {
 if (!empty($id)) {
 
     // Retorna os dados de carencia REAL com a ID do NTE passado por parametro
-    $querry = "SELECT * FROM carencias WHERE id_ref = :id_ref AND tipo_vaga = 'R' AND ano_ref = '2022'";
-    $stmt = $conn->prepare($querry);
-    $stmt->bindParam(":id_ref", $id);
-    $stmt->execute();
-    $real_carencias = $stmt->fetchAll();
+    // $querry = "SELECT * FROM carencias WHERE id_ref = :id_ref AND tipo_vaga = 'R' AND ano_ref = '2022'";
+    // $stmt = $conn->prepare($querry);
+    // $stmt->bindParam(":id_ref", $id);
+    // $stmt->execute();
+    // $real_carencias = $stmt->fetchAll();
     // Retorna os dados de carencia TEMPORARIA com a ID do NTE passado por parametro
     $querry = "SELECT * FROM carencias WHERE id_ref = :id_ref AND tipo_vaga = 'T' AND ano_ref = '2022'";
     $stmt = $conn->prepare($querry);
@@ -112,38 +112,6 @@ if (!empty($id)) {
     $stmt->execute();
     $stmt = $stmt->fetch();
     $countNotTemp = $stmt['total'];
-
-    // Soma a quantidade de carencia no matutino passando ref_id como parametro
-    $sql = "SELECT sum(matutino) as total FROM carencias WHERE id_ref = :id_ref AND tipo_vaga = 'R'";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(":id_ref", $id);
-    $stmt->execute();
-    $stmt = $stmt->fetch();
-    $countMatReal = $stmt['total'];
-
-    // Soma a quantidade de carencia no vespertino passando ref_id como parametro
-    $sql = "SELECT sum(vespertino) as total FROM carencias WHERE id_ref = :id_ref AND tipo_vaga = 'R'";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(":id_ref", $id);
-    $stmt->execute();
-    $stmt = $stmt->fetch();
-    $countVespReal = $stmt['total'];
-
-    // Soma a quantidade de carencia no noturno passando ref_id como parametro
-    $sql = "SELECT sum(noturno) as total FROM carencias WHERE id_ref = :id_ref AND tipo_vaga = 'R'";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(":id_ref", $id);
-    $stmt->execute();
-    $stmt = $stmt->fetch();
-    $countNotReal = $stmt['total'];
-
-    // Select das informações da unidade passando id como parametro
-    $querry = "SELECT * FROM controle_ntes WHERE id = :id";
-    $stmt = $conn->prepare($querry);
-    $stmt->bindParam(":id", $id);
-    $stmt->execute();
-    $controle_nte = $stmt->fetch();
-
 
     $query = "SELECT nome FROM disciplinas";
     $stmt = $conn->prepare($query);

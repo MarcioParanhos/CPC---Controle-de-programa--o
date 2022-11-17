@@ -57,7 +57,7 @@ if (!empty($flassMessage["mensagem"])) {
                         </div>
                     </div>
                     <input class="login-btn" type="submit" value="Acessar">
-                    <p class="register">Ainda não possui conta? <a href="#">Cadastre-se aqui !</a></p>
+                    <p class="register">Ainda não possui conta? <a href="register.php">Cadastre-se aqui !</a></p>
                 </form>
             </section>
         </div>

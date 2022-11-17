@@ -70,17 +70,6 @@
 
         public function authenticateUser($email, $password) {
 
-            // $stmt = $this->conn->prepare("SELECT * FROM usuarios WHERE email = :email AND password = :password");
-            // $stmt->bindParam(":email", $email);
-            // $stmt->bindParam(":password", $password);
-            // $stmt->execute();
-            
-            // if ($stmt->rowCount() > 0) {
-            //     $result = "Olá";
-            //     return $result;
-
-            // }
-            
         }
 
         public function findByToken($token) {
