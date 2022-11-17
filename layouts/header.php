@@ -1,19 +1,19 @@
 <?php
 
-// Faz o lgout Automaticamente apos 30 min de uso do sistema
+
 session_start();
-if (!isset($_SESSION['start_login'])) { // se não tiver pego tempo que logou
-    $_SESSION['start_login'] = time(); //pega tempo que logou
-    // adiciona 30 segundos ao tempo e grava em outra variável de sessão
-    $_SESSION['logout_time'] = $_SESSION['start_login'] + 30 * 120;
-}
-// se o tempo atual for maior que o tempo de logout
-if (time() >= $_SESSION['logout_time']) {
-    header("location:./config/auth.php"); //vai para logout
-    session_destroy();
-}else {
-    $red = $_SESSION['logout_time'] - time(); // tempo que falta
-}
+// if (!isset($_SESSION['start_login'])) { // se não tiver pego tempo que logou
+//     $_SESSION['start_login'] = time(); //pega tempo que logou
+//     // adiciona 30 segundos ao tempo e grava em outra variável de sessão
+//     $_SESSION['logout_time'] = $_SESSION['start_login'] + 30 * 120;
+// }
+// // se o tempo atual for maior que o tempo de logout
+// if (time() >= $_SESSION['logout_time']) {
+//     header("location:./config/auth.php"); //vai para logout
+//     session_destroy();
+// }else {
+//     $red = $_SESSION['logout_time'] - time(); // tempo que falta
+// }
 
 require_once("./models/Nte.php");
 require_once("./models/Excedentes.php");

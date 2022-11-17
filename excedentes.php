@@ -99,55 +99,71 @@ $excedentes = $excedenteDao->getExcedentes($_SESSION['perfil']);
         </button>
       </div>
       <div class="modal-body">
-        <form action="./config/excedentesProcess.php" method="POST">
-          <input type="hidden" name="type" value="create" class="form-control" id="usuario">
+        <form class="forms-sample" action="./config/excedentesProcess.php" method="POST">
+          <input type="hidden" name="type" value="create"  class="form-control form-control-sm" id="usuario">
           <input hidden value="<?= $usuario ?>" name="usuario" type="text">
-          <div class="row">
+          <div class="form-row excedentes-row">
             <div class="col-md-2">
-              <label for="nte" class="col-form-label">NTE</label>
-              <input type="text" name="nte" class="form-control" id="nte" require>
+              <label for="nte" class="control-label">NTE</label>
+              <input type="text" name="nte"  class="form-control form-control-sm" id="nte" require>
             </div>
             <div class="col-md-6">
-              <label for="municipio" class="col-form-label">MUNICIPIO</label>
-              <input type="text" name="municipio" class="form-control" id="municipio" require>
+              <label for="municipio" class="control-label">MUNICIPIO</label>
+              <input type="text" name="municipio"  class="form-control form-control-sm" id="municipio" require>
             </div>
             <div class="col-md-4">
-              <label for="cod_unidade" class="col-form-label">COD. UNIDADE</label>
-              <input type="text" name="cod_unidade" class="form-control" id="cod_unidade" require>
+              <label for="cod_unidade" class="control-label">COD. UNIDADE</label>
+              <input type="text" name="cod_unidade"  class="form-control form-control-sm" id="cod_unidade" require>
             </div>
           </div>
-          <div class="row">
+          <div class="form-row excedentes-row">
             <div class="col-md-12">
-              <label for="unidade_escolar" class="col-form-label">UNIDADE ESCOLAR</label>
-              <input type="text" name="unidade_escolar" class="form-control" id="unidade_escolar" require>
+              <label for="unidade_escolar" class="control-label">UNIDADE ESCOLAR</label>
+              <input type="text" name="unidade_escolar"  class="form-control form-control-sm" id="unidade_escolar" require>
             </div>
           </div>
-          <div class="row">
+          <div class="form-row excedentes-row">
             <div class="col-md-9">
-              <label for="nome" class="col-form-label">SERVIDOR</label>
-              <input type="text" name="nome" class="form-control" id="nome" require>
+              <label for="nome" class="control-label">SERVIDOR</label>
+              <input type="text" name="nome"  class="form-control form-control-sm" id="nome" require>
             </div>
             <div class="col-md-3">
-              <label for="cadastro" class="col-form-label">CADASTRO</label>
-              <input type="text" name="cadastro" class="form-control" id="cadastro" require>
+              <label for="cadastro" class="control-label">CADASTRO</label>
+              <input type="text" name="cadastro"  class="form-control form-control-sm" id="cadastro" require>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-4">
-              <label for="vinculo" class="col-form-label">VINCULO</label>
-              <input type="text" name="vinculo" class="form-control" id="vinculo" require>
+          <div class="form-row excedentes-row">
+            <div class="position-relative col-md-4">
+              <div class="form-group">
+                <label class="control-label" for="disciplina_id">VINCULO</label>
+                <select name="vinculo" id="vinculo" class="form-control form-control-sm">
+                  <option value="" selected>Selecione ...</option>
+                  <option value="Estatutário">Estatutário</option>
+                  <option value="Reda">Reda</option>
+                </select>
+              </div>
             </div>
-            <div class="col-md-2">
-              <label for="ch" class="col-form-label">CH</label>
-              <input type="text" name="ch" class="form-control" id="ch" require>
+            <div class="position-relative col-md-2">
+              <div class="form-group">
+                <label class="control-label" for="ch">CH</label>
+                <select name="ch" id="cg" class="form-control form-control-sm">
+                  <option value="" selected>Selecione ...</option>
+                  <option value="20">20</option>
+                  <option value="40">40</option>
+                </select>
+              </div>
             </div>
-            <div class="col-md-2">
-              <label for="qtd_horas" class="col-form-label">QTD. HORAS</label>
-              <input type="text" name="qtd_horas" class="form-control" id="qtd_horas" require>
+            <div class="position-relative col-md-2">
+              <div class="form-group">
+                <label class="control-label" for="qtd_horas">EXCEDENTE</label>
+                <input value="" name="qtd_horas" id="qtd_horas" type="text" class="form-control form-control-sm">
+              </div>
             </div>
-            <div class="col-md-4">
-              <label for="formacao" class="col-form-label">FORMAÇÃO</label>
-              <input type="text" name="formacao" class="form-control" id="formacao" require>
+            <div class="position-relative col-md-4">
+              <div class="form-group">
+                <label class="control-label" for="formacao">FORMAÇÃO</label>
+                <input value="" name="formacao" id="formacao" type="text" class="form-control form-control-sm">
+              </div>
             </div>
           </div>
           <div class="mt-4 pt-4 modal-footer">

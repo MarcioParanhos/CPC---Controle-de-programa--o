@@ -45,10 +45,13 @@ $usuario = $_SESSION['name'] . " " . $_SESSION['lastname'];
             <div class="card">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary"></h6>
-                    <div>
-                        <a title="Gerar PDF" href="gerar_planilha.php?tipo=t&id=<?= $controle_nte["id"] ?>"><button class="btn-sm btn btn-success">Gerar Excel <i class="fa-solid fa-file-export"></i></button></a>
-                        <a title="Adicionar carência real" href="include-carencia.php?id=<?= $controle_nte["id"] ?>"><button class="btn-sm btn btn-success">Real <i class="fa-solid fa-magnifying-glass-plus"></i></button></a>
-                    </div>
+                    <?php if (!empty($controle_nte["id"])) { ?>
+                        <div>
+                            <a target="_blank" title="Gerar PDF" href="pdfCarencia.php?id=<?= $controle_nte["id"] ?>"><button class="btn-sm btn btn-success">PDF <i class="fa-solid fa-file-export"></i></button></a>
+                            <a title="Gerar PDF" href="gerar_planilha.php?tipo=r&id=<?= $controle_nte["id"] ?>"><button class="btn-sm btn btn-success">Excel <i class="fa-solid fa-file-export"></i></button></a>
+                            <a title="Adicionar Carência Real" href="include-carencia.php?id=<?= $controle_nte["id"] ?>"><button class="btn-sm btn btn-success">Real <i class="fa-solid fa-magnifying-glass-plus"></i></button></a>
+                        </div>
+                    <?php } ?>
                 </div>
                 <div class="content-wrapper">
                     <div class="row">

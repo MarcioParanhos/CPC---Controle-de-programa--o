@@ -2002,3 +2002,6 @@ td .badge {
     display: flex;
     gap: 10px;
 }
+.excedentes-row {
+    margin-bottom: 10px;
+}

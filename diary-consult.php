@@ -44,7 +44,6 @@ $diarys = $diaryDao->getDiarys($_SESSION['perfil']);
                 <th class="text-center">Detalhar</th>
               </tr>
             </thead>
-            
             <tbody>
               <?php foreach ($diarys as $diary) : ?>
                 <tr class="">
@@ -53,7 +52,7 @@ $diarys = $diaryDao->getDiarys($_SESSION['perfil']);
                   <td class=""><?= $diary->unidade_escolar ?></td>
                   <td class="text-center"><?= $diary->tipo ?></td>
                   <td class="text-center"><?= $diary->cadastro ?></td>
-                  <td class="text-center"><?= $diary->nte ?></td>
+                  <td class="text-center"><?= $diary->nome ?></td>
                   <td class="text-center"><?= date('d/m/Y', strtotime($diary->data_diario )); ?></td>
                   <td class="text-center">
                     <a href="<?= $BASE_URL ?>details-diary.php?id=<?= $diary->id  ?>"><button class="btn btn-sm btn-primary"><i class="fa-solid fa-eye"></i></button></a>

@@ -2,19 +2,19 @@
 
 include_once('./crud/read-home.php');
 include("layouts/header.php");
-$time = $red / 60;
-$number_format = number_format($time, 2, '.', '');
+// $time = $red / 60;
+// $number_format = number_format($time, 2, '.', '');
 
 ?>
 <?php if ($_SESSION['perfil'] != 10) { ?>
   <!-- Container Fluid-->
   <div class="container-fluid" id="container-wrapper">
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <!-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
       <strong>Bem vindo!</strong> Sua sessão irá encerrar automaticamente em <?= $number_format ?> minutos! 
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
-    </div>
+    </div> -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
       <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
       <ol class="breadcrumb">
@@ -51,7 +51,6 @@ $number_format = number_format($time, 2, '.', '');
           </div>
         </div>
       </div>
-      <!-- Earnings (Annual) Card Example -->
       <div class="col-xl-3 col-md-6 mb-4">
         <div class="card h-100">
           <div class="card-body borded-left">
@@ -68,24 +67,6 @@ $number_format = number_format($time, 2, '.', '');
           </div>
         </div>
       </div>
-      <!-- New User Card Example -->
-      <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <div class="card-body borded-left">
-            <div class="row no-gutters align-items-center">
-              <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-uppercase mb-1">Total de Carencia Real</div>
-                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $countCarencia_real ?></div>
-                <div class="mt-2 mb-0 text-muted text-xs">
-                  <!-- <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 20.4%</span>
-                        <span>Since last month</span>-->
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Pending Requests Card Example -->
       <div class="col-xl-3 col-md-6 mb-4">
         <div class="card h-100">
           <div class="card-body borded-left">
@@ -96,6 +77,22 @@ $number_format = number_format($time, 2, '.', '');
                 <div class="mt-2 mb-0 text-muted text-xs">
                   <!-- <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
                         <span>Since yesterday</span> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <div class="card-body borded-left">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-uppercase mb-1">Total de Carencia Real</div>
+                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $countCarencia_real ?></div>
+                <div class="mt-2 mb-0 text-muted text-xs">
+                  <!-- <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 20.4%</span>
+                        <span>Since last month</span>-->
                 </div>
               </div>
             </div>
@@ -139,8 +136,8 @@ $number_format = number_format($time, 2, '.', '');
           <div class="card-body borded-left">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-uppercase mb-1">Total de Carencia Temporaria</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $countCarencia_temp ?></div>
+                <div class="text-xs font-weight-bold text-uppercase mb-1">Anexos Pendentes Homologar</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $countHomologadasPendentesAnexos ?></div>
                 <div class="mt-2 mb-0 text-muted text-xs">
                   <!-- <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
                         <span>Since yesterday</span> -->
@@ -155,8 +152,8 @@ $number_format = number_format($time, 2, '.', '');
           <div class="card-body borded-left">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-uppercase mb-1">Anexos Pendentes Homologar</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $countHomologadasPendentesAnexos ?></div>
+                <div class="text-xs font-weight-bold text-uppercase mb-1">Total de Carencia Temporaria</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $countCarencia_temp ?></div>
                 <div class="mt-2 mb-0 text-muted text-xs">
                   <!-- <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
                         <span>Since yesterday</span> -->
@@ -166,6 +163,7 @@ $number_format = number_format($time, 2, '.', '');
           </div>
         </div>
       </div>
+
       <div class="table-responsive mt-2 p-1 ">
         <table class="table compact table-hover  align-items-center table-flush">
           <thead class="bg-primary">
@@ -183,7 +181,7 @@ $number_format = number_format($time, 2, '.', '');
           </thead>
           <?php if ($_SESSION['perfil'] == 4) { ?>
             <tbody>
-              <td class="text-center">01</td>
+              <td class="text-center"><strong>01</strong></td>
               <td class="text-center"><?= $countUnidadesNte01 ?></td>
               <td class="text-center"><?= $countUnidadesNte01Sedes ?></td>
               <td class="text-center"><?= $countUnidadesNte01Anexos ?></td>
@@ -239,7 +237,7 @@ $number_format = number_format($time, 2, '.', '');
           <?php } ?>
           <?php if ($_SESSION['perfil'] == 4) { ?>
             <tbody>
-              <td class="text-center">05</td>
+              <td class="text-center"><strong>05</strong></td>
               <td class="text-center"><?= $countUnidadesNte05 ?></td>
               <td class="text-center"><?= $countUnidadesNte05Sedes ?></td>
               <td class="text-center"><?= $countUnidadesNte05Anexos ?></td>
@@ -251,9 +249,9 @@ $number_format = number_format($time, 2, '.', '');
               </tr>
             </tbody>
           <?php } ?>
-          <?php if ($_SESSION['perfil'] == 1) { ?>
+          <?php if ($_SESSION['perfil'] == 4) { ?>
             <tbody>
-              <td class="text-center">06</td>
+              <td class="text-center"><strong>06</strong></td>
               <td class="text-center">29</td>
               <td class="text-center">15</td>
               <td class="text-center">7</td>
@@ -265,9 +263,9 @@ $number_format = number_format($time, 2, '.', '');
               </tr>
             </tbody>
           <?php } ?>
-          <?php if ($_SESSION['perfil'] == 1) { ?>
+          <?php if ($_SESSION['perfil'] == 4) { ?>
             <tbody>
-              <td class="text-center">07</td>
+              <td class="text-center"><strong>07</strong></td>
               <td class="text-center">29</td>
               <td class="text-center">15</td>
               <td class="text-center">7</td>
@@ -391,9 +389,9 @@ $number_format = number_format($time, 2, '.', '');
               </tr>
             </tbody>
           <?php } ?>
-          <?php if ($_SESSION['perfil'] == 1) { ?>
+          <?php if ($_SESSION['perfil'] == 4) { ?>
             <tbody>
-              <td class="text-center">16</td>
+              <td class="text-center"><strong>16</strong></td>
               <td class="text-center">29</td>
               <td class="text-center">15</td>
               <td class="text-center">7</td>
@@ -475,9 +473,9 @@ $number_format = number_format($time, 2, '.', '');
               </tr>
             </tbody>
           <?php } ?>
-          <?php if ($_SESSION['perfil'] == 1) { ?>
+          <?php if ($_SESSION['perfil'] == 4) { ?>
             <tbody>
-              <td class="text-center">22</td>
+              <td class="text-center"><strong>22</strong></td>
               <td class="text-center">29</td>
               <td class="text-center">15</td>
               <td class="text-center">7</td>
