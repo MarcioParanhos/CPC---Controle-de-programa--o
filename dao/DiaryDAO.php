@@ -157,21 +157,27 @@ class DiaryDAO implements DiaryDAOInterface
     public function getDiarys($perfil)
     {
         if ($perfil == 4) {
-
             $diarys = [];
             $stmt = $this->conn->prepare("SELECT * FROM diarios WHERE nte = '5' OR nte = '1' OR nte = '6' OR nte = '7' OR nte = '16' OR nte = '22' ORDER BY id DESC");
             $stmt->execute();
-
             if ($stmt->rowCount() > 0) {
-
                 $diarysArray = $stmt->fetchAll();
-
                 foreach ($diarysArray as $diary) {
-
                     $diarys[] = $this->bildDiary($diary);
                 }
             }
-
+            return $diarys;
+        }
+        if ($perfil == 3) {
+            $diarys = [];
+            $stmt = $this->conn->prepare("SELECT * FROM diarios WHERE nte = '2' OR nte = '10' OR nte = '14' OR nte = '18' OR nte = '23' OR nte = '27' ORDER BY id DESC");
+            $stmt->execute();
+            if ($stmt->rowCount() > 0) {
+                $diarysArray = $stmt->fetchAll();
+                foreach ($diarysArray as $diary) {
+                    $diarys[] = $this->bildDiary($diary);
+                }
+            }
             return $diarys;
         }
     }

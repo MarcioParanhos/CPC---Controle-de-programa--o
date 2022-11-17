@@ -91,7 +91,7 @@ if ($_SESSION['perfil'] == 10) {
                             <h6 class="collapse-header">Controle</h6>
                             <?php if ($_SESSION['perfil'] == 4) { ?>
                                 <a class="collapse-item" href="nte.php?nte=1"><i class="fa-solid fa-angle-right"></i> 01</a>
-                                <?php } ?><?php if ($_SESSION['perfil'] == 1) { ?>
+                                <?php } ?><?php if ($_SESSION['perfil'] == 3) { ?>
                                 <a class="collapse-item" href="nte.php?nte=2"><i class="fa-solid fa-angle-right"></i> 02</a>
                                 <?php } ?><?php if ($_SESSION['perfil'] == 1) { ?>
                                 <a class="collapse-item" href="nte.php?nte=3"><i class="fa-solid fa-angle-right"></i> 03</a>
@@ -107,7 +107,7 @@ if ($_SESSION['perfil'] == 10) {
                                 <a class="collapse-item" href="nte.php?nte=8"><i class="fa-solid fa-angle-right"></i> 08</a>
                                 <?php } ?><?php if ($_SESSION['perfil'] == 1) { ?>
                                 <a class="collapse-item" href="nte.php?nte=9"><i class="fa-solid fa-angle-right"></i> 09</a>
-                                <?php } ?><?php if ($_SESSION['perfil'] == 1) { ?>
+                                <?php } ?><?php if ($_SESSION['perfil'] == 3) { ?>
                                 <a class="collapse-item" href="nte.php?nte=10"><i class="fa-solid fa-angle-right"></i> 10</a>
                                 <?php } ?><?php if ($_SESSION['perfil'] == 1) { ?>
                                 <a class="collapse-item" href="nte.php?nte=11"><i class="fa-solid fa-angle-right"></i> 11</a>
@@ -115,7 +115,7 @@ if ($_SESSION['perfil'] == 10) {
                                 <a class="collapse-item" href="nte.php?nte=12"><i class="fa-solid fa-angle-right"></i> 12</a>
                                 <?php } ?><?php if ($_SESSION['perfil'] == 1) { ?>
                                 <a class="collapse-item" href="nte.php?nte=13"><i class="fa-solid fa-angle-right"></i> 13</a>
-                                <?php } ?><?php if ($_SESSION['perfil'] == 1) { ?>
+                                <?php } ?><?php if ($_SESSION['perfil'] == 3) { ?>
                                 <a class="collapse-item" href="nte.php?nte=14"><i class="fa-solid fa-angle-right"></i> 14</a>
                                 <?php } ?><?php if ($_SESSION['perfil'] == 1) { ?>
                                 <a class="collapse-item" href="nte.php?nte=15"><i class="fa-solid fa-angle-right"></i> 15</a>
@@ -123,7 +123,7 @@ if ($_SESSION['perfil'] == 10) {
                                 <a class="collapse-item" href="nte.php?nte=16"><i class="fa-solid fa-angle-right"></i> 16</a>
                                 <?php } ?><?php if ($_SESSION['perfil'] == 1) { ?>
                                 <a class="collapse-item" href="nte.php?nte=17"><i class="fa-solid fa-angle-right"></i> 17</a>
-                                <?php } ?><?php if ($_SESSION['perfil'] == 1) { ?>
+                                <?php } ?><?php if ($_SESSION['perfil'] == 3) { ?>
                                 <a class="collapse-item" href="nte.php?nte=18"><i class="fa-solid fa-angle-right"></i> 18</a>
                                 <?php } ?><?php if ($_SESSION['perfil'] == 1) { ?>
                                 <a class="collapse-item" href="nte.php?nte=19"><i class="fa-solid fa-angle-right"></i> 19</a>
@@ -133,7 +133,7 @@ if ($_SESSION['perfil'] == 10) {
                                 <a class="collapse-item" href="nte.php?nte=21"><i class="fa-solid fa-angle-right"></i> 21</a>
                                 <?php } ?><?php if ($_SESSION['perfil'] == 4) { ?>
                                 <a class="collapse-item" href="nte.php?nte=22"><i class="fa-solid fa-angle-right"></i> 22</a>
-                                <?php } ?><?php if ($_SESSION['perfil'] == 1) { ?>
+                                <?php } ?><?php if ($_SESSION['perfil'] == 3) { ?>
                                 <a class="collapse-item" href="nte.php?nte=23"><i class="fa-solid fa-angle-right"></i> 23</a>
                                 <?php } ?><?php if ($_SESSION['perfil'] == 1) { ?>
                                 <a class="collapse-item" href="nte.php?nte=24"><i class="fa-solid fa-angle-right"></i> 24</a>
@@ -141,7 +141,9 @@ if ($_SESSION['perfil'] == 10) {
                                 <a class="collapse-item" href="nte.php?nte=25"><i class="fa-solid fa-angle-right"></i> 25</a>
                                 <?php } ?><?php if ($_SESSION['perfil'] == 1) { ?>
                                 <a class="collapse-item" href="nte.php?nte=26"><i class="fa-solid fa-angle-right"></i> 26</a>
-                            <?php } ?>
+                                <?php } ?><?php if ($_SESSION['perfil'] == 3) { ?>
+                                <a class="collapse-item" href="nte.php?nte=27"><i class="fa-solid fa-angle-right"></i> 27</a>
+                                <?php } ?>
                         </div>
                     </div>
                 </li>

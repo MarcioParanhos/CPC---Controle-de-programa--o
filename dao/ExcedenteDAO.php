@@ -135,21 +135,27 @@ class ExcedenteDAO implements ExcedenteDAOInterface
     {
 
         if ($perfil == 4) {
-
             $excedentes = [];
             $stmt = $this->conn->prepare("SELECT * FROM excedentes WHERE nte = '5' OR nte = '1' OR nte = '6' OR nte = '7' OR nte = '16' OR nte = '22' ORDER BY id DESC");
             $stmt->execute();
-
             if ($stmt->rowCount() > 0) {
-
                 $excedentesArray = $stmt->fetchAll();
-
                 foreach ($excedentesArray as $excedente) {
-
                     $excedentes[] = $this->bildExcedente($excedente);
                 }
             }
-
+            return $excedentes;
+        }
+        if ($perfil == 3) {
+            $excedentes = [];
+            $stmt = $this->conn->prepare("SELECT * FROM excedentes WHERE nte = '2' OR nte = '10' OR nte = '14' OR nte = '18' OR nte = '23' OR nte = '27' ORDER BY id DESC");
+            $stmt->execute();
+            if ($stmt->rowCount() > 0) {
+                $excedentesArray = $stmt->fetchAll();
+                foreach ($excedentesArray as $excedente) {
+                    $excedentes[] = $this->bildExcedente($excedente);
+                }
+            }
             return $excedentes;
         }
     }
