@@ -193,7 +193,7 @@ include("layouts/header.php");
               </tr>
             </tbody>
           <?php } ?>
-          <?php if ($_SESSION['perfil'] == 1) { ?>
+          <?php if ($_SESSION['perfil'] == 3) { ?>
             <tbody>
               <td class="text-center">02</td>
               <td class="text-center">29</td>
@@ -305,7 +305,7 @@ include("layouts/header.php");
               </tr>
             </tbody>
           <?php } ?>
-          <?php if ($_SESSION['perfil'] == 1) { ?>
+          <?php if ($_SESSION['perfil'] == 3) { ?>
             <tbody>
               <td class="text-center">10</td>
               <td class="text-center">29</td>
@@ -361,7 +361,7 @@ include("layouts/header.php");
               </tr>
             </tbody>
           <?php } ?>
-          <?php if ($_SESSION['perfil'] == 1) { ?>
+          <?php if ($_SESSION['perfil'] == 3) { ?>
             <tbody>
               <td class="text-center">14</td>
               <td class="text-center">29</td>
@@ -417,7 +417,7 @@ include("layouts/header.php");
               </tr>
             </tbody>
           <?php } ?>
-          <?php if ($_SESSION['perfil'] == 1) { ?>
+          <?php if ($_SESSION['perfil'] == 3) { ?>
             <tbody>
               <td class="text-center">18</td>
               <td class="text-center">29</td>
@@ -487,7 +487,7 @@ include("layouts/header.php");
               </tr>
             </tbody>
           <?php } ?>
-          <?php if ($_SESSION['perfil'] == 1) { ?>
+          <?php if ($_SESSION['perfil'] == 3) { ?>
             <tbody>
               <td class="text-center">23</td>
               <td class="text-center">29</td>
@@ -532,6 +532,20 @@ include("layouts/header.php");
           <?php if ($_SESSION['perfil'] == 1) { ?>
             <tbody>
               <td class="text-center">26</td>
+              <td class="text-center">29</td>
+              <td class="text-center">15</td>
+              <td class="text-center">7</td>
+              <td class="text-center">0</td>
+              <td class="text-center">0</td>
+              <td class="text-center">0</td>
+              <td class="text-center">0</td>
+              <td class="text-center">0</td>
+              </tr>
+            </tbody>
+          <?php } ?>
+          <?php if ($_SESSION['perfil'] == 3) { ?>
+            <tbody>
+              <td class="text-center">27</td>
               <td class="text-center">29</td>
               <td class="text-center">15</td>
               <td class="text-center">7</td>
