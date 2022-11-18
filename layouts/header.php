@@ -21,9 +21,10 @@ require_once("./models/Diary.php");
 require_once("./models/Contacts.php");
 require_once("./models/Message.php");
 require_once("./models/Carencia.php");
+require_once("./models/User.php");
 // Import dos arquivos necessarios
-include_once('./crud/read-users.php');
 require_once('./config/url.php');
+require_once('./config/conect.php');
 require_once('dompdf/autoload.inc.php');
 // Reseta a mensagem que aparece no crud
 if (isset($_SESSION['msg'])) {
@@ -213,7 +214,7 @@ if ($_SESSION['perfil'] == 10) {
                     </div>
                 </li>
                 <hr class="sidebar-divider">
-                <?php if ($_SESSION['perfil'] === 0) { ?>
+                <?php if ($_SESSION['perfil'] == 4) { ?>
                     <div class="sidebar-heading">
                         Configuração
                     </div>

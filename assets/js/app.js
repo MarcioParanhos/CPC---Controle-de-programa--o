@@ -1,6 +1,7 @@
 // Excluir carencia pegando ID de referencia e adicionando um link ao modal
 const modal = document.querySelector("#ExemploModalCentralizado a")
 const modalExcedente = document.querySelector("#ModalDeleteExcedente a")
+const modalDeleteUser = document.querySelector("#ExemploModalCentralizadoDeleteUser a")
 
 //Função chamada pelo OnClick no html recebendo um parametro
 function abrirModal(id) {
@@ -13,6 +14,19 @@ function abrirModal(id) {
 
     //Apos inserir o Href no botão do modal abre o Modal para validação do usuario
     $("#ExemploModalCentralizado").modal({
+        show: true
+    });
+}
+function abrirModalDeleteUser(id) {
+
+    // Declarando a variavel Link
+    let link = "./config/userProcess.php?id=" + id
+
+    // Inserindo um elemento dentro do elemento selecionado com QuerySelector
+    modalDeleteUser.setAttribute("href", link)
+
+    //Apos inserir o Href no botão do modal abre o Modal para validação do usuario
+    $("#ExemploModalCentralizadoDeleteUser").modal({
         show: true
     });
 }
@@ -97,6 +111,19 @@ function modalExcedentes(id) {
     $.post('./config/excedentesProcess.php', dados, function (retorno) {
         
         $('#ExemploModalCentralizado2').modal('show')
+        $('#modal_body').html(retorno)
+        
+    })
+}
+
+function modalUser(id) {
+    id = id
+
+    let dados = { id: id }
+
+    $.post('./config/userProcess.php', dados, function (retorno) {
+        
+        $('#ExemploModalCentralizadoUser').modal('show')
         $('#modal_body').html(retorno)
         
     })

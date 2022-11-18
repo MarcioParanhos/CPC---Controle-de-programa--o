@@ -47,7 +47,7 @@ $contacts = $contactDao->getContacts($nte);
             <tbody>
               <?php foreach ($contacts as $contact) : ?>
                 <tr class="">
-                  <td class=""><?= $contact->nte ?></td>
+                  <td class=""><?= $contact->municipio ?></td>
                   <td class=""><?= $contact->unidade_escolar ?></td>
                   <td class=""><?= $contact->gestor ?></td>
                   <td class=""><?= $contact->tel_gestor ?></td>

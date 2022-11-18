@@ -26,7 +26,8 @@ if ($type == "register") {
 
     $passwordCodificado = md5($password);
 
-    //verificação de dados minimos
+
+    // //verificação de dados minimos
     if ($name && $lastname && $password && $email && $cadastro_cpf) {
 
         //verificar se o email ja esta cadastrado no sistema

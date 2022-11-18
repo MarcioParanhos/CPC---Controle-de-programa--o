@@ -27,4 +27,5 @@ interface UserDAOInterface {
     public function findByEmail($email);
     public function findById($id);
     public function changePassword(User $user);
+    public function getUsers();
 }
