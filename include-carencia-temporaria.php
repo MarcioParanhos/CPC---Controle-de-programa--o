@@ -1,11 +1,26 @@
 <?php
 
-include_once('./crud/read-carencia.php');
 include("layouts/header.php");
-include_once("config/url.php");
+require_once("./dao/CarenciaDAO.php");
+require_once("./dao/NteDAO.php");
 
 $_SESSION["tipo_vaga"] = "T";
+$type = "T";
+$id = $_GET['id'];
 $usuario = $_SESSION['name'] . " " . $_SESSION['lastname'];
+
+// Funções de Read do modulo de carencia 
+$carenciaDao = new CarenciaDAO($conn, $BASE_URL);
+$temp_carencias = $carenciaDao->getCarenciasById($id, $type);
+$countMatTemp = $carenciaDao->countCarenciaMatById($id, $type);
+$countVespTemp = $carenciaDao->countCarenciaVespById($id, $type);
+$countNotTemp = $carenciaDao->countCarenciaNotById($id, $type);
+$carenciaDao->updateCarencia($id);
+$disciplinas = $carenciaDao->getDisciplinas();
+$motivo_vagas = $carenciaDao->getMotivoVagas($type);
+
+$nteDao = new Controle_nteDAO($conn, $BASE_URL);
+$controle_nte = $nteDao->getNtesById($id);
 
 ?>
 <!-- Conteudo da Pagina-->
@@ -60,10 +75,11 @@ $usuario = $_SESSION['name'] . " " . $_SESSION['lastname'];
                                 <div class="col-12 grid-margin stretch-card">
                                     <div class="card">
                                         <div class="card-body">
-                                            <form class="navbar-search" action="./crud/read-search-carencia.php" method="post">
+                                            <form class="navbar-search" action="<?= $BASE_URL ?>config/carenciaProcess.php" method="post">
                                                 <label for="cod_unidade">Busque pelo Cod. da Unidade</label>
                                                 <div class="input-group-append">
                                                     <input type="text" name="cod_unidade" id="cod_unidade">
+                                                    <input hidden value="search" name="type" type="text">
                                                     <button class="btn btn-primary" type="submit">
                                                         <i class="fa-solid fa-search"></i>
                                                     </button>
@@ -155,8 +171,8 @@ $usuario = $_SESSION['name'] . " " . $_SESSION['lastname'];
                                                                     <label class="control-label" for="disciplina_id">Motivo da Vaga</label>
                                                                     <select name="motivo_vaga" id="motivo_vaga" class="form-control form-control-sm" required>
                                                                         <option value="" selected>Selecione ...</option>
-                                                                        <?php foreach ($motivo_vagas_temps as $motivo_vaga_temp) : ?>
-                                                                            <option value="<?= $motivo_vaga_temp['motivo'] ?>"><?= $motivo_vaga_temp['motivo'] ?></option>
+                                                                        <?php foreach ($motivo_vagas as $motivo_vaga) : ?>
+                                                                            <option value="<?= $motivo_vaga['motivo'] ?>"><?= $motivo_vaga['motivo'] ?></option>
                                                                         <?php endforeach; ?>
                                                                     </select>
                                                                 </div>
@@ -234,19 +250,19 @@ $usuario = $_SESSION['name'] . " " . $_SESSION['lastname'];
                                                     <tbody>
                                                         <?php foreach ($temp_carencias as $temp_carencia) : ?>
                                                             <tr class="">
-                                                                <td class="text-center"><?= $temp_carencia["tipo_vaga"] ?></td>
-                                                                <td class=""><?= $temp_carencia["disciplina"] ?></td>
-                                                                <td class="text-center"><?= $temp_carencia["matutino"] ?></td>
-                                                                <td class="text-center"><?= $temp_carencia["vespertino"] ?></td>
-                                                                <td class="text-center"><?= $temp_carencia["noturno"] ?></td>
-                                                                <td class="text-center"><?= $temp_carencia["matutino"] + $temp_carencia["vespertino"] + $temp_carencia["noturno"] ?></td>
-                                                                <td class="text-center"><?= $temp_carencia["cadastro"] ?></td>
-                                                                <td class="text-center"><?= $temp_carencia["nome"] ?></td>
-                                                                <td class="text-center"><?= $temp_carencia["motivo_vaga"] ?></td>
-                                                                <td class="text-center"><?= date('d/m/Y', strtotime($temp_carencia["inicio_vaga"])); ?></td>
+                                                                <td class="text-center"><?= $temp_carencia->tipo_vaga ?></td>
+                                                                <td class=""><?= $temp_carencia->disciplina ?></td>
+                                                                <td class="text-center"><?= $temp_carencia->matutino ?></td>
+                                                                <td class="text-center"><?= $temp_carencia->vespertino ?></td>
+                                                                <td class="text-center"><?= $temp_carencia->noturno ?></td>
+                                                                <td class="text-center"><?= $temp_carencia->matutino + $temp_carencia->vespertino + $temp_carencia->noturno ?></td>
+                                                                <td class="text-center"><?= $temp_carencia->cadastro ?></td>
+                                                                <td class="text-center"><?= $temp_carencia->nome ?></td>
+                                                                <td class="text-center"><?= $temp_carencia->motivo_vaga ?></td>
+                                                                <td class="text-center"><?= date('d/m/Y', strtotime($temp_carencia->inicio_vaga)); ?></td>
                                                                 <td class="text-center">
-                                                                    <a class="btn btn-primary btn-sm" href="./details-carencia.php?id=<?= $temp_carencia["id"] ?>"><i class="fa-solid fa-eye"></i></a>
-                                                                    <a title="Excluir" id="btn-delete" onclick="abrirModal(<?= $temp_carencia['id'] ?>)" type="button" class="btn text-white btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a>
+                                                                    <a class="btn btn-primary btn-sm" href="./details-carencia.php?id=<?= $temp_carencia->id ?>"><i class="fa-solid fa-eye"></i></a>
+                                                                    <a title="Excluir" id="btn-delete" onclick="abrirModal(<?= $temp_carencia->id ?>)" type="button" class="btn text-white btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a>
                                                                 </td>
                                                             </tr>
                                                         <?php endforeach; ?>

@@ -30,8 +30,11 @@ interface CarenciaDAOInterface
     public function bildCarencia($data);
     public function create(Carencia $carencia);
     public function update(Carencia $carencia);
-    public function getCarenciasReaisById($id);
-    public function countCarenciaMatById($id);
-    public function countCarenciaVespById($id);
-    public function countCarenciaNotById($id);
+    public function getCarenciasById($id, $type);
+    public function countCarenciaMatById($id, $type);
+    public function countCarenciaVespById($id, $type);
+    public function countCarenciaNotById($id, $type);
+    public function getDisciplinas();
+    public function getMotivoVagas($type);
+    public function getCarenciaUnicById($id);
 }

@@ -1,20 +1,23 @@
 <?php
 
-
 include("layouts/header.php");
 require_once("./dao/CarenciaDAO.php");
 require_once("./dao/NteDAO.php");
 
 $_SESSION["tipo_vaga"] = "R";
+$type = 'R';
 $id = $_GET['id'];
 $usuario = $_SESSION['name'] . " " . $_SESSION['lastname'];
 
 // Funções de Read do modulo de carencia 
 $carenciaDao = new CarenciaDAO($conn, $BASE_URL);
-$real_carencias = $carenciaDao->getCarenciasReaisById($id);
-$countMatReal = $carenciaDao->countCarenciaMatById($id);
-$countVespReal = $carenciaDao->countCarenciaVespById($id);
-$countNotReal = $carenciaDao->countCarenciaNotById($id);
+$real_carencias = $carenciaDao->getCarenciasById($id, $type);
+$countMatReal = $carenciaDao->countCarenciaMatById($id, $type);
+$countVespReal = $carenciaDao->countCarenciaVespById($id, $type);
+$countNotReal = $carenciaDao->countCarenciaNotById($id, $type);
+$carenciaDao->updateCarencia($id);
+$disciplinas = $carenciaDao->getDisciplinas();
+$motivo_vagas = $carenciaDao->getMotivoVagas($type);
 
 $nteDao = new Controle_nteDAO($conn, $BASE_URL);
 $controle_nte = $nteDao->getNtesById($id);

@@ -178,54 +178,193 @@ class CarenciaDAO implements CarenciaDAOInterface
         }
     }
 
-    public function getCarenciasReaisById($id)
+    public function getCarenciasById($id, $type)
     {
 
-        $real_carencias = [];
-        $stmt = $this->conn->prepare("SELECT * FROM carencias WHERE id_ref = :id AND tipo_vaga = 'R' AND ano_ref = '2022'");
-        $stmt->bindParam(":id", $id);
+        if ($type == "R") {
+            $real_carencias = [];
+            $stmt = $this->conn->prepare("SELECT * FROM carencias WHERE id_ref = :id AND tipo_vaga = 'R' AND ano_ref = '2022'");
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+            if ($stmt->rowCount() > 0) {
+                $carenciasArray = $stmt->fetchAll();
+                foreach ($carenciasArray as $real_carencia) {
+                    $real_carencias[] = $this->bildCarencia($real_carencia);
+                }
+            }
+
+            return $real_carencias;
+        } else if ($type == "T") {
+            $temp_carencias = [];
+            $stmt = $this->conn->prepare("SELECT * FROM carencias WHERE id_ref = :id AND tipo_vaga = 'T' AND ano_ref = '2022'");
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+
+            if ($stmt->rowCount() > 0) {
+
+                $carenciasArray = $stmt->fetchAll();
+
+                foreach ($carenciasArray as $temp_carencia) {
+
+                    $temp_carencias[] = $this->bildCarencia($temp_carencia);
+                }
+            }
+
+            return $temp_carencias;
+        }
+    }
+
+    public function countCarenciaMatById($id, $type)
+    {
+        if ($type == "R") {
+            $stmt = $this->conn->prepare("SELECT sum(matutino) FROM carencias WHERE id_ref =:id AND tipo_vaga = 'R' ");
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+            $countMatReal = $stmt->fetch();
+            return $countMatReal[0];
+        } else if ($type == "T") {
+            $stmt = $this->conn->prepare("SELECT sum(matutino) FROM carencias WHERE id_ref =:id AND tipo_vaga = 'T' ");
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+            $countMatTemp = $stmt->fetch();
+            return $countMatTemp[0];
+        }
+    }
+
+    public function countCarenciaVespById($id, $type)
+    {
+        if ($type == "R") {
+            $stmt = $this->conn->prepare("SELECT sum(vespertino) FROM carencias WHERE id_ref =:id AND tipo_vaga = 'R' ");
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+            $countVespReal = $stmt->fetch();
+            return $countVespReal[0];
+        } else if ($type == "T") {
+            $stmt = $this->conn->prepare("SELECT sum(vespertino) FROM carencias WHERE id_ref =:id AND tipo_vaga = 'T' ");
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+            $countVespTemp = $stmt->fetch();
+            return $countVespTemp[0];
+        }
+    }
+
+    public function countCarenciaNotById($id, $type)
+    {
+        if ($type == "R") {
+            $stmt = $this->conn->prepare("SELECT sum(noturno) FROM carencias WHERE id_ref =:id AND tipo_vaga = 'R' ");
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+            $countNotReal = $stmt->fetch();
+            return $countNotReal[0];
+        } else if ($type == "T") {
+            $stmt = $this->conn->prepare("SELECT sum(noturno) FROM carencias WHERE id_ref =:id AND tipo_vaga = 'T' ");
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+            $countNotTemp = $stmt->fetch();
+            return $countNotTemp[0];
+        }
+    }
+
+    public function updateCarencia($id)
+    {
+
+        // Atualiza dados se a unidade possuir carencia ou não
+        $sql = "SELECT sum(total) as total FROM carencias WHERE id_ref = :id_ref ";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(":id_ref", $id);
         $stmt->execute();
+        $stmt = $stmt->fetch();
+        $countCarencia_real = $stmt['total'];
 
-        if ($stmt->rowCount() > 0) {
+        if ($countCarencia_real > 0) {
+            $sql = "SELECT tipo_vaga FROM carencias WHERE id_ref = :id_ref AND tipo_vaga = 'T' ";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":id_ref", $id);
+            $stmt->execute();
+            $tipo_temp = $stmt->fetch();
+            if ($tipo_temp == null) {
+                $tipo_carencia_T = 0;
+            } else if ($tipo_temp != null) {
+                $tipo_carencia_T = $tipo_temp[0];
+            }
 
-            $carenciasArray = $stmt->fetchAll();
-
-            foreach ($carenciasArray as $real_carencia) {
-
-                $real_carencias[] = $this->bildCarencia($real_carencia);
+            $sql = "SELECT tipo_vaga FROM carencias WHERE id_ref = :id_ref AND tipo_vaga = 'R' ";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":id_ref", $id);
+            $stmt->execute();
+            $tipo_real = $stmt->fetch();
+            if ($tipo_real == null) {
+                $tipo_carencia_R = 0;
+            } else if ($tipo_real != null) {
+                $tipo_carencia_R = $tipo_real[0];
             }
         }
 
-        return $real_carencias;
+        if (($countCarencia_real > 0) && ($tipo_carencia_T == "T") && ($tipo_carencia_R == "R")) {
+            $carencia = "T - R";
+            $sql = "UPDATE controle_ntes SET carencia = :carencia WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":id", $id);
+            $stmt->bindParam(":carencia", $carencia);
+            $stmt->execute();
+        } else if (($countCarencia_real > 0) && ($tipo_carencia_R == "R")) {
+            $carencia = "R";
+            $sql = "UPDATE controle_ntes SET carencia = :carencia WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":id", $id);
+            $stmt->bindParam(":carencia", $carencia);
+            $stmt->execute();
+        } else if (($countCarencia_real > 0) && ($tipo_carencia_T == "T")) {
+            $carencia = "T";
+            $sql = "UPDATE controle_ntes SET carencia = :carencia WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":id", $id);
+            $stmt->bindParam(":carencia", $carencia);
+            $stmt->execute();
+        } else {
+            $carencia = "Não";
+            $sql = "UPDATE controle_ntes SET carencia = :carencia WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":id", $id);
+            $stmt->bindParam(":carencia", $carencia);
+            $stmt->execute();
+        }
     }
 
-    public function countCarenciaMatById($id)
+    public function getDisciplinas()
     {
-
-        $stmt = $this->conn->prepare("SELECT sum(matutino) FROM carencias WHERE id_ref =:id AND tipo_vaga = 'R' ");
-        $stmt->bindParam(":id", $id);
+        $query = "SELECT nome FROM disciplinas";
+        $stmt = $this->conn->prepare($query);
         $stmt->execute();
-        $countMatReal = $stmt->fetch();
-        return $countMatReal[0];
+        $disciplinas = $stmt->fetchAll();
+        return $disciplinas;
     }
 
-    public function countCarenciaVespById($id)
+    public function getMotivoVagas($type)
     {
-        
-        $stmt = $this->conn->prepare("SELECT sum(matutino) FROM carencias WHERE id_ref =:id AND tipo_vaga = 'R' ");
-        $stmt->bindParam(":id", $id);
-        $stmt->execute();
-        $countVespReal = $stmt->fetch();
-        return $countVespReal[0];
+
+        if ($type == "R") {
+            $query = "SELECT motivo FROM motivo_vaga";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            $motivo_vagas = $stmt->fetchAll();
+            return $motivo_vagas;
+        } else if ($type == "T") {
+            $query = "SELECT motivo FROM motivo_vaga_temp";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            $motivo_vagas = $stmt->fetchAll();
+            return $motivo_vagas;
+        }
     }
 
-    public function countCarenciaNotById($id)
+    public function getCarenciaUnicById($id)
     {
-        
-        $stmt = $this->conn->prepare("SELECT sum(matutino) FROM carencias WHERE id_ref =:id AND tipo_vaga = 'R' ");
+        $query = "SELECT * FROM carencias WHERE id = :id ";
+        $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":id", $id);
         $stmt->execute();
-        $countNotReal = $stmt->fetch();
-        return $countNotReal[0];
+        $vagas = $stmt->fetch();
+        return $vagas;
     }
 }

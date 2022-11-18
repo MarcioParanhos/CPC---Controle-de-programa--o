@@ -1,9 +1,15 @@
 <?php
 // Import dos arquivos necessarios
-include_once('./crud/read-carencia.php');
 include("layouts/header.php");
+require_once("./dao/CarenciaDAO.php");
+
+
 $type_vaga = $_SESSION["tipo_vaga"];
 $usuario = $_SESSION['name'] . " " . $_SESSION['lastname'];
+$id = $_GET['id'];
+
+$carenciaDao = new CarenciaDAO($conn, $BASE_URL);
+$vagas = $carenciaDao->getCarenciaUnicById($id);
 
 ?>
 <!-- Container Fluid -->
