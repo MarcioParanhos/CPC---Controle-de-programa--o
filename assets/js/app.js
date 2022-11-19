@@ -109,10 +109,10 @@ function modalExcedentes(id) {
     let dados = { id: id }
 
     $.post('./config/excedentesProcess.php', dados, function (retorno) {
-        
+
         $('#ExemploModalCentralizado2').modal('show')
         $('#modal_body').html(retorno)
-        
+
     })
 }
 
@@ -122,12 +122,10 @@ function modalUser(id) {
     let dados = { id: id }
 
     $.post('./config/userProcess.php', dados, function (retorno) {
-        
+
         $('#ExemploModalCentralizadoUser').modal('show')
         $('#modal_body').html(retorno)
-        
+
     })
 }
-
-
 

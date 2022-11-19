@@ -117,4 +117,15 @@ class UserDAO implements UserDAOInterface
         $usuarios = $stmt->fetchAll();
         return $usuarios;
     }
+
+    public function getUserById ($id) {
+
+        $query = "SELECT * FROM usuarios WHERE id = :id ";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        $user = $stmt->fetch();
+        return $user;
+
+    }
 }

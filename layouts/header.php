@@ -214,7 +214,7 @@ if ($_SESSION['perfil'] == 10) {
                     </div>
                 </li>
                 <hr class="sidebar-divider">
-                <?php if ($_SESSION['perfil'] == 4) { ?>
+                <?php if ($_SESSION['perfil'] == 0) { ?>
                     <div class="sidebar-heading">
                         Configuração
                     </div>

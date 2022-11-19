@@ -28,4 +28,5 @@ interface UserDAOInterface {
     public function findById($id);
     public function changePassword(User $user);
     public function getUsers();
+    public function getUserById($id);
 }

@@ -106,19 +106,19 @@ $excedente = $excedenteDao->getExcedenteById($id);
                                     <div class="form-row">
                                        <div class="col-md-3">
                                           <div class="position-relative form-group">
-                                             <label for="ch" class="">CH DO SERVIDOR</label>
+                                             <label for="ch" class="">Ch do Servidor</label>
                                              <input value="<?= $excedente['ch'] ?>" name="ch" id="ch" type="text" class="form-control form-control-sm">
                                           </div>
                                        </div>
                                        <div class="col-md-3">
                                           <div class="position-relative form-group">
-                                             <label for="qtd_horas" class="">QTD. AULAS EXCEDENTES</label>
+                                             <label for="qtd_horas" class="">Qtd. Aulas Excedentes</label>
                                              <input value="<?= $excedente['qtd_horas'] ?>" name="qtd_horas" id="qtd_horas" type="text" class="form-control form-control-sm">
                                           </div>
                                        </div>
                                        <div class="col-md-3">
                                           <div class="position-relative form-group">
-                                             <label for="formacao" class="">FORMAÇÃO</label>
+                                             <label for="formacao" class="">Formação</label>
                                              <input value="<?= $excedente['formacao'] ?>" name="formacao" id="formacao" type="text" class="form-control form-control-sm">
                                           </div>
                                        </div>

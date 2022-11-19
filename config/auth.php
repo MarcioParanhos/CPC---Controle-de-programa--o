@@ -82,7 +82,7 @@ if ($type == "register") {
         //redireciona o usuario caso nao autentique
         $message->setMessage("Usuário e/ou senha incorretos !", "alert-danger", "back");
     }
-} else if ($type == "update") {
+} else if ($type == "update-password") {
 
     $name = filter_input(INPUT_POST, "name");
     $lastname = filter_input(INPUT_POST, "lastname");
@@ -117,13 +117,48 @@ if ($type == "register") {
         $stmt->bindParam(":password", $new_password);
 
         if ($stmt->execute()) {
-            header("Location: ../user_config.php");
             $message->setMessage("Senha alterada com sucesso !", "alert-success", "back");
             die();
         } else {
             echo "Ocorreu um erro: " . $stmt->errorInfo();
         }
     }
+} else if ($type == "update") {
+
+    $name = filter_input(INPUT_POST, "name");
+    $lastname = filter_input(INPUT_POST, "lastname");
+    $email = filter_input(INPUT_POST, "email");
+    $perfil = filter_input(INPUT_POST, "perfil");
+    $cadastro_cpf = filter_input(INPUT_POST, "cadastro_cpf");
+    $obs = filter_input(INPUT_POST, "obs");
+    $id = filter_input(INPUT_POST, "id");
+
+    $sql = "UPDATE usuarios SET
+        name = :name,
+        lastname = :lastname,
+        email = :email,
+        perfil = :perfil,
+        cadastro_cpf = :cadastro_cpf,
+        obs = :obs
+        WHERE 
+        id = :id";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(":id", $id);
+    $stmt->bindParam(":name", $name);
+    $stmt->bindParam(":email", $email);
+    $stmt->bindParam(":lastname", $lastname);
+    $stmt->bindParam(":perfil", $perfil);
+    $stmt->bindParam(":cadastro_cpf", $cadastro_cpf);
+    $stmt->bindParam(":obs", $obs);
+
+    if ($stmt->execute()) {
+        $message->setMessage("Registro alterado com sucesso !", "alert-success", "back");
+        die();
+    } else {
+        echo "Ocorreu um erro: " . $stmt->errorInfo();
+    }
+
 } else {
 
     session_start();

@@ -57,8 +57,9 @@ $usuarios = $userDao->getUsers();
                   <td class="text-center"><?= $usuario["perfil"] ?></td>
                   <td class="text-center">
                     <button title="Detalhar" class="btn btn-sm btn-primary" onclick="modalUser(<?= $usuario['id'] ?>)"><i class="fa-solid fa-eye"></i></button>
-                    <button title="Detalhar" class="btn btn-sm btn-primary" onclick="modalUser(<?= $usuario['id'] ?>)"><i class="fa-solid fa-edit"></i></button>
-                    <a title="Excluir" id="btn-delete" onclick="abrirModalDeleteUser(<?= $usuario['id'] ?>)" type="button" class="btn text-white btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a>
+                    <a href="detail_users.php?id=<?= $usuario['id'] ?>"><button title="Detalhar" class="btn btn-sm btn-primary"><i class="fa-solid fa-edit"></i></button></a>
+                    <button title="Excluir" class="btn btn-sm btn-danger" onclick="abrirModalDeleteUser(<?= $usuario['id'] ?>)"><i class="fa-solid fa-trash"></i></button>
+                    <!-- <a title="Excluir" id="btn-delete" onclick="abrirModalDeleteUser(<?= $usuario['id'] ?>)" type="button" class="btn text-white btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a> -->
                   </td>
                 </tr>
               <?php endforeach; ?>

@@ -78,5 +78,12 @@ if (!empty($id)) {
         $resultado .= '</dl>';
     }
 
+    if ($usuario['perfil'] == 0) {
+        $resultado .= '<dl class="row">';
+        $resultado .= '<dt class="col-sm-2">Função:</dt>';
+        $resultado .= '<dd class="col-sm-6">Administrador do Sistema</dd>';
+        $resultado .= '</dl>';
+    }
+
     echo $resultado;
 };
