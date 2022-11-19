@@ -12,7 +12,8 @@ https://www.loom.com/share/3e13a5e8b1954c0c873cecd91ffc9fe1
 
 <strong>Situação atual do sistema:</strong> Em desenvolvimento.<br>
 <strong>Tecnologias Ultilizadas:</strong> PHP designer pattern (DAO), JavaScript, HTML5, CSS3, Bootstrap.<br>
-<strong>Autoria do Codigo:</strong> Marcio Paranhos.<br>
+<strong>Autoria do Projeto:</strong> <a href="https://marcioparanhos.github.io/Portifolio/">Marcio Paranhos</a>.<br>
+<strong>Autoria do Codigo:</strong> <a href="https://marcioparanhos.github.io/Portifolio/">Marcio Paranhos</a>.<br>
 
 <strong>Etapas Concluidas:</strong><br>
 • Modulo de Controle de Programação e Homologação das unidades escolares.<br>
@@ -20,6 +21,7 @@ https://www.loom.com/share/3e13a5e8b1954c0c873cecd91ffc9fe1
 • Modulo de Carência de Aulas.<br>
 • Contatos das Unidades Escolares.<br>
 • Modulo de Excedentes.<br>
+• Modulo de Administração de Usuarios.<br>
 
 <strong>Etapas Pedentes:</strong><br>
 • Relatorios Gerenciais.<br>
