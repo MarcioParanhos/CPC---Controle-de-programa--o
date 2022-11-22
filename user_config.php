@@ -46,7 +46,7 @@ if (!empty($flassMessage["mensagem"])) {
             </div>
             <div class="card-body">
                 <form action="<?= $BASE_URL ?>config/auth.php" method="POST">
-                    <input type="hidden" name="type" value="update">
+                    <input type="hidden" name="type" value="update-password">
                     <input type="hidden" name="email" value="<?= $_SESSION['email'] ?>">
                     <div class="form-row">
                         <div class="col-md-3">

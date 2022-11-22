@@ -225,7 +225,7 @@ $controle_nte = $nteDao->getNtesById($id);
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <a title="Adicionar"><button type="submit" class="btn btn-lg bg-purple btn-primary  mr-2"><i class="fa-solid fa-plus"></i></button></a>
+                                                        <a title="Adicionar"><button type="submit" class="btn bg-purple btn-primary  mr-2"><i class="fa-solid fa-plus"></i></button></a>
                                             </form>
                                             <div class="card-header mb-2 mt-2 py-3 d-flex flex-row align-items-center justify-content-between">
                                                 <h6 class="m-0 font-weight-bold text-primary">VAGAS DETALHADAS</h6>

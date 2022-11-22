@@ -87,10 +87,14 @@ if ($type == "register") {
     $name = filter_input(INPUT_POST, "name");
     $lastname = filter_input(INPUT_POST, "lastname");
     $email = filter_input(INPUT_POST, "email");
-    $password = filter_input(INPUT_POST, "password");
-    $new_password = filter_input(INPUT_POST, "new_password");
-    $confirm_password = filter_input(INPUT_POST, "confirm_password");
+    $passMD5 = filter_input(INPUT_POST, "password");
+    $newPassMD5 = filter_input(INPUT_POST, "new_password");
+    $newConfirmPassMD5 = filter_input(INPUT_POST, "confirm_password");
     $cadastro_cpf = filter_input(INPUT_POST, "cadastro_cpf");
+
+    $password = md5($passMD5);
+    $new_password = md5($newPassMD5);
+    $confirm_password = md5($newConfirmPassMD5);
 
     $query = "SELECT password FROM usuarios WHERE email = :email";
     $stmt = $conn->prepare($query);
@@ -99,7 +103,7 @@ if ($type == "register") {
     $stmt = $stmt->fetch();
     $password_confirm = $stmt['password'];
 
-    if ($password != $password_confirm) {
+    if ($password  != $password_confirm) {
 
         $message->setMessage("Senha atual incorreta !", "alert-danger", "back");
     } else if ($new_password != $confirm_password) {
@@ -158,7 +162,6 @@ if ($type == "register") {
     } else {
         echo "Ocorreu um erro: " . $stmt->errorInfo();
     }
-
 } else {
 
     session_start();
