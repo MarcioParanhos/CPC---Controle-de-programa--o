@@ -48,16 +48,20 @@ if (!empty($flassMessage["mensagem"])) {
                     <input type="hidden" name="type" value="login">
                     <div class="form-inputs">
                         <div class="form-control">
-                            <label class="label-email" for="">E-mail</label>
-                            <input name="email" type="text" placeholder="Digite seu e-mail...">
+                            <!-- <label class="label-email" for="">E-mail</label> -->
+                            <input name="email" type="text" required>
+                            <span>E-mail</span>
                         </div>
                         <div class="form-control">
-                            <label class="label-password" for="">Senha</label>
-                            <input name="password" type="password" placeholder="Digite sua senha...">
+                            <!-- <label class="label-password" for="">Senha</label> -->
+                            <input name="password" type="password" required>
+                            <span>Senha</span>
                         </div>
                     </div>
-                    <input class="login-btn" type="submit" value="Acessar">
-                    <p class="register">Ainda não possui conta? <a href="register.php">Cadastre-se aqui !</a></p>
+                    <div class="btn-login">
+                        <input class="login-btn" type="submit" value="Acessar">
+                        <p class="register">Ainda não possui conta? <a href="register.php">Cadastre-se aqui !</a></p>
+                    </div>
                 </form>
             </section>
         </div>

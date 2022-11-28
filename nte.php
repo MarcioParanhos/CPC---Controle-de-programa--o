@@ -31,7 +31,7 @@ $ntes = $nteDao->getNtes($nte);
       <!-- Tabela Simples -->
       <div class="card">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-end">
-          <a title="Contatos Gestores" href="contacts.php?nte=<?= $_SESSION['nte'] ?>"><button class=" btn btn-sm btn-success"><strong>CONTATOS</strong> <i class="fa-solid fa-phone-volume"> </i></button></a>
+          <a title="Contatos Gestores" href="contacts.php?nte=<?= $_SESSION['nte'] ?>"><button class=" btn btn-sm btn-success">CONTATOS <i class="fa-solid fa-phone-volume"> </i></button></a>
           <a title="Contatos Gestores" href="./tipologia-modalidade.php?nte=<?= $_SESSION['nte'] ?>"><button class="hide btn btn-sm btn-success"><strong>TIPOLOGIA / MODALIDADE</strong> <i class="fa-solid fa-search"> </i></button></a>
         </div>
         <div class="table-responsive mt-2 p-1 ">

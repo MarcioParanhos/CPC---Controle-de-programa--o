@@ -80,7 +80,7 @@ if ($_SESSION['perfil'] == 10) {
             <li class="nav-item active">
                 <a class="nav-link" href="home.php"><i class="fas fa-home"></i><span>HOME</span></a>
             </li>
-            <?php if ($_SESSION['perfil'] != 10) { ?>
+            <?php if ($_SESSION['perfil'] != 10 && $_SESSION['perfil'] != 0) { ?>
                 <hr class="sidebar-divider">
                 <div class="sidebar-heading">Gerencial</div>
                 <li class=" nav-item">
@@ -145,7 +145,7 @@ if ($_SESSION['perfil'] == 10) {
                                 <a class="collapse-item" href="nte.php?nte=26"><i class="fa-solid fa-angle-right"></i> 26</a>
                                 <?php } ?><?php if ($_SESSION['perfil'] == 3) { ?>
                                 <a class="collapse-item" href="nte.php?nte=27"><i class="fa-solid fa-angle-right"></i> 27</a>
-                                <?php } ?>
+                            <?php } ?>
                         </div>
                     </div>
                 </li>
@@ -213,24 +213,24 @@ if ($_SESSION['perfil'] == 10) {
                         </div>
                     </div>
                 </li>
-                <hr class="sidebar-divider">
-                <?php if ($_SESSION['perfil'] == 0) { ?>
-                    <div class="sidebar-heading">
-                        Configuração
-                    </div>
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage" aria-expanded="true" aria-controls="collapsePage">
-                            <i class="fa-solid fa-user"></i>
-                            <span>USUARIOS</span>
-                        </a>
-                        <div id="collapsePage" class="collapse" aria-labelledby="headingPage" data-parent="#accordionSidebar">
-                            <div class="bg-white py-2 collapse-inner rounded">
-                                <a class="collapse-item" href="./users.php"><i class="fa-solid fa-user-gear"></i> Editar Usuário</a>
-                            </div>
+            <?php } ?>
+            <hr class="sidebar-divider">
+            <?php if ($_SESSION['perfil'] == 0) { ?>
+                <div class="sidebar-heading">
+                    Configuração
+                </div>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage" aria-expanded="true" aria-controls="collapsePage">
+                        <i class="fa-solid fa-user"></i>
+                        <span>USUARIOS</span>
+                    </a>
+                    <div id="collapsePage" class="collapse" aria-labelledby="headingPage" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" href="./users.php"><i class="fa-solid fa-user-gear"></i> EDITAR USUARIO</a>
                         </div>
-                    </li>
-                    <hr class="sidebar-divider">
-                <?php } ?>
+                    </div>
+                </li>
+                <hr class="sidebar-divider">
             <?php } ?>
             <div class="version" id="version-ruangadmin"></div>
         </ul>
@@ -269,7 +269,7 @@ if ($_SESSION['perfil'] == 10) {
                         <div class="topbar-divider d-none d-sm-block"></div>
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="ml-2 d-none d-lg-inline text-white"><?= $_SESSION['name'] ?> <?= $_SESSION['lastname'] ?> &nbsp;</span>
+                                <span class="ml-2 d-none d-lg-inline text-white uppercase"><?= $_SESSION['name'] ?> <?= $_SESSION['lastname'] ?> &nbsp;</span>
                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

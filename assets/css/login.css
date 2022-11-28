@@ -6,9 +6,11 @@
   box-sizing: border-box;
   font-family: "Nunito", sans-serif;
 }
+
 body {
   background-color: #fbf8f3;
 }
+
 .container {
   display: flex;
   flex-direction: column;
@@ -17,21 +19,26 @@ body {
   max-width: 100vw;
   min-height: 100vh;
 }
+
 .login-content {
   background-color: #232323;
   display: flex;
   align-items: center;
   border-radius: 18px;
 }
+
 .form-container {
+  display: flex;
+  flex-direction: column;
   background-color: #354259;
   height: 500px;
   width: 500px;
   color: #fbf8f3;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  padding: 20px;
+  padding: 50px 20px;
 }
+
 .form-container h1 {
   text-align: center;
   margin-left: auto;
@@ -45,11 +52,13 @@ body {
   width: 25%;
   padding-bottom: 5px;
 }
+
 .form-control {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
+  margin-bottom: 1.8rem;
 }
+
 .form-control label {
   font-weight: bold;
   margin-bottom: 0.6rem;
@@ -57,73 +66,120 @@ body {
   color: #fbf8f3;
   position: relative;
 }
+.form-control span {
+  left: 804px;
+  position: absolute;
+  color: #fbf8f3;
+  padding: 19px;
+  pointer-events: none;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+
 .form-control input {
-  padding: 1rem 0.5rem;
+  color: #fbf8f3;
+  padding: 1rem 1rem;
   border-radius: 10px;
   border: none;
   font-size: 1.1rem;
+  font-weight: 500;
   position: relative;
+  background-color: #354259;
+  border: 2px solid #fbf8f3;
 }
+
+.form-control input:valid ~ span,
+.form-control input:focus ~ span {
+  color: #354259;
+  transform: translateX(10px) translateY(-7px);
+  font-size: 0.9rem;
+  padding: 0 10px;
+  background-color: #fbf8f3;
+  left: 820px;
+  border-radius: 5px;
+  letter-spacing: 0.2em;
+  font-weight: 500;
+}
+
 input:focus {
   box-shadow: 0 0 0 0;
   outline: 0;
 }
+
+.btn-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
 .login-btn {
   padding: 10px;
   border: none;
-  border-radius: 15px;
-  width: 100%;
-  font-size: 1rem;
+  border-radius: 10px;
+  width: 50%;
+  font-size: 0.8rem;
   font-weight: bold;
   cursor: pointer;
   color: #354259;
   border: 2px solid transparent;
   transition: 0.5s;
-
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
+
 .login-btn:hover {
   border: 2px solid #fbf8f3;
   background-color: #354259;
   color: #fbf8f3;
 }
-.label-email::after {
+
+.form-control:nth-child(1):after {
   content: "";
-  color: #232323;
-  margin-top: 50px;
-  margin-left: 370px;
+  color: #fbf8f3;
   background: url(../img/envelope.svg);
   position: absolute;
   width: 20px;
   height: 20px;
-  z-index: 1;
+  z-index: 9999;
+  left: 1225px;
+  top: 234px;
 }
-.label-password::after {
+
+.form-control:nth-child(2):after {
   content: "";
-  color: #232323;
-  margin-top: 50px;
-  margin-left: 370px;
+  color: #fbf8f3;
   background: url(../img/chave.svg);
   position: absolute;
   width: 20px;
   height: 20px;
-  z-index: 1;
+  z-index: 9999;
+  left: 1225px;
+  top: 324px;
 }
+
 a {
   text-decoration: none;
   color: #ccc;
 }
+
 p {
-  text-align: center;
   margin-top: 35px;
 }
+
 .alert-danger {
   color: #78261f;
   background-color: #fc544b;
   width: 60vw;
 }
+
 .alert-dismissible {
   padding-right: 4rem;
 }
+
 .alert {
   position: relative;
   padding: 0.75rem 1.25rem;
@@ -132,9 +188,11 @@ p {
   border-radius: 0.35rem;
   color: #fafafa !important;
 }
+
 .text-center {
   text-align: center !important;
 }
+
 .alert {
   position: relative;
   margin-bottom: 0.5rem;
@@ -142,14 +200,16 @@ p {
   border-radius: 0.35rem;
   color: #fafafa !important;
 }
+
 .alert-dismissible .close {
   position: absolute;
   top: 0;
   right: 0;
   padding: 0.75rem 1.25rem;
   color: inherit;
- 
+
 }
+
 button.close {
   padding: 0;
   background-color: transparent;
@@ -158,19 +218,22 @@ button.close {
   -moz-appearance: none;
   appearance: none;
 }
+
 .close {
-    float: right;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #000;
-    text-shadow: 0 1px 0 #fff;
-    opacity: .5;
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: .5;
 }
+
 .message-login {
   display: flex;
   align-items: center;
   line-height: 0.1;
 }
+
 @media (max-width: 500px) {
   .login-content {
     flex-wrap: wrap;
@@ -178,68 +241,84 @@ button.close {
     min-height: 100vh;
     border-radius: 0px;
   }
+
   .label-password::after,
   .label-email::after {
     margin-left: 260px;
   }
+
   .form-container {
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     border-top-right-radius: 0;
     padding-bottom: 80px;
   }
+
   img {
     width: 95%;
   }
+
   .logo-img {
     display: flex;
     justify-content: center;
     padding: 8px;
   }
+
   .form-container h1 {
     margin-bottom: 1.5rem;
     margin-top: 1rem;
   }
+
   p {
     text-align: center;
   }
+
   .login-btn {
     margin-top: 20px;
     width: 100%;
   }
+
   .alert-danger {
     width: 100vw;
   }
 }
 
 @media (width: 360px) {
+
   .label-password::after,
   .label-email::after {
     margin-left: 225px;
   }
 }
+
 @media (width: 375px) {
+
   .label-password::after,
   .label-email::after {
     margin-left: 240px;
   }
 }
+
 @media (width: 412px) {
+
   .label-password::after,
   .label-email::after {
     margin-left: 275px;
   }
 }
+
 @media (width: 414px) {
+
   .label-password::after,
   .label-email::after {
     margin-left: 275px;
   }
 }
+
 @media (width: 428px) {
+
   .label-password::after,
   .label-email::after {
     margin-left: 290px;
   }
 }
-

@@ -163,403 +163,404 @@ include("layouts/header.php");
           </div>
         </div>
       </div>
-
-      <div class="table-responsive mt-2 p-1 ">
-        <table class="table compact table-hover  align-items-center table-flush">
-          <thead class="bg-primary">
-            <tr>
-              <th id="th-start" class="text-center">NTE</th>
-              <th class="text-center">QTD. UNIDADES</th>
-              <th class="text-center">SEDES</th>
-              <th class="text-center">ANEXOS</th>
-              <th class="text-center">EMITEC</th>
-              <th class="text-center">SEDES DIGITADAS</th>
-              <th class="text-center">ANEXOS DIGITADOS</th>
-              <th class="text-center">SEDES HOMOLOGADAS</th>
-              <th id="th-end" class="text-center">ANEXOS HOMOLOGADOS</th>
-            </tr>
-          </thead>
-          <?php if ($_SESSION['perfil'] == 4) { ?>
-            <tbody>
-              <td class="text-center"><strong>01</strong></td>
-              <td class="text-center"><?= $countUnidadesNte01 ?></td>
-              <td class="text-center"><?= $countUnidadesNte01Sedes ?></td>
-              <td class="text-center"><?= $countUnidadesNte01Anexos ?></td>
-              <td class="text-center">0</td>
-              <td class="text-center"><?= $countDigitadasSedeNte01 ?></td>
-              <td class="text-center"><?= $countDigitadasAnexoNte01 ?></td>
-              <td class="text-center"><?= $countHomologadasSedeNte01 ?></td>
-              <td class="text-center"><?= $countHomologadasAnexoNte01 ?></td>
+      <?php if ($_SESSION['perfil'] != 0) { ?>
+        <div class="table-responsive mt-2 p-1 ">
+          <table class="table compact table-hover  align-items-center table-flush">
+            <thead class="bg-primary">
+              <tr>
+                <th id="th-start" class="text-center">NTE</th>
+                <th class="text-center">QTD. UNIDADES</th>
+                <th class="text-center">SEDES</th>
+                <th class="text-center">ANEXOS</th>
+                <th class="text-center">EMITEC</th>
+                <th class="text-center">SEDES DIGITADAS</th>
+                <th class="text-center">ANEXOS DIGITADOS</th>
+                <th class="text-center">SEDES HOMOLOGADAS</th>
+                <th id="th-end" class="text-center">ANEXOS HOMOLOGADOS</th>
               </tr>
-            </tbody>
-          <?php } ?>
-          <?php if ($_SESSION['perfil'] == 3) { ?>
-            <tbody>
-              <td class="text-center">02</td>
-              <td class="text-center">29</td>
-              <td class="text-center">15</td>
-              <td class="text-center">7</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              </tr>
-            </tbody>
-          <?php } ?>
-          <?php if ($_SESSION['perfil'] == 1) { ?>
-            <tbody>
-              <td class="text-center">03</td>
-              <td class="text-center">29</td>
-              <td class="text-center">15</td>
-              <td class="text-center">7</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              </tr>
-            </tbody>
-          <?php } ?>
-          <?php if ($_SESSION['perfil'] == 1) { ?>
-            <tbody>
-              <td class="text-center">04</td>
-              <td class="text-center">29</td>
-              <td class="text-center">15</td>
-              <td class="text-center">7</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              </tr>
-            </tbody>
-          <?php } ?>
-          <?php if ($_SESSION['perfil'] == 4) { ?>
-            <tbody>
-              <td class="text-center"><strong>05</strong></td>
-              <td class="text-center"><?= $countUnidadesNte05 ?></td>
-              <td class="text-center"><?= $countUnidadesNte05Sedes ?></td>
-              <td class="text-center"><?= $countUnidadesNte05Anexos ?></td>
-              <td class="text-center">0</td>
-              <td class="text-center"><?= $countDigitadasSedeNte05 ?></td>
-              <td class="text-center"><?= $countDigitadasAnexoNte05 ?></td>
-              <td class="text-center"><?= $countHomologadasSedeNte05 ?></td>
-              <td class="text-center"><?= $countHomologadasAnexoNte05 ?></td>
-              </tr>
-            </tbody>
-          <?php } ?>
-          <?php if ($_SESSION['perfil'] == 4) { ?>
-            <tbody>
-              <td class="text-center"><strong>06</strong></td>
-              <td class="text-center">29</td>
-              <td class="text-center">15</td>
-              <td class="text-center">7</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              </tr>
-            </tbody>
-          <?php } ?>
-          <?php if ($_SESSION['perfil'] == 4) { ?>
-            <tbody>
-              <td class="text-center"><strong>07</strong></td>
-              <td class="text-center">29</td>
-              <td class="text-center">15</td>
-              <td class="text-center">7</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              </tr>
-            </tbody>
-          <?php } ?>
-          <?php if ($_SESSION['perfil'] == 1) { ?>
-            <tbody>
-              <td class="text-center">08</td>
-              <td class="text-center">29</td>
-              <td class="text-center">15</td>
-              <td class="text-center">7</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              </tr>
-            </tbody>
-          <?php } ?>
-          <?php if ($_SESSION['perfil'] == 1) { ?>
-            <tbody>
-              <td class="text-center">09</td>
-              <td class="text-center">29</td>
-              <td class="text-center">15</td>
-              <td class="text-center">7</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              </tr>
-            </tbody>
-          <?php } ?>
-          <?php if ($_SESSION['perfil'] == 3) { ?>
-            <tbody>
-              <td class="text-center">10</td>
-              <td class="text-center">29</td>
-              <td class="text-center">15</td>
-              <td class="text-center">7</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              </tr>
-            </tbody>
-          <?php } ?>
-          <?php if ($_SESSION['perfil'] == 1) { ?>
-            <tbody>
-              <td class="text-center">11</td>
-              <td class="text-center">29</td>
-              <td class="text-center">15</td>
-              <td class="text-center">7</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              </tr>
-            </tbody>
-          <?php } ?>
-          <?php if ($_SESSION['perfil'] == 1) { ?>
-            <tbody>
-              <td class="text-center">12</td>
-              <td class="text-center">29</td>
-              <td class="text-center">15</td>
-              <td class="text-center">7</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              </tr>
-            </tbody>
-          <?php } ?>
-          <?php if ($_SESSION['perfil'] == 1) { ?>
-            <tbody>
-              <td class="text-center">13</td>
-              <td class="text-center">29</td>
-              <td class="text-center">15</td>
-              <td class="text-center">7</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              </tr>
-            </tbody>
-          <?php } ?>
-          <?php if ($_SESSION['perfil'] == 3) { ?>
-            <tbody>
-              <td class="text-center">14</td>
-              <td class="text-center">29</td>
-              <td class="text-center">15</td>
-              <td class="text-center">7</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              </tr>
-            </tbody>
-          <?php } ?>
-          <?php if ($_SESSION['perfil'] == 1) { ?>
-            <tbody>
-              <td class="text-center">15</td>
-              <td class="text-center">29</td>
-              <td class="text-center">15</td>
-              <td class="text-center">7</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              </tr>
-            </tbody>
-          <?php } ?>
-          <?php if ($_SESSION['perfil'] == 4) { ?>
-            <tbody>
-              <td class="text-center"><strong>16</strong></td>
-              <td class="text-center">29</td>
-              <td class="text-center">15</td>
-              <td class="text-center">7</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              </tr>
-            </tbody>
-          <?php } ?>
-          <?php if ($_SESSION['perfil'] == 1) { ?>
-            <tbody>
-              <td class="text-center">17</td>
-              <td class="text-center">29</td>
-              <td class="text-center">15</td>
-              <td class="text-center">7</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              </tr>
-            </tbody>
-          <?php } ?>
-          <?php if ($_SESSION['perfil'] == 3) { ?>
-            <tbody>
-              <td class="text-center">18</td>
-              <td class="text-center">29</td>
-              <td class="text-center">15</td>
-              <td class="text-center">7</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              </tr>
-            </tbody>
-          <?php } ?>
-          <?php if ($_SESSION['perfil'] == 1) { ?>
-            <tbody>
-              <td class="text-center">19</td>
-              <td class="text-center">29</td>
-              <td class="text-center">15</td>
-              <td class="text-center">7</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              </tr>
-            </tbody>
-          <?php } ?>
-          <?php if ($_SESSION['perfil'] == 1) { ?>
-            <tbody>
-              <td class="text-center">20</td>
-              <td class="text-center">29</td>
-              <td class="text-center">15</td>
-              <td class="text-center">7</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              </tr>
-            </tbody>
-          <?php } ?>
-          <?php if ($_SESSION['perfil'] == 1) { ?>
-            <tbody>
-              <td class="text-center">21</td>
-              <td class="text-center">29</td>
-              <td class="text-center">15</td>
-              <td class="text-center">7</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              </tr>
-            </tbody>
-          <?php } ?>
-          <?php if ($_SESSION['perfil'] == 4) { ?>
-            <tbody>
-              <td class="text-center"><strong>22</strong></td>
-              <td class="text-center">29</td>
-              <td class="text-center">15</td>
-              <td class="text-center">7</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              </tr>
-            </tbody>
-          <?php } ?>
-          <?php if ($_SESSION['perfil'] == 3) { ?>
-            <tbody>
-              <td class="text-center">23</td>
-              <td class="text-center">29</td>
-              <td class="text-center">15</td>
-              <td class="text-center">7</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              </tr>
-            </tbody>
-          <?php } ?>
-          <?php if ($_SESSION['perfil'] == 1) { ?>
-            <tbody>
-              <td class="text-center">24</td>
-              <td class="text-center">29</td>
-              <td class="text-center">15</td>
-              <td class="text-center">7</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              </tr>
-            </tbody>
-          <?php } ?>
-          <?php if ($_SESSION['perfil'] == 1) { ?>
-            <tbody>
-              <td class="text-center">25</td>
-              <td class="text-center">29</td>
-              <td class="text-center">15</td>
-              <td class="text-center">7</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              </tr>
-            </tbody>
-          <?php } ?>
-          <?php if ($_SESSION['perfil'] == 1) { ?>
-            <tbody>
-              <td class="text-center">26</td>
-              <td class="text-center">29</td>
-              <td class="text-center">15</td>
-              <td class="text-center">7</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              </tr>
-            </tbody>
-          <?php } ?>
-          <?php if ($_SESSION['perfil'] == 3) { ?>
-            <tbody>
-              <td class="text-center">27</td>
-              <td class="text-center">29</td>
-              <td class="text-center">15</td>
-              <td class="text-center">7</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              <td class="text-center">0</td>
-              </tr>
-            </tbody>
-          <?php } ?>
-        </table>
-        <div class="card-footer"></div>
-      </div>
+            </thead>
+            <?php if ($_SESSION['perfil'] == 4) { ?>
+              <tbody>
+                <td class="text-center"><strong>01</strong></td>
+                <td class="text-center"><?= $countUnidadesNte01 ?></td>
+                <td class="text-center"><?= $countUnidadesNte01Sedes ?></td>
+                <td class="text-center"><?= $countUnidadesNte01Anexos ?></td>
+                <td class="text-center">0</td>
+                <td class="text-center"><?= $countDigitadasSedeNte01 ?></td>
+                <td class="text-center"><?= $countDigitadasAnexoNte01 ?></td>
+                <td class="text-center"><?= $countHomologadasSedeNte01 ?></td>
+                <td class="text-center"><?= $countHomologadasAnexoNte01 ?></td>
+                </tr>
+              </tbody>
+            <?php } ?>
+            <?php if ($_SESSION['perfil'] == 3) { ?>
+              <tbody>
+                <td class="text-center">02</td>
+                <td class="text-center">29</td>
+                <td class="text-center">15</td>
+                <td class="text-center">7</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                </tr>
+              </tbody>
+            <?php } ?>
+            <?php if ($_SESSION['perfil'] == 1) { ?>
+              <tbody>
+                <td class="text-center">03</td>
+                <td class="text-center">29</td>
+                <td class="text-center">15</td>
+                <td class="text-center">7</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                </tr>
+              </tbody>
+            <?php } ?>
+            <?php if ($_SESSION['perfil'] == 1) { ?>
+              <tbody>
+                <td class="text-center">04</td>
+                <td class="text-center">29</td>
+                <td class="text-center">15</td>
+                <td class="text-center">7</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                </tr>
+              </tbody>
+            <?php } ?>
+            <?php if ($_SESSION['perfil'] == 4) { ?>
+              <tbody>
+                <td class="text-center"><strong>05</strong></td>
+                <td class="text-center"><?= $countUnidadesNte05 ?></td>
+                <td class="text-center"><?= $countUnidadesNte05Sedes ?></td>
+                <td class="text-center"><?= $countUnidadesNte05Anexos ?></td>
+                <td class="text-center">0</td>
+                <td class="text-center"><?= $countDigitadasSedeNte05 ?></td>
+                <td class="text-center"><?= $countDigitadasAnexoNte05 ?></td>
+                <td class="text-center"><?= $countHomologadasSedeNte05 ?></td>
+                <td class="text-center"><?= $countHomologadasAnexoNte05 ?></td>
+                </tr>
+              </tbody>
+            <?php } ?>
+            <?php if ($_SESSION['perfil'] == 4) { ?>
+              <tbody>
+                <td class="text-center"><strong>06</strong></td>
+                <td class="text-center">29</td>
+                <td class="text-center">15</td>
+                <td class="text-center">7</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                </tr>
+              </tbody>
+            <?php } ?>
+            <?php if ($_SESSION['perfil'] == 4) { ?>
+              <tbody>
+                <td class="text-center"><strong>07</strong></td>
+                <td class="text-center">29</td>
+                <td class="text-center">15</td>
+                <td class="text-center">7</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                </tr>
+              </tbody>
+            <?php } ?>
+            <?php if ($_SESSION['perfil'] == 1) { ?>
+              <tbody>
+                <td class="text-center">08</td>
+                <td class="text-center">29</td>
+                <td class="text-center">15</td>
+                <td class="text-center">7</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                </tr>
+              </tbody>
+            <?php } ?>
+            <?php if ($_SESSION['perfil'] == 1) { ?>
+              <tbody>
+                <td class="text-center">09</td>
+                <td class="text-center">29</td>
+                <td class="text-center">15</td>
+                <td class="text-center">7</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                </tr>
+              </tbody>
+            <?php } ?>
+            <?php if ($_SESSION['perfil'] == 3) { ?>
+              <tbody>
+                <td class="text-center">10</td>
+                <td class="text-center">29</td>
+                <td class="text-center">15</td>
+                <td class="text-center">7</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                </tr>
+              </tbody>
+            <?php } ?>
+            <?php if ($_SESSION['perfil'] == 1) { ?>
+              <tbody>
+                <td class="text-center">11</td>
+                <td class="text-center">29</td>
+                <td class="text-center">15</td>
+                <td class="text-center">7</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                </tr>
+              </tbody>
+            <?php } ?>
+            <?php if ($_SESSION['perfil'] == 1) { ?>
+              <tbody>
+                <td class="text-center">12</td>
+                <td class="text-center">29</td>
+                <td class="text-center">15</td>
+                <td class="text-center">7</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                </tr>
+              </tbody>
+            <?php } ?>
+            <?php if ($_SESSION['perfil'] == 1) { ?>
+              <tbody>
+                <td class="text-center">13</td>
+                <td class="text-center">29</td>
+                <td class="text-center">15</td>
+                <td class="text-center">7</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                </tr>
+              </tbody>
+            <?php } ?>
+            <?php if ($_SESSION['perfil'] == 3) { ?>
+              <tbody>
+                <td class="text-center">14</td>
+                <td class="text-center">29</td>
+                <td class="text-center">15</td>
+                <td class="text-center">7</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                </tr>
+              </tbody>
+            <?php } ?>
+            <?php if ($_SESSION['perfil'] == 1) { ?>
+              <tbody>
+                <td class="text-center">15</td>
+                <td class="text-center">29</td>
+                <td class="text-center">15</td>
+                <td class="text-center">7</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                </tr>
+              </tbody>
+            <?php } ?>
+            <?php if ($_SESSION['perfil'] == 4) { ?>
+              <tbody>
+                <td class="text-center"><strong>16</strong></td>
+                <td class="text-center">29</td>
+                <td class="text-center">15</td>
+                <td class="text-center">7</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                </tr>
+              </tbody>
+            <?php } ?>
+            <?php if ($_SESSION['perfil'] == 1) { ?>
+              <tbody>
+                <td class="text-center">17</td>
+                <td class="text-center">29</td>
+                <td class="text-center">15</td>
+                <td class="text-center">7</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                </tr>
+              </tbody>
+            <?php } ?>
+            <?php if ($_SESSION['perfil'] == 3) { ?>
+              <tbody>
+                <td class="text-center">18</td>
+                <td class="text-center">29</td>
+                <td class="text-center">15</td>
+                <td class="text-center">7</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                </tr>
+              </tbody>
+            <?php } ?>
+            <?php if ($_SESSION['perfil'] == 1) { ?>
+              <tbody>
+                <td class="text-center">19</td>
+                <td class="text-center">29</td>
+                <td class="text-center">15</td>
+                <td class="text-center">7</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                </tr>
+              </tbody>
+            <?php } ?>
+            <?php if ($_SESSION['perfil'] == 1) { ?>
+              <tbody>
+                <td class="text-center">20</td>
+                <td class="text-center">29</td>
+                <td class="text-center">15</td>
+                <td class="text-center">7</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                </tr>
+              </tbody>
+            <?php } ?>
+            <?php if ($_SESSION['perfil'] == 1) { ?>
+              <tbody>
+                <td class="text-center">21</td>
+                <td class="text-center">29</td>
+                <td class="text-center">15</td>
+                <td class="text-center">7</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                </tr>
+              </tbody>
+            <?php } ?>
+            <?php if ($_SESSION['perfil'] == 4) { ?>
+              <tbody>
+                <td class="text-center"><strong>22</strong></td>
+                <td class="text-center">29</td>
+                <td class="text-center">15</td>
+                <td class="text-center">7</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                </tr>
+              </tbody>
+            <?php } ?>
+            <?php if ($_SESSION['perfil'] == 3) { ?>
+              <tbody>
+                <td class="text-center">23</td>
+                <td class="text-center">29</td>
+                <td class="text-center">15</td>
+                <td class="text-center">7</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                </tr>
+              </tbody>
+            <?php } ?>
+            <?php if ($_SESSION['perfil'] == 1) { ?>
+              <tbody>
+                <td class="text-center">24</td>
+                <td class="text-center">29</td>
+                <td class="text-center">15</td>
+                <td class="text-center">7</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                </tr>
+              </tbody>
+            <?php } ?>
+            <?php if ($_SESSION['perfil'] == 1) { ?>
+              <tbody>
+                <td class="text-center">25</td>
+                <td class="text-center">29</td>
+                <td class="text-center">15</td>
+                <td class="text-center">7</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                </tr>
+              </tbody>
+            <?php } ?>
+            <?php if ($_SESSION['perfil'] == 1) { ?>
+              <tbody>
+                <td class="text-center">26</td>
+                <td class="text-center">29</td>
+                <td class="text-center">15</td>
+                <td class="text-center">7</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                </tr>
+              </tbody>
+            <?php } ?>
+            <?php if ($_SESSION['perfil'] == 3) { ?>
+              <tbody>
+                <td class="text-center">27</td>
+                <td class="text-center">29</td>
+                <td class="text-center">15</td>
+                <td class="text-center">7</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                <td class="text-center">0</td>
+                </tr>
+              </tbody>
+            <?php } ?>
+          </table>
+          <div class="card-footer"></div>
+        </div>
+      <?php } ?>
     </div>
     <!-- </div>
   </div>

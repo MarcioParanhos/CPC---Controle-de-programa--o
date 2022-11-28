@@ -2005,3 +2005,9 @@ td .badge {
 .excedentes-row {
     margin-bottom: 10px;
 }
+
+.uppercase {
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
