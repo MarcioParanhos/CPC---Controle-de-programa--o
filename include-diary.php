@@ -60,7 +60,7 @@ $usuario = $_SESSION['name'] . " " . $_SESSION['lastname'];
                         </div>
                         <div class="form-row">
                           <div class="col-md-3">
-                            <div class="position-relative form-group">
+                            <div class="form-group">
                               <label for="municipio" class="">Municipio</label>
                               <input value="" name="municipio" id="municipio" type="text" class="form-control form-control-sm">
                             </div>

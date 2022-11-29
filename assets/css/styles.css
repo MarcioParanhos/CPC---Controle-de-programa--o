@@ -2011,3 +2011,12 @@ td .badge {
     font-weight: 500;
     text-transform: uppercase;
 }
+label {
+    color: #354259;
+    text-transform: uppercase !important;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+input {
+    color: #232323 !important;
+}
