@@ -2,12 +2,30 @@
 
 use Dompdf\Dompdf;
 
-include_once('./crud/read-carencia.php');
+require_once("./config/conect.php");
+require_once("./config/url.php");
 require_once('dompdf/autoload.inc.php');
 
-$teste = 2;
+
 
 $dompdf = new DOMPDF();
+
+$type = $_GET['type'];
+$id = $_GET['id'];
+
+if ($type == "r") {
+    $query = "SELECT * FROM carencias WHERE id_ref = :id_ref AND tipo_vaga = 'R' AND ano_ref = '2022'";
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(":id_ref", $id);
+    $stmt->execute();
+    $carencias = $stmt->fetchAll();
+
+    $query = "SELECT * FROM controle_ntes WHERE id = :id";
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(":id", $id);
+    $stmt->execute();
+    $controle_nte = $stmt->fetch();
+}
 
 
 $html = '
@@ -217,20 +235,21 @@ $html = '
                                 </tr>
                             </thead>
                             <tbody>';
-                            foreach ($real_carencias as $real_carencia) { 
-                                $html.='<tr>';
-                                $html.='<td>'. $real_carencia['disciplina'] . '</td>';
-                                $html.='<td>'. $real_carencia['matutino']. '</td>';
-                                $html.='<td>'. $real_carencia['vespertino']. '</td>';
-                                $html.='<td>'. $real_carencia['noturno']. '</td>';
-                                $html.='<td>'. $real_carencia['total']. '</td>';
-                                $html.='<td>'. $real_carencia['nome']. '</td>';
-                                $html.='<td>'. $real_carencia['cadastro']. '</td>';
-                                $html.='<td>'. $real_carencia['motivo_vaga']. '</td>';
-                                $html.='<td>'. 'Real' . '</td>';
-                                $html.='<td>'. date('d/m/Y', strtotime($real_carencia['inicio_vaga'] )). '</td>';
-                                $html.='</tr>';
-                            } $html .= '<tr>
+                                foreach ($carencias as $carencia) {
+                                    $html .= '<tr>';
+                                    $html .= '<td>' . $carencia["disciplina"] . '</td>';
+                                    $html .= '<td>' . $carencia["matutino"] . '</td>';
+                                    $html .= '<td>' . $carencia["vespertino"] . '</td>';
+                                    $html .= '<td>' . $carencia["noturno"] . '</td>';
+                                    $html .= '<td>' . $carencia["total"] . '</td>';
+                                    $html .= '<td>' . $carencia["nome"] . '</td>';
+                                    $html .= '<td>' . $carencia["cadastro"] . '</td>';
+                                    $html .= '<td>' . $carencia["motivo_vaga"] . '</td>';
+                                    $html .= '<td>' . 'Real' . '</td>';
+                                    $html .= '<td>' . date('d/m/Y', strtotime($carencia["vespertino"])) . '</td>';
+                                    $html .= '</tr>';
+                                }
+                                $html .= '<tr>
                                     <td class="no">TOTAL UEE</td>
                                     <td class="no">18</td>
                                     <td class="no">8</td>

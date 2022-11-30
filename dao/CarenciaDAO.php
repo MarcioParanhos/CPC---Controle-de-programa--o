@@ -1,8 +1,5 @@
 <?php
 
-// require_once("../models/Carencia.php");
-// require_once("../models/Message.php");
-
 
 class CarenciaDAO implements CarenciaDAOInterface
 {
@@ -186,10 +183,12 @@ class CarenciaDAO implements CarenciaDAOInterface
             $stmt = $this->conn->prepare("SELECT * FROM carencias WHERE id_ref = :id AND tipo_vaga = 'R' AND ano_ref = '2022'");
             $stmt->bindParam(":id", $id);
             $stmt->execute();
+
             if ($stmt->rowCount() > 0) {
                 $carenciasArray = $stmt->fetchAll();
                 foreach ($carenciasArray as $real_carencia) {
                     $real_carencias[] = $this->bildCarencia($real_carencia);
+                    $_SESSION['pdf'] = 0;
                 }
             }
 
@@ -201,12 +200,10 @@ class CarenciaDAO implements CarenciaDAOInterface
             $stmt->execute();
 
             if ($stmt->rowCount() > 0) {
-
                 $carenciasArray = $stmt->fetchAll();
-
                 foreach ($carenciasArray as $temp_carencia) {
-
                     $temp_carencias[] = $this->bildCarencia($temp_carencia);
+                    $_SESSION['pdf'] = 0;
                 }
             }
 

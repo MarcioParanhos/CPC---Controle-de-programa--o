@@ -157,7 +157,7 @@ $controle_nte = $nteDao->getNtesById($id);
                             Componente</label>
                           <textarea name="desc_componente" class="form-control" id="desc_componente" rows="5"><?= $controle_nte["desc_componente"] ?></textarea>
                         </div>
-                        <a title="Atualizar"><button type="submit" class=" btn btn-lg bg-purple btn-primary  mr-2"><i class="fa-solid fa-arrows-rotate"></i></i></button></a>
+                        <a title="Atualizar"><button type="submit" class=" btn bg-purple btn-primary  mr-2"><i class="fa-solid fa-arrows-rotate"></i></i></button></a>
                       </form>
 
                     </div>

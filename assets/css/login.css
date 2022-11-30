@@ -66,6 +66,7 @@ body {
   color: #fbf8f3;
   position: relative;
 }
+
 .form-control span {
   left: 804px;
   position: absolute;
@@ -88,10 +89,11 @@ body {
   position: relative;
   background-color: #354259;
   border: 2px solid #fbf8f3;
+  
 }
 
-.form-control input:valid ~ span,
-.form-control input:focus ~ span {
+.form-control input:valid~span,
+.form-control input:focus~span {
   color: #354259;
   transform: translateX(10px) translateY(-7px);
   font-size: 0.9rem;
@@ -233,6 +235,7 @@ button.close {
   align-items: center;
   line-height: 0.1;
 }
+
 
 @media (max-width: 500px) {
   .login-content {

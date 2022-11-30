@@ -40,7 +40,7 @@ if (!$_SESSION['name']) {
     exit();
 }
 if ($_SESSION['perfil'] == 10) {
-    header('Refresh: 10; URL=index.php');
+    header('Refresh: 15; URL=index.php');
 }
 
 
@@ -74,7 +74,7 @@ if ($_SESSION['perfil'] == 10) {
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="home.php">
                 <div class="sidebar-brand-icon">
                 </div>
-                <div class="sidebar-brand-text mx-3">CPC Programação</div>
+                <div class="sidebar-brand-text mx-3">CPC</div>
             </a>
             <hr class="sidebar-divider my-0">
             <li class="nav-item active">
@@ -173,7 +173,7 @@ if ($_SESSION['perfil'] == 10) {
                         </div>
                     </div>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#CollapseRegFuncional" aria-expanded="true" aria-controls="collapseForms">
                         <i class="fa-solid fa-users"></i>
                         <span>REG. FUNCIONAL</span>
@@ -185,7 +185,7 @@ if ($_SESSION['perfil'] == 10) {
                             <a class="collapse-item" href="excedentes.php"><i class="fa-solid fa-magnifying-glass"></i> CONSULTAR</a>
                         </div>
                     </div>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForms" aria-expanded="true" aria-controls="collapseForms">
                         <i class="fab fa-fw fa-wpforms"></i>

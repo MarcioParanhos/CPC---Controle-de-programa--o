@@ -32,7 +32,7 @@ $ntes = $nteDao->getNtes($nte);
       <div class="card">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-end">
           <a title="Contatos Gestores" href="contacts.php?nte=<?= $_SESSION['nte'] ?>"><button class=" btn btn-sm btn-success">CONTATOS <i class="fa-solid fa-phone-volume"> </i></button></a>
-          <a title="Contatos Gestores" href="./tipologia-modalidade.php?nte=<?= $_SESSION['nte'] ?>"><button class="hide btn btn-sm btn-success"><strong>TIPOLOGIA / MODALIDADE</strong> <i class="fa-solid fa-search"> </i></button></a>
+          <a title="Gerar PDF" href="gerar_planilha.php?tipo=r&id=<?= $controle_nte["id"] ?>"><button class="btn-sm btn btn-success">Excel <i class="fa-solid fa-file-export"></i></button></a>
         </div>
         <div class="table-responsive mt-2 p-1 ">
           <table id="myTable" class="table compact table-hover align-items-center table-flush">

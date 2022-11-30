@@ -2020,3 +2020,7 @@ label {
 input {
     color: #232323 !important;
 }
+.card-body .card-title {
+    text-transform: uppercase;
+    font-size: 1.8rem;
+}

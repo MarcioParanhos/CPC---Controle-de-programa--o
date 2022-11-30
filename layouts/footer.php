@@ -25,7 +25,7 @@
                 <script>
                     document.write(new Date().getFullYear());
                 </script> - developed by
-                <b><a href="https://marcioparanhos.github.io/Portifolio/" target="_blank">Marcio Paranhos</a></b>
+                <b><a href="https://portifolio-marcio-paranhos.vercel.app/" target="_blank">Marcio Paranhos</a></b>
             </span>
         </div>
     </div>

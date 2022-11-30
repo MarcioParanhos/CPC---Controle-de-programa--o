@@ -1,7 +1,7 @@
 <?php
 
 include_once("layouts/header.php");
-require_once("dao/userDAO.php");
+require_once("dao/UserDAO.php");
 
 $id = $_GET['id'];
 

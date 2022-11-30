@@ -31,7 +31,7 @@ if (!empty($flassMessage["mensagem"])) {
                 <img class="card-img-top" src="./assets/img/user.png" alt="Imagem de capa do card">
             </div>
             <div class="card-body">
-                <h1 class="card-title"><strong><?= $_SESSION['name'] ?> <?= $_SESSION['lastname'] ?></strong></h1>
+                <h1 class="card-title"><?= $_SESSION['name'] ?> <?= $_SESSION['lastname'] ?>    </h1>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><strong>E-mail:</strong> <?= $_SESSION['email'] ?></li>

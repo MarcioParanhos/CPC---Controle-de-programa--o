@@ -1,6 +1,5 @@
 <?php
 
-
 class Controle_nteDAO implements Controle_nteDAOInterface
 {
 

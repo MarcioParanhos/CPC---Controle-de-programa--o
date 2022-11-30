@@ -49,7 +49,7 @@ if (!empty($flassMessage["mensagem"])) {
                     <div class="form-inputs">
                         <div class="form-control">
                             <!-- <label class="label-email" for="">E-mail</label> -->
-                            <input name="email" type="text" required>
+                            <input class="meu-input" name="email" type="text" required>
                             <span>E-mail</span>
                         </div>
                         <div class="form-control">
@@ -60,7 +60,7 @@ if (!empty($flassMessage["mensagem"])) {
                     </div>
                     <div class="btn-login">
                         <input class="login-btn" type="submit" value="Acessar">
-                        <p class="register">Ainda não possui conta? <a href="register.php">Cadastre-se aqui !</a></p>
+                        <p class="register">Ainda não possui conta? <a href="#">Cadastre-se aqui !</a></p>
                     </div>
                 </form>
             </section>
