@@ -30,8 +30,10 @@ require_once('dompdf/autoload.inc.php');
 if (isset($_SESSION['msg'])) {
     // Exibe a mensagem de registro
     $printMsg = $_SESSION['msg'];
+    $info_msg = $_SESSION['info_msg'];
     // Logo apos imprimir a mensagem de registro a mensagem e resetada
     $_SESSION['msg'] = '';
+    $_SESSION['info_msg'] = '';
     // fim do reseta a mensagem que aparece no crud
 }
 

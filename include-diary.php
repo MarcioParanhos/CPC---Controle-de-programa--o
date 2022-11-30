@@ -32,7 +32,7 @@ $usuario = $_SESSION['name'] . " " . $_SESSION['lastname'];
       <div class="card">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
           <h6 class="m-0 font-weight-bold text-primary"></h6>
-          <a title="Consultar" href="diary-consult.php"><button class="btn btn-sm btn-success voltar-btn"><i class="fa-solid fa-search"> Consultar</i></button></a>
+          <a title="Consultar" href="diary-consult.php"><button class="btn btn-sm btn-success">Consultar <i class="fa-solid fa-search"></i></button></a>
         </div>
         <div class="content-wrapper">
           <div class="row">
@@ -165,7 +165,7 @@ $usuario = $_SESSION['name'] . " " . $_SESSION['lastname'];
                           <label for="obs">Observação</label>
                           <textarea name="obs" class="form-control" id="obs" rows="5"></textarea>
                         </div>
-                        <a title="Salvar"><button type="submit" class=" btn bg-purple btn-primary mr-2 add-btn"><i class="fa-solid fa-plus"> Cadastrar</i></button></a>
+                        <a title="Salvar"><button type="submit" class=" btn bg-purple btn-primary mr-2 add-btn">Cadastrar <i class="fa-solid fa-plus"></i></button></a>
                       </form>
                     </div>
                   </div>

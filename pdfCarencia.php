@@ -197,7 +197,7 @@ $html = '
 <body>
     <div class="row">
         <div class="col">
-            <h3>Carência Escolar - Real</h3>
+            <h3>RESUMO DE VAGA REAL</h3>
         </div>
         <div id="invoice">
             <div class="invoice overflow-auto">
@@ -207,7 +207,8 @@ $html = '
                             <div class="col company-details">
                                 <div>NTE -  0' . $controle_nte["nte"] . '  </div>
                                 <div>MUNICIPIO: ' . $controle_nte["municipio"] . '</div>
-                                <div>UE: ' . $controle_nte["unidade_escolar"] . '  - ' . $controle_nte["cod_unidade"] . '</div>
+                                <div>UE: ' . $controle_nte["unidade_escolar"] . ' </div>
+                                <div>CODIGO UE: ' . $controle_nte["cod_unidade"] . ' </div>
                             </div>
                         </div>
                     </header>
@@ -246,7 +247,7 @@ $html = '
                                     $html .= '<td>' . $carencia["cadastro"] . '</td>';
                                     $html .= '<td>' . $carencia["motivo_vaga"] . '</td>';
                                     $html .= '<td>' . 'Real' . '</td>';
-                                    $html .= '<td>' . date('d/m/Y', strtotime($carencia["vespertino"])) . '</td>';
+                                    $html .= '<td>' . date('d/m/Y', strtotime($carencia["inicio_vaga"])) . '</td>';
                                     $html .= '</tr>';
                                 }
                                 $html .= '<tr>

@@ -31,11 +31,23 @@ $total = filter_input(INPUT_POST, "matutino") + filter_input(INPUT_POST, "vesper
 $type = filter_input(INPUT_POST, "type");
 $id = filter_input(INPUT_POST, "id");
 $usuario = filter_input(INPUT_POST, "usuario");
+$before_mat = filter_input(INPUT_POST, "before_mat");
+$before_vesp = filter_input(INPUT_POST, "before_vesp");
+$before_not = filter_input(INPUT_POST, "before_not");
+$after_mat = filter_input(INPUT_POST, "after_mat");
+$after_vesp = filter_input(INPUT_POST, "after_vesp");
+$after_not = filter_input(INPUT_POST, "after_not");
 
 if ($type === "create") {
     // Valida se esta vindo dados
     if ($id_ref && $nte && $unidade_escolar && $unidade_escolar && $cod_unidade) {
         //Cria o objeto
+
+        if (empty($nome) && empty($cadastro)) {
+            $nome = "-";
+            $cadastro = "-";
+        }
+
         $carencia = new Carencia();
         $carencia->id_ref = $id_ref;
         $carencia->nte = $nte;
@@ -60,6 +72,37 @@ if ($type === "create") {
     }
 } else if ($type === "update") {
 
+    
+
+    if ($before_mat - $after_mat < 0) {
+        header("Location: ../details-carencia.php?id=" .  $id . "");
+        $_SESSION["msg"] =  "A quantidade de carência por turno nao pode ser menor que 0, Tente novamente.";
+        $_SESSION["info_msg"] = 'alert-danger';
+        die();
+    } else if ($before_mat - $after_mat > 0) {
+        $new_matutino = ($before_mat - $after_mat);
+    }
+
+    if ($before_mat - $after_vesp < 0) {
+        header("Location: ../details-carencia.php?id=" .  $id . "");
+        $_SESSION["msg"] =  "A quantidade de carência por turno nao pode ser menor que 0, Tente novamente.";
+        $_SESSION["info_msg"] = 'alert-danger';
+        die();
+    } else if ($before_vesp - $after_vesp > 0) {
+        $new_vespertino = ($before_vesp - $after_vesp);
+    }
+
+    if ($before_not - $after_not < 0) {
+        header("Location: ../details-carencia.php?id=" .  $id . "");
+        $_SESSION["msg"] =  "A quantidade de carência por turno nao pode ser menor que 0, Tente novamente.";
+        $_SESSION["info_msg"] = 'alert-danger';
+        die();
+    } else if ($before_not - $after_not > 0) {
+        $new_noturno = ($before_not - $after_not);
+    }
+
+    $total = $new_matutino + $new_vespertino + $new_noturno;
+
     $carencia = new Carencia();
     $carencia->id_ref = $id_ref;
     $carencia->id = $id;
@@ -75,14 +118,13 @@ if ($type === "create") {
     $carencia->inicio_vaga = $inicio_vaga;
     $carencia->fim_vaga = $fim_vaga;
     $carencia->tipo_vaga = $tipo_vaga;
-    $carencia->matutino = $matutino;
-    $carencia->vespertino = $vespertino;
-    $carencia->noturno = $noturno;
+    $carencia->matutino = $new_matutino;
+    $carencia->vespertino = $new_vespertino;
+    $carencia->noturno = $new_noturno;
     $carencia->total = $total;
     $carencia->usuario = $usuario;
     //Chama a função update responsavel pela alteração dos dados no banco em carenciaDAO.php
     $carenciaDao->update($carencia);
-    
 } else if ($type === "search") {
 
     $type_vaga = $_SESSION["tipo_vaga"];
@@ -115,7 +157,6 @@ if ($type === "create") {
     } else {
         header("Location: ../include-carencia-temporaria.php?id=?");
     }
-
 } else {
     $id;
     $type_vaga = $_SESSION["tipo_vaga"];
@@ -140,10 +181,12 @@ if ($type === "create") {
             if ($type_vaga === "R") {
                 header("Location: ../include-carencia.php?id=" .  $controle_nte['id_ref'] . "");
                 $_SESSION["msg"] =  "Registro Excluido com Sucesso";
+                $_SESSION["info_msg"] = 'alert-success';
                 die();
             } else {
                 header("Location: ../include-carencia-temporaria.php?id=" .  $controle_nte['id_ref'] . "");
                 $_SESSION["msg"] =  "Registro Excluido com Sucesso";
+                $_SESSION["info_msg"] = 'alert-success';
                 die();
             }
         } else {

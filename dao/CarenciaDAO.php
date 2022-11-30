@@ -110,10 +110,12 @@ class CarenciaDAO implements CarenciaDAOInterface
             if ($type_vaga === "R") {
                 header("Location: ../include-carencia.php?id=" .  $carencia->id_ref . "");
                 $_SESSION["msg"] =  "Registro Inserido com Sucesso !";
+                $_SESSION["info_msg"] = 'alert-success';
                 die();
             } else {
                 header("Location: ../include-carencia-temporaria.php?id=" .   $carencia->id_ref . "");
                 $_SESSION["msg"] =  "Registro Inserido com Sucesso !";
+                $_SESSION["info_msg"] = 'alert-success';
             }
         } else {
             echo "Ocorreu um erro: " . $stmt->errorInfo();
@@ -341,7 +343,7 @@ class CarenciaDAO implements CarenciaDAOInterface
     {
 
         if ($type == "R") {
-            $query = "SELECT motivo FROM motivo_vaga";
+            $query = "SELECT motivo FROM motivo_vaga ORDER BY motivo ASC";
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             $motivo_vagas = $stmt->fetchAll();

@@ -27,7 +27,7 @@ $diarys = $diaryDao->getDiarys($_SESSION['perfil']);
       <div class="card">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
           <h6 class="m-0 font-weight-bold text-primary">Diario Oficial - Controle</h6>
-          <a title="Incluir" href="include-diary.php"><button class="btn btn-sm btn-success voltar-btn"><i class="fa-solid fa-plus"></i> Adicionar</button></a>
+          <a title="Incluir" href="include-diary.php"><button class="btn btn-sm btn-success">Adicionar <i class="fa-solid fa-plus"></i></button></a>
         </div>
         <div class="table-responsive mt-2 p-1 table-sm">
           <table id="myTable" class="table compact nowrap table-hover align-items-center table-flush">

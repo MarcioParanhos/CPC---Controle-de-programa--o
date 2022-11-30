@@ -38,7 +38,7 @@ $excedente = $excedenteDao->getExcedenteById($id);
          <div class="card">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                <h6 class="m-0 font-weight-bold text-primary"></h6>
-               <a title="Voltar" href="excedentes.php"><button class="btn btn-sm btn-success voltar-btn"><i class="fa-solid fa-rotate-left"> Voltar</i></button></a>
+               <a title="Voltar" href="excedentes.php"><button class="btn btn-sm btn-success">Voltar <i class="fa-solid fa-rotate-left"></i></button></a>
             </div>
             <div class="content-wrapper">
                <div class="row">
@@ -127,7 +127,7 @@ $excedente = $excedenteDao->getExcedenteById($id);
                                        <label for="obs">Observação</label>
                                        <textarea name="obs" class="form-control" id="obs" rows="5"></textarea>
                                     </div>
-                                    <a title="Atualizar"><button type="submit" class=" btn bg-purple btn-primary mr-2 add-btn"><i class="fa-solid fa-arrows-rotate"> Atualizar</i></button></a>
+                                    <a title="Atualizar"><button type="submit" class=" btn bg-purple btn-primary mr-2 add-btn">Atualizar <i class="fa-solid fa-arrows-rotate"></i></button></a>
                                  </form>
                               </div>
                            </div>

@@ -45,7 +45,7 @@ $excedentes = $excedenteDao->getExcedentes($_SESSION['perfil']);
           <!-- <a title="Novo Usuario" href="#"><button class=" btn btn-sm btn-success"><i class="fa-solid fa-plus"> </i></button></a> -->
         </div>
         <div class="table-responsive  mt-2 p-1 table-sm">
-          <table id="myTable" class="compact table table-hover align-items-center table-flush">
+          <table id="myTable" class="compact nowrap table table-hover align-items-center table-flush">
             <thead class="thead-light">
               <tr>
                 <th class="text-center">NTE</th>

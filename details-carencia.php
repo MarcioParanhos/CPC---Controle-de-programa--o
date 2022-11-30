@@ -24,7 +24,7 @@ $vagas = $carenciaDao->getCarenciaUnicById($id);
     </div>
     <!-- Mensagem do crud vinda do arquivo -->
     <?php if (isset($printMsg) && $printMsg != '') : ?>
-        <div class="green text-center alert alert-success alert-dismissible fade show" role="alert">
+        <div class="green text-center alert <?= $info_msg ?> alert-dismissible fade show" role="alert">
             <h5"><?= $printMsg ?></h5>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -96,15 +96,15 @@ $vagas = $carenciaDao->getCarenciaUnicById($id);
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
+                                                    <div class="col-md-6">
+                                                        <div class="position-relative form-group">
+                                                            <label for="nome" class="">VAGA VINCULADA AO SERVIDOR</label>
+                                                            <input value="<?= $vagas['nome'] ?>" name="nome" required id="nome" type="text" class="form-control form-control-sm">
+                                                        </div>
+                                                    </div>
                                                     <div class="col-md-3">
                                                         <div class="position-relative form-group"><label for="cadastro" class="">cadastro</label>
                                                             <input minlength="8" maxlength="9" value="<?= $vagas['cadastro'] ?>" name="cadastro" id="cadastro" type="text" class="form-control form-control-sm">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="position-relative form-group">
-                                                            <label for="nome" class="">Nome</label>
-                                                            <input value="<?= $vagas['nome'] ?>" name="nome" required id="nome" type="text" class="form-control form-control-sm">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -122,7 +122,7 @@ $vagas = $carenciaDao->getCarenciaUnicById($id);
                                                     <div class="position-relative col-md-2">
                                                         <div class="form-group">
                                                             <label class="control-label" for="disciplina_id">Disciplina</label>
-                                                            <select name="disciplina" id="disciplina" class="form-control form-control-sm" required>
+                                                            <select readonly name="disciplina" id="disciplina" class="form-control form-control-sm" required>
                                                                 <option value="<?= $vagas['disciplina'] ?>" selected><?= $vagas['disciplina'] ?></option>
                                                                 <?php foreach ($disciplinas as $disciplina) : ?>
                                                                     <option value="<?= $disciplina['nome'] ?>"><?= $disciplina['nome'] ?></option>
@@ -133,26 +133,26 @@ $vagas = $carenciaDao->getCarenciaUnicById($id);
                                                     <div class="col-md-1">
                                                         <div class="position-relative form-group">
                                                             <label for="matutino" class="">Mat</label>
-                                                            <input min="0" value="<?= $vagas['matutino'] ?>" name="matutino" required id="matutino" type="number" class="form-control text-center form-control-sm">
+                                                            <input readonly min="0" value="<?= $vagas['matutino'] ?>" name="before_mat" required id="matutino" type="number" class="form-control text-center form-control-sm">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
                                                         <div class="form-group">
                                                             <label for="vespertino" class="">Vesp</label>
-                                                            <input min="0" id="vespertino" value="<?= $vagas['vespertino'] ?>" name="vespertino" type="number" class="form-control text-center form-control-sm" aria-label="Amount (to the nearest dollar)">
+                                                            <input readonly min="0" id="vespertino" value="<?= $vagas['vespertino'] ?>" name="before_vesp" type="number" class="form-control text-center form-control-sm" aria-label="Amount (to the nearest dollar)">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
                                                         <div class="form-group">
                                                             <label for="noturno" class="text-center">Not</label>
-                                                            <input min="0" id="noturno" value="<?= $vagas['noturno'] ?>" name="noturno" type="number" class="form-control text-center form-control-sm" aria-label="Amount (to the nearest dollar)">
+                                                            <input readonly min="0" id="noturno" value="<?= $vagas['noturno'] ?>" name="before_not" type="number" class="form-control text-center form-control-sm" aria-label="Amount (to the nearest dollar)">
                                                         </div>
                                                     </div>
                                                     <?php if ($type_vaga === "R") { ?>
                                                         <div class="position-relative col-md-2">
                                                             <div class="form-group">
                                                                 <label class="control-label" for="disciplina_id">Motivo da Vaga</label>
-                                                                <select name="motivo_vaga" id="motivo_vaga" class="form-control form-control-sm" required>
+                                                                <select readonly name="motivo_vaga" id="motivo_vaga" class="form-control form-control-sm" required>
                                                                     <option value="<?= $vagas['motivo_vaga'] ?>" selected><?= $vagas['motivo_vaga'] ?></option>
                                                                     <?php foreach ($motivo_vagas as $motivo_vaga) : ?>
                                                                         <option value="<?= $motivo_vaga['motivo'] ?>"><?= $motivo_vaga['motivo'] ?></option>
@@ -177,7 +177,7 @@ $vagas = $carenciaDao->getCarenciaUnicById($id);
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label for="inicio_vaga" class="text-center">Inicio da Vaga</label>
-                                                            <input id="inicio_vaga" value="<?= $vagas['inicio_vaga'] ?>" name="inicio_vaga" type="date" class="form-control form-control-sm" aria-label="Amount (to the nearest dollar)">
+                                                            <input readonly id="inicio_vaga" value="<?= $vagas['inicio_vaga'] ?>" name="inicio_vaga" type="date" class="form-control form-control-sm" aria-label="Amount (to the nearest dollar)">
                                                         </div>
                                                     </div>
                                                     <?php if ($type_vaga === "T") { ?>
@@ -194,6 +194,92 @@ $vagas = $carenciaDao->getCarenciaUnicById($id);
                                                             <input readonly id="tipo_vaga" value="<?= $vagas['tipo_vaga'] ?>" name="tipo_vaga" type="text" class="form-control text-center form-control-sm" aria-label="Amount (to the nearest dollar)">
                                                         </div>
                                                     </div>
+                                                </div><br>
+                                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                                    <h6 class="m-0 font-weight-bold text-primary">SUPRIR</h6>
+                                                </div><br>
+                                                <div class="form-row">
+                                                    <div class="col-md-3">
+                                                        <div class="position-relative form-group"><label for="motivo_suprimento" class="">Motivo Suprimento</label>
+                                                            <input value="AULAS EXTRAS" name="motivo_suprimento" id="motivo_suprimento" type="text" class="form-control form-control-sm">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="position-relative form-group">
+                                                            <label for="servidor_suprimento" class="">Nome</label>
+                                                            <input value="" name="servidor_suprimento" id="servidor_suprimento" type="text" class="form-control form-control-sm">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="cadastro_suprimento" class="">Cadastro</label>
+                                                            <input id="cadastro_suprimento" value="" name="cadastro_suprimento" type="number" class="form-control form-control-sm">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="col-md-1">
+                                                        <div class="position-relative form-group">
+                                                            <label for="matutino" class="">Mat</label>
+                                                            <input min="0" value="0" name="after_mat" required id="matutino" type="number" class="form-control text-center form-control-sm">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <div class="form-group">
+                                                            <label for="vespertino" class="">Vesp</label>
+                                                            <input min="0" id="vespertino" value="0" name="after_vesp" type="number" class="form-control text-center form-control-sm" aria-label="Amount (to the nearest dollar)">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <div class="form-group">
+                                                            <label for="noturno" class="text-center">Not</label>
+                                                            <input min="0" id="noturno" value="0" name="after_not" type="number" class="form-control text-center form-control-sm" aria-label="Amount (to the nearest dollar)">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="data_suprimento" class="text-center">Data do suprimento</label>
+                                                        <input id="data_suprimento" value="" name="data_suprimento" type="date" class="form-control form-control-sm" aria-label="Amount (to the nearest dollar)">
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="table-responsive mt-2 p-1 table-sm">
+                                                    <table class="table compact nowrap table-hover align-items-center table-flush">
+                                                        <thead class="thead-light">
+                                                            <tr>
+                                                                <th>CADASTRO</th>
+                                                                <th>NOME</th>
+                                                                <th>MOTIVO</th>
+                                                                <th>DISCIPLINA</th>
+                                                                <th>MAT</th>
+                                                                <th>VESP</th>
+                                                                <th>NOT</th>
+                                                                <th>DATA</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>92854568</td>
+                                                                <td>MARCIO VINICIUS DE BORBA PARANHOS</td>
+                                                                <td>REMOÇÃO</td>
+                                                                <td class="text-center">FISICA</td>
+                                                                <td class="text-center">2</td>
+                                                                <td class="text-center">2</td>
+                                                                <td class="text-center">2</td>
+                                                                <td>31/11/2022</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>115788954</td>
+                                                                <td>VERA LUCIA DE BORBA</td>
+                                                                <td>AULA EXTRA</td>
+                                                                <td class="text-center">FISICA</td>
+                                                                <td class="text-center">4</td>
+                                                                <td class="text-center">4</td>
+                                                                <td class="text-center">4</td>
+                                                                <td>03/12/2022</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <br><br>
                                                 </div>
                                                 <a title="Atualizar"><button type="submit" class=" btn bg-purple btn-primary mr-2 add-btn">Atualizar <i class="fa-solid fa-arrows-rotate"></i></button></a>
                                             </form>
@@ -206,7 +292,6 @@ $vagas = $carenciaDao->getCarenciaUnicById($id);
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div class="card-footer"></div>
             </div>

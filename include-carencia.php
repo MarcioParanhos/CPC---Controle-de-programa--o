@@ -148,7 +148,7 @@ $controle_nte = $nteDao->getNtesById($id);
                                                                 <div class="form-group">
                                                                     <label class="control-label" for="disciplina_id">Vinculo</label>
                                                                     <select name="vinculo" id="vinculo" class="form-control form-control-sm">
-                                                                        <option value="" selected>Selecione ...</option>
+                                                                        <option value="-" selected>Selecione...</option>
                                                                         <option value="Estatutário">Estatutário</option>
                                                                         <option value="Reda">Reda</option>
                                                                     </select>
@@ -257,7 +257,7 @@ $controle_nte = $nteDao->getNtesById($id);
                                                                 <td class="text-center"><?= date('d/m/Y', strtotime($real_carencia->inicio_vaga)); ?></td>
                                                                 <td class="text-center">
                                                                     <!-- <a title="Suprir" class="btn btn-primary btn-sm" href="#"><i class="fa-solid fa-user-plus"></i></a> -->
-                                                                    <a title="Detalhar" class="btn btn-primary btn-sm" href="./details-carencia.php?id=<?= $real_carencia->id ?>"><i class="fa-solid fa-eye"></i></a>
+                                                                    <a title="Detalhar" class="btn btn-primary btn-sm" href="./details-carencia.php?id=<?= $real_carencia->id ?>"><i class="fa-solid fa-pencil"></i></a>
                                                                     <a title="Excluir" id="btn-delete" onclick="abrirModal(<?= $real_carencia->id ?>)" type="button" class="btn text-white btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a>
                                                                 </td>
                                                             </tr>
