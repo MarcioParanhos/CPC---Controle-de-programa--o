@@ -50,7 +50,7 @@ $vagas = $carenciaDao->getCarenciaUnicById($id);
                     <h6 class="m-0 font-weight-bold text-primary">NTE 1</h6>
                     <div>
                         <?php if ($type_vaga === "R") { ?>
-                            <a title="Voltar" href="include-carencia.php?id=<?= $vagas['id_ref'] ?>"><button class=" btn btn-sm btn-success"><i class="fa-solid fa-rotate-left"></i></button></a>
+                            <a title="Voltar" href="include-carencia.php?id=<?= $vagas['id_ref'] ?>"><button class=" btn btn-sm btn-success voltar-btn">Voltar <i class="fa-solid fa-rotate-left"></i></button></a>
                         <?php } ?>
                         <?php if ($type_vaga === "T") { ?>
                             <a title="Voltar" href="include-carencia-temporaria.php?id=<?= $vagas['id_ref'] ?>"><button class=" btn btn-sm btn-success"><i class="fa-solid fa-rotate-left"></i></button></a>
@@ -195,7 +195,7 @@ $vagas = $carenciaDao->getCarenciaUnicById($id);
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <a title="Atualizar"><button type="submit" class=" btn bg-purple btn-primary  mr-2"><i class="fa-solid fa-arrows-rotate"></i></i></button></a>
+                                                <a title="Atualizar"><button type="submit" class=" btn bg-purple btn-primary mr-2 add-btn">Atualizar <i class="fa-solid fa-arrows-rotate"></i></button></a>
                                             </form>
                                             <br>
                                             R - Real <br>

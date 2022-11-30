@@ -38,8 +38,7 @@ $ntes = $nteDao->getNtes($nte);
           <table id="myTable" class="table compact table-hover align-items-center table-flush">
             <thead class="thead-light">
               <tr>
-                <th></th>
-                <th>Municipio</th>
+                <th class="text-center">Municipio</th>
                 <th>Unidade Escolar</th>
                 <th class="text-center">Cod. Sec</th>
                 <th class="text-center">Sit. Digitação</th>
@@ -52,12 +51,7 @@ $ntes = $nteDao->getNtes($nte);
             <tbody>
               <?php foreach ($ntes as $nte) : ?>
                 <tr class="">
-                  <?php if ($nte->tipologia  === 'Sede') { ?>
-                    <td class="text-center"><i class="fa-solid fa-s"></i></td>
-                  <?php } elseif ($nte->tipologia  == 'Anexo') { ?>
-                    <td class="text-center"><i class="fa-solid fa-a"></i></td>
-                  <?php } ?>
-                  <td class=""><?= $nte->municipio  ?></td>
+                  <td class="text-center"><?= $nte->municipio  ?></td>
                   <td class=""><?= $nte->unidade_escolar  ?></td>
                   <td class="text-center"><?= $nte->cod_unidade  ?></td>
                   <td class="text-center"><?= $nte->digitacao  ?></td>

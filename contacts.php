@@ -31,17 +31,18 @@ $contacts = $contactDao->getContacts($nte);
       <div class="card">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
           <h6 class="m-0 font-weight-bold text-primary">NTE <?= $_SESSION['nte'] ?></h6>
-          <a title="Voltar" href="nte.php?nte=<?= $_SESSION['nte'] ?>"><button class=" btn btn-sm btn-success"><i class="fa-solid fa-rotate-left"></i></button></a>
+          <a title="Voltar" href="nte.php?nte=<?= $_SESSION['nte'] ?>"><button class="btn btn-sm btn-success voltar-btn">Voltar <i class="fa-solid fa-rotate-left"></i></button></a>
         </div>
-        <div class="table-responsive mt-2 p-1 table-sm">
+        <div class="table-responsive mt-2 p-1 compact">
           <table id="myTable" class="table table-hover align-items-center table-flush">
             <thead class="thead-light">
               <tr>
                 <th>Municipio</th>
                 <th>Unidade</th>
-                <th>Gestor</th>
-                <th>Tel. Gestor</th>
-                <th class="text-center">Ação</th>
+                <th>Cod. Unidade</th>
+                <th>Diretor</th>
+                <th>Tel. Diretor</th>
+                <th class="text-center">Detalhar Contatos</th>
               </tr>
             </thead>
             <tbody>
@@ -49,6 +50,7 @@ $contacts = $contactDao->getContacts($nte);
                 <tr class="">
                   <td class=""><?= $contact->municipio ?></td>
                   <td class=""><?= $contact->unidade_escolar ?></td>
+                  <td class=""><?= $contact->cod_unidade ?></td>
                   <td class=""><?= $contact->gestor ?></td>
                   <td class=""><?= $contact->tel_gestor ?></td>
                   <td class="text-center"><a href="details-contact.php?id=<?= $contact->id ?>"><button class="btn btn-sm btn-primary"><i class="fas fa-search"></i></button></a></td>

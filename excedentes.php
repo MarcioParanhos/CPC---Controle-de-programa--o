@@ -40,7 +40,7 @@ $excedentes = $excedenteDao->getExcedentes($_SESSION['perfil']);
           <h6 class="m-0 font-weight-bold text-primary"></h6>
           <div>
             <button title="Adicionar" class="btn btn-sm btn-success" data-toggle="modal" data-target="#ExemploModalCentralizado">Adicionar <i class="fa-solid fa-plus"> </i></button>
-            <a title="Gerar Excel" href="./relatorios/planilha_excedente.php"><button class="btn-sm btn btn-success">Gerar Excel <i class="fa-solid fa-file-export"></i></button></a>
+            <a title="Gerar Excel" href="./relatorios/planilha_excedente.php"><button class="btn-sm btn btn-success">Excel <i class="fa-solid fa-file-export"></i></button></a>
           </div>
           <!-- <a title="Novo Usuario" href="#"><button class=" btn btn-sm btn-success"><i class="fa-solid fa-plus"> </i></button></a> -->
         </div>
@@ -73,7 +73,7 @@ $excedentes = $excedenteDao->getExcedentes($_SESSION['perfil']);
                   <td class="text-center">
                     <div class="gap">
                       <button title="Detalhar" class="btn btn-sm btn-primary" onclick="modalExcedentes(<?= $excedente->id ?>)"><i class="fa-solid fa-eye"></i></button>
-                      <a href="details_excedentes.php?id=<?= $excedente->id ?>"><button title="Editar" class="btn btn-sm btn-primary"><i class="fa-solid fa-pencil"></i></button></a>
+                      <a href="details_excedentes.php?id=<?= $excedente->id ?>"><button title="Editar" class="btn btn-sm btn-warning"><i class="fa-solid fa-pencil"></i></button></a>
                       <button title="Excluir" class="btn btn-sm btn-danger" onclick="abrirModalExcedente(<?= $excedente->id ?>)"><i class="fa-solid fa-trash"></i></button>
                     </div>
                   </td>

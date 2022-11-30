@@ -74,7 +74,9 @@ if ($_SESSION['perfil'] == 10) {
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="home.php">
                 <div class="sidebar-brand-icon">
                 </div>
-                <div class="sidebar-brand-text mx-3">CPC</div>
+                <div class="sidebar-brand-text mx-3">
+                    <img class="img-logo" src="./assets/img/Logo.png" alt="">
+                </div>
             </a>
             <hr class="sidebar-divider my-0">
             <li class="nav-item active">

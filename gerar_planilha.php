@@ -1,9 +1,8 @@
 <?php
+ob_start();
 include_once("config/conect.php");
 include_once("config/url.php");
-
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 

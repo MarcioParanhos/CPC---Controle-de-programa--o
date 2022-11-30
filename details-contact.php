@@ -52,7 +52,7 @@ $contact = $contactDao->getContactsById($id);
             <div class="card">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">NTE <?= $_SESSION['nte'] ?></h6>
-                    <a title="Voltar" href="contacts.php?nte=<?= $_SESSION['nte'] ?>"><button class=" btn btn-sm btn-success"><i class="fa-solid fa-rotate-left"></i></button></a>
+                    <a title="Voltar" href="contacts.php?nte=<?= $_SESSION['nte'] ?>"><button class=" btn btn-sm btn-success voltar-btn">Voltar <i class="fa-solid fa-rotate-left"></i></button></a>
                 </div>
                 <div class="content-wrapper">
                     <div class="row">
@@ -86,13 +86,13 @@ $contact = $contactDao->getContactsById($id);
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="col-md-3">
-                                                        <div class="position-relative form-group"><label for="gestor" class="">Gestor</label>
+                                                        <div class="position-relative form-group"><label for="gestor" class="">Diretor</label>
                                                             <input value="<?= $contact["gestor"] ?>" name="gestor" id="gestor" type="text" class="form-control form-control-sm">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="position-relative form-group"><label for="tel_gestor" class="">Tel.
-                                                                Gestor</label>
+                                                                Diretor</label>
                                                             <input value="<?= $contact["tel_gestor"] ?>" name="tel_gestor" id="tel" type="tel" class="form-control form-control-sm" pattern="\(\d{2}\)\s*\d{5}-\d{4}" required placeholder="(XX) XXXXX-XXXX">
                                                         </div>
 
@@ -103,7 +103,7 @@ $contact = $contactDao->getContactsById($id);
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <div class="position-relative form-group"><label for="email_gestor" class="">E-mail Gestor</label>
+                                                        <div class="position-relative form-group"><label for="email_gestor" class="">E-mail Diretor</label>
                                                             <input value="<?= $contact["email_gestor"] ?>" name="email_gestor" id="email_gestor" type="text" class="form-control form-control-sm">
                                                         </div>
 
@@ -112,22 +112,22 @@ $contact = $contactDao->getContactsById($id);
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="col-md-3">
-                                                        <div class="position-relative form-group"><label for="vice_gestor" class="">Vice-Gestor 1</label>
+                                                        <div class="position-relative form-group"><label for="vice_gestor" class="">Vice-Diretor 1</label>
                                                             <input value="<?= $contact["vice_gestor"] ?>" name="vice_gestor" id="vice_gestor" type="text" class="form-control form-control-sm">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <div class="position-relative form-group"><label for="tel_vice_gestor" class="">Tel. Vice-Gestor 1</label>
+                                                        <div class="position-relative form-group"><label for="tel_vice_gestor" class="">Tel. Vice-Diretor 1</label>
                                                             <input value="<?= $contact["tel_vice_gestor"] ?>" name="tel_vice_gestor" id="tel_vice_gestor" type="tel" class="form-control form-control-sm" placeholder="(XX) XXXXX-XXX">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <div class="position-relative form-group"><label for="vice_gestor_2" class="">Vice-Gestor 2</label>
+                                                        <div class="position-relative form-group"><label for="vice_gestor_2" class="">Vice-Diretor 2</label>
                                                             <input value="<?= $contact["vice_gestor_2"] ?>" name="vice_gestor_2" id="vice_gestor_2" type="text" class="form-control form-control-sm">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <div class="position-relative form-group"><label for="tel_vice_gestor_2" class="">Tel. Vice-Gestor 2</label>
+                                                        <div class="position-relative form-group"><label for="tel_vice_gestor_2" class="">Tel. Vice-Diretor 2</label>
                                                             <input value="<?= $contact["tel_vice_gestor_2"] ?>" name="tel_vice_gestor_2" id="tel_vice_gestor_2" type="tel" class="form-control form-control-sm" placeholder="(XX) XXXXX-XXXX">
                                                         </div>
                                                     </div>
@@ -143,7 +143,7 @@ $contact = $contactDao->getContactsById($id);
                                                     <label for="obs">Observação</label>
                                                     <textarea name="obs" class="form-control" id="obs" rows="5"><?= $contact["obs"] ?></textarea>
                                                 </div>
-                                                <a title="Atualizar"><button type="submit" class=" btn btn-lg bg-purple btn-primary  mr-2"><i class="fa-solid fa-arrows-rotate"></i></i></button></a>
+                                                <a title="Atualizar"><button type="submit" class=" btn bg-purple btn-primary mr-2 add-btn">Atualizar <i class="fa-solid fa-arrows-rotate"></i></button></a>
                                             </form>
                                         </div>
                                     </div>

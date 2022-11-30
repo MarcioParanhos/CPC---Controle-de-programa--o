@@ -41,7 +41,7 @@ $controle_nte = $nteDao->getNtesById($id);
           <h6 class="m-0 font-weight-bold text-primary">NTE 0<?= $controle_nte["nte"] ?></h6>
           <div>
             <button title="Carência - Adicionar / Consultar" data-target="#ExemploModalCentralizado" data-toggle="modal" class=" btn btn-sm btn-success">Carência <i class="fa-solid fa-magnifying-glass-plus"></i></button>
-            <a title="Voltar" href="nte.php?nte=<?= $controle_nte["nte"] ?>"><button class="btn-sm btn btn-success"><i class=" fa-solid fa-rotate-left"></i></button></a>
+            <a title="Voltar" href="nte.php?nte=<?= $controle_nte["nte"] ?>"><button class="btn-sm btn btn-success voltar-btn">Voltar <i class=" fa-solid fa-rotate-left"></i></button></a>
           </div>
         </div>
         <div class="content-wrapper">
@@ -157,7 +157,7 @@ $controle_nte = $nteDao->getNtesById($id);
                             Componente</label>
                           <textarea name="desc_componente" class="form-control" id="desc_componente" rows="5"><?= $controle_nte["desc_componente"] ?></textarea>
                         </div>
-                        <a title="Atualizar"><button type="submit" class=" btn bg-purple btn-primary  mr-2"><i class="fa-solid fa-arrows-rotate"></i></i></button></a>
+                        <a title="Atualizar"><button type="submit" class=" btn bg-purple btn-primary mr-2 add-btn">Atualizar <i class="fa-solid fa-arrows-rotate"></i></button></a>
                       </form>
 
                     </div>
