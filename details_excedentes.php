@@ -49,8 +49,8 @@ $excedente = $excedenteDao->getExcedenteById($id);
                               <div class="card-body">
                                  <form class="forms-sample" action="<?= $BASE_URL ?>config/excedentesProcess.php" method="post">
                                     <div class="py-3 d-flex flex-row align-items-end justify-content-end">
-                                    <h6><i class="fa-solid fa-user-pen"></i> <?= $excedente['usuario'] ?></h6> &nbsp;&nbsp; 
-                                    <h6><i class="fa-solid fa-calendar-day"></i> <?= date('d/m/Y', strtotime($excedente["data_add_user"])); ?></h6>
+                                       <h6><i class="fa-solid fa-user-pen"></i> <?= $excedente['usuario'] ?></h6> &nbsp;&nbsp;
+                                       <h6><i class="fa-solid fa-calendar-day"></i> <?= date('d/m/Y', strtotime($excedente["data_add_user"])); ?></h6>
                                     </div>
                                     <input type="hidden" name="type" value="update">
                                     <input hidden value="<?= $usuario ?>" name="usuario" type="text">
@@ -123,9 +123,28 @@ $excedente = $excedenteDao->getExcedenteById($id);
                                           </div>
                                        </div>
                                     </div>
+                                    <br>
+                                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                       <h6 class="m-0 font-weight-bold text-primary">FIM DA EXCEDENCIA</h6>
+                                    </div>
+                                    <br>
+                                    <div class="form-row excedentes-row">
+                                       <div class="position-relative col-md-4">
+                                          <div class="form-group">
+                                             <label class="control-label" for="motivo_fim_excedencia">MOTIVO DO FIM DA EXCEDENCIA</label>
+                                             <input value="<?= $excedente['motivo_fim_excedencia'] ?>" name="motivo_fim_excedencia" id="motivo_fim_excedencia" type="text" class="form-control form-control-sm">
+                                          </div>
+                                       </div>
+                                       <div class="position-relative col-md-3">
+                                          <div class="form-group">
+                                             <label class="control-label" for="data_fim_excedente">DATA FIM DA EXCEDENCIA</label>
+                                             <input value="<?= $excedente['data_fim_excedente'] ?>" name="data_fim_excedente" id="data_fim_excedente" type="date" class="form-control form-control-sm">
+                                          </div>
+                                       </div>
+                                    </div>
                                     <div class="form-group">
                                        <label for="obs">Observação</label>
-                                       <textarea name="obs" class="form-control" id="obs" rows="5"></textarea>
+                                       <textarea name="obs" class="form-control" id="obs" rows="5"><?= $excedente['obs'] ?></textarea>
                                     </div>
                                     <a title="Atualizar"><button type="submit" class=" btn bg-purple btn-primary mr-2 add-btn">Atualizar <i class="fa-solid fa-arrows-rotate"></i></button></a>
                                  </form>

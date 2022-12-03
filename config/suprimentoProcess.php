@@ -24,6 +24,7 @@ $carencia = $stmt->fetch();
 $matutino = ($suprimento['mat_suprimento'] + $carencia['matutino']);
 $vespertino = ($suprimento['vesp_suprimento'] + $carencia['vespertino']);
 $noturno = ($suprimento['not_suprimento'] + $carencia['noturno']);
+$total = $matutino + $vespertino + $noturno;
 
 $query = "DELETE  FROM carencia_suprimentos WHERE id = :id";
 $stmt = $conn->prepare($query);
@@ -33,13 +34,15 @@ if ($stmt->execute()) {
     $sql = "UPDATE carencias SET
         matutino = :matutino,
         vespertino = :vespertino,
-        noturno = :noturno  
+        noturno = :noturno,
+        total = :total 
         WHERE 
         id = $id_ref";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(":matutino", $matutino);
     $stmt->bindParam(":vespertino", $vespertino);
     $stmt->bindParam(":noturno", $noturno);
+    $stmt->bindParam(":total", $total);
     if ($stmt->execute()) {
         header("Location: ../details-carencia.php?id=" .  $suprimento['id_ref'] . "");
         $_SESSION["msg"] =  "Registro Excluido com Sucesso, Quantitativo de carencia atualizado!";

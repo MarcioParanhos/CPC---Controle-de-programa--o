@@ -226,7 +226,7 @@ $controle_nte = $nteDao->getNtesById($id);
                                                 <h6 class="m-0 font-weight-bold text-primary">VAGAS DETALHADAS</h6>
                                             </div>
                                             <div class="table-responsive mt-2 p-1 table-sm">
-                                                <table id="myTable" class="table compact nowrap table-hover align-items-center table-flush">
+                                                <table id="myTable" class="table compact nowrap table-hover align-items-center table-flush ">
                                                     <thead class="thead-light">
                                                         <tr>
                                                             <th class="text-center">Tipo</th>
@@ -273,6 +273,27 @@ $controle_nte = $nteDao->getNtesById($id);
                                                             <td class="text-center"></td>
                                                             <td class="text-center"></td>
                                                             <td class="text-center"></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <br>
+                                                <table class="table table-sm table-bordered">
+                                                    <thead>
+                                                        <tr class="bg-primary text-center">
+                                                            <th scope="col">REDA 20H</th>
+                                                            <th scope="col">REDA 40H</th>
+                                                            <th scope="col">EFETIVO 20H</th>
+                                                            <th scope="col">EFETIVO 40H</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <br>
+                                                    <h6 class="m-b-1 font-weight-bold">QUANTITATIVO DE SERVIDOR POR REGIME</h6>
+                                                        <tr class="text-center">
+                                                            <td><?= number_format(($countMatReal + $countNotReal + $countVespReal) / 16, 1, '.', ''); ?></td>
+                                                            <td><?= number_format(($countMatReal + $countNotReal + $countVespReal) / 32, 1, '.', ''); ?></td>
+                                                            <td><?= number_format(($countMatReal + $countNotReal + $countVespReal) / 13, 1, '.', ''); ?></td>
+                                                            <td><?= number_format(($countMatReal + $countNotReal + $countVespReal) / 26, 1, '.', ''); ?></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

@@ -2060,3 +2060,7 @@ input {
 .btn-delete:hover {
     color: #fc544b !important;
 }
+.qtd-servidores {
+    font-weight: bold;
+    color: #232323;
+}

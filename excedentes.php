@@ -55,7 +55,7 @@ $excedentes = $excedenteDao->getExcedentes($_SESSION['perfil']);
                 <th class="text-center">CADASTRO</th>
                 <th class="text-center">VINCULO</th>
                 <th class="text-center">CH</th>
-                <th class="text-center">QTD. EXCEDENTE</th>
+                <th class="text-center">CH. EXCEDENTE</th>
                 <th class="text-center">DETALHAR</th>
               </tr>
             </thead>
@@ -100,36 +100,36 @@ $excedentes = $excedenteDao->getExcedentes($_SESSION['perfil']);
       </div>
       <div class="modal-body">
         <form class="forms-sample" action="./config/excedentesProcess.php" method="POST">
-          <input type="hidden" name="type" value="create"  class="form-control form-control-sm" id="usuario">
+          <input type="hidden" name="type" value="create" class="form-control form-control-sm" id="usuario">
           <input hidden value="<?= $usuario ?>" name="usuario" type="text">
           <div class="form-row excedentes-row">
             <div class="col-md-2">
               <label for="nte" class="control-label">NTE</label>
-              <input type="text" name="nte"  class="form-control form-control-sm" id="nte" require>
+              <input type="text" name="nte" class="form-control form-control-sm" id="nte" require>
             </div>
             <div class="col-md-6">
               <label for="municipio" class="control-label">MUNICIPIO</label>
-              <input type="text" name="municipio"  class="form-control form-control-sm" id="municipio" require>
+              <input type="text" name="municipio" class="form-control form-control-sm" id="municipio" require>
             </div>
             <div class="col-md-4">
               <label for="cod_unidade" class="control-label">COD. UNIDADE</label>
-              <input type="text" name="cod_unidade"  class="form-control form-control-sm" id="cod_unidade" require>
+              <input type="text" name="cod_unidade" class="form-control form-control-sm" id="cod_unidade" require>
             </div>
           </div>
           <div class="form-row excedentes-row">
             <div class="col-md-12">
               <label for="unidade_escolar" class="control-label">UNIDADE ESCOLAR</label>
-              <input type="text" name="unidade_escolar"  class="form-control form-control-sm" id="unidade_escolar" require>
+              <input type="text" name="unidade_escolar" class="form-control form-control-sm" id="unidade_escolar" require>
             </div>
           </div>
           <div class="form-row excedentes-row">
             <div class="col-md-9">
               <label for="nome" class="control-label">SERVIDOR</label>
-              <input type="text" name="nome"  class="form-control form-control-sm" id="nome" require>
+              <input type="text" name="nome" class="form-control form-control-sm" id="nome" require>
             </div>
             <div class="col-md-3">
               <label for="cadastro" class="control-label">CADASTRO</label>
-              <input type="text" name="cadastro"  class="form-control form-control-sm" id="cadastro" require>
+              <input type="text" name="cadastro" class="form-control form-control-sm" id="cadastro" require>
             </div>
           </div>
           <div class="form-row excedentes-row">
@@ -145,7 +145,7 @@ $excedentes = $excedenteDao->getExcedentes($_SESSION['perfil']);
             </div>
             <div class="position-relative col-md-2">
               <div class="form-group">
-                <label class="control-label" for="ch">CH</label>
+                <label class="control-label" for="ch">REGIME</label>
                 <select name="ch" id="cg" class="form-control form-control-sm">
                   <option value="" selected>Selecione ...</option>
                   <option value="20">20</option>
@@ -155,7 +155,7 @@ $excedentes = $excedenteDao->getExcedentes($_SESSION['perfil']);
             </div>
             <div class="position-relative col-md-2">
               <div class="form-group">
-                <label class="control-label" for="qtd_horas">EXCEDENTE</label>
+                <label class="control-label" for="qtd_horas">CH. EXCEDENTE</label>
                 <input value="" name="qtd_horas" id="qtd_horas" type="text" class="form-control form-control-sm">
               </div>
             </div>
@@ -166,9 +166,17 @@ $excedentes = $excedenteDao->getExcedentes($_SESSION['perfil']);
               </div>
             </div>
           </div>
+          <div class="form-row excedentes-row">
+            <div class="position-relative col-md-4">
+              <div class="form-group">
+                <label class="control-label" for="motivo_excedencia">MOTIVO DA EXCEDENCIA</label>
+                <input value="" name="motivo_excedencia" id="motivo_excedencia" type="text" class="form-control form-control-sm">
+              </div>
+            </div>
+          </div>
           <div class="mt-4 pt-4 modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa-solid fa-xmark"></i></button>
-            <button type="submit" class="btn btn-primary"><i class="fa-regular fa-floppy-disk"></i></button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">FECHAR <i class="fa-solid fa-xmark"></i></button>
+            <button type="submit" class="btn btn-primary">SALVAR <i class="fa-regular fa-floppy-disk"></i></button>
           </div>
         </form>
       </div>

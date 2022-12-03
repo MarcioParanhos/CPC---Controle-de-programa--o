@@ -51,7 +51,8 @@ class ExcedenteDAO implements ExcedenteDAOInterface
           ch,
           qtd_horas,
           formacao,
-          usuario)
+          usuario,
+          motivo_excedencia)
           VALUES (
           :nte,
           :municipio,
@@ -63,7 +64,8 @@ class ExcedenteDAO implements ExcedenteDAOInterface
           :ch,
           :qtd_horas,
           :formacao,
-          :usuario)
+          :usuario,
+          :motivo_excedencia)
           ");
 
         $stmt->bindParam(":nte", $excedente->nte);
@@ -77,6 +79,7 @@ class ExcedenteDAO implements ExcedenteDAOInterface
         $stmt->bindParam(":qtd_horas", $excedente->qtd_horas);
         $stmt->bindParam(":formacao", $excedente->formacao);
         $stmt->bindParam(":usuario", $excedente->usuario);
+        $stmt->bindParam(":motivo_excedencia", $excedente->motivo_excedencia);
 
         // se o Sql deu certo retorna para a tela de cadastro com uma mensagem de sucesso
         if ($stmt->execute()) {
@@ -103,7 +106,10 @@ class ExcedenteDAO implements ExcedenteDAOInterface
          ch = :ch,
          qtd_horas = :qtd_horas,
          formacao = :formacao,
-         usuario = :usuario
+         usuario = :usuario,
+         obs = :obs,
+         motivo_fim_excedencia = :motivo_fim_excedencia,
+         data_fim_excedente = :data_fim_excedente
          WHERE 
          id = :id";
 
@@ -120,6 +126,10 @@ class ExcedenteDAO implements ExcedenteDAOInterface
         $stmt->bindParam(":formacao", $excedente->formacao);
         $stmt->bindParam(":usuario", $excedente->usuario);
         $stmt->bindParam(":id", $excedente->id);
+        $stmt->bindParam(":obs", $excedente->obs);
+        $stmt->bindParam(":motivo_fim_excedencia", $excedente->motivo_fim_excedencia);
+        $stmt->bindParam(":data_fim_excedente", $excedente->data_fim_excedente);
+
 
         // redireciona para a pagina de registro informando a mensagem de registro
         if ($stmt->execute()) {

@@ -15,6 +15,10 @@ class Excedente {
     public $formacao;
     public $usuario;
     public $data_add_user;
+    public $motivo_excedencia;
+    public $obs;
+    public $motivo_fim_excedencia;
+    public $data_fim_excedente;
    
 }
 

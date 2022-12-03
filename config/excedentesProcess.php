@@ -24,6 +24,10 @@ $usuario = filter_input(INPUT_POST, "usuario");
 $data_add_user = filter_input(INPUT_POST, "data_add_user");
 $type = filter_input(INPUT_POST, "type");
 $id = filter_input(INPUT_POST, "id");
+$motivo_excedencia = filter_input(INPUT_POST, "motivo_excedencia");
+$obs = filter_input(INPUT_POST, "obs");
+$motivo_fim_excedencia = filter_input(INPUT_POST, "motivo_fim_excedencia");
+$data_fim_excedente = filter_input(INPUT_POST, "data_fim_excedente");
 
 if ($type === "create") {
 
@@ -40,6 +44,7 @@ if ($type === "create") {
     $excedente->formacao = $formacao;
     $excedente->usuario = $usuario;
     $excedente->data_add_user = $data_add_user;
+    $excedente->motivo_excedencia = $motivo_excedencia;
     //Chama a função create responsavel pela criação dos dados no banco em ExcedenteDAO.php
     $excedenteDao->create($excedente);
 
@@ -58,6 +63,9 @@ if ($type === "create") {
     $excedente->qtd_horas = $qtd_horas;
     $excedente->formacao = $formacao;
     $excedente->usuario = $usuario;
+    $excedente->obs = $obs;
+    $excedente->motivo_fim_excedencia = $motivo_fim_excedencia;
+    $excedente->data_fim_excedente = $data_fim_excedente;
 
     //Chama a função update responsavel pela alteração dos dados no banco em contactsDAO.php
     $excedenteDao->update($excedente);
@@ -139,7 +147,7 @@ $id = $_POST['id'];
         $resultado .= '</dl>';
 
         $resultado .= '<dl class="row">';
-        $resultado .= '<dt class="col-sm-2">QTD. EXCEDENTES</dt>';
+        $resultado .= '<dt class="col-sm-2">CH. EXCEDENTE</dt>';
         $resultado .= '<dd class="col-sm-1">' . $excedente['qtd_horas'] . 'H</dd>';
         $resultado .= '</dl>';
 

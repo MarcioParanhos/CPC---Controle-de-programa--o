@@ -7,6 +7,7 @@ require_once("./config/url.php");
 require_once('dompdf/autoload.inc.php');
 
 
+$agora = date('d/m/Y H:i');
 
 $dompdf = new DOMPDF();
 
@@ -25,6 +26,13 @@ if ($type == "r") {
     $stmt->bindParam(":id", $id);
     $stmt->execute();
     $controle_nte = $stmt->fetch();
+
+    $query = "SELECT sum(matutino) FROM carencias WHERE id = :id";
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(":id", $id);
+    $stmt->execute();
+    $countMatutino = $stmt->fetch();
+
 }
 
 
@@ -43,7 +51,14 @@ $html = '
     <title>Relatorio de Carencia</title>
 
     <style>
-    
+
+        .data-atual {
+            position: absolute;
+            font-size: 12px;
+            right: 0;
+            bottom: 0;
+            color: #000;
+        }
         body {
             font-family: Helvetica, sans-serif;
         }
@@ -110,7 +125,7 @@ $html = '
             padding: 5px;
             background: #eee;
             border-bottom: 1px solid #fff;
-            font-size: 13px;
+            font-size: 12px;
         }
         .invoice table th {
             text-align: center;
@@ -238,7 +253,7 @@ $html = '
                             <tbody>';
                                 foreach ($carencias as $carencia) {
                                     $html .= '<tr>';
-                                    $html .= '<td>' . $carencia["disciplina"] . '</td>';
+                                    $html .= '<td class="data">' . $carencia["disciplina"] . '</td>';
                                     $html .= '<td>' . $carencia["matutino"] . '</td>';
                                     $html .= '<td>' . $carencia["vespertino"] . '</td>';
                                     $html .= '<td>' . $carencia["noturno"] . '</td>';
@@ -252,7 +267,7 @@ $html = '
                                 }
                                 $html .= '<tr>
                                     <td class="no">TOTAL UEE</td>
-                                    <td class="no">18</td>
+                                    <td class="no">75</td>
                                     <td class="no">8</td>
                                     <td class="no">18</td>
                                     <td class="no">40</td>                          
@@ -265,6 +280,7 @@ $html = '
                         </table>  
                     </main>
                     <footer>
+                    <div class="data-atual"> ' . $agora . ' </div>
                     </footer>
                 </div>
             <div>

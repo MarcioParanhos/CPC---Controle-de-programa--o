@@ -98,11 +98,12 @@ body {
   transform: translateX(10px) translateY(-7px);
   font-size: 0.9rem;
   padding: 0 10px;
-  background-color: #fbf8f3;
+  background-color: #cdc2ae;
   left: 820px;
   border-radius: 5px;
   letter-spacing: 0.2em;
   font-weight: 500;
+ 
 }
 
 input:focus {
@@ -141,7 +142,6 @@ input:focus {
 
 .form-control:nth-child(1):after {
   content: "";
-  color: #fbf8f3;
   background: url(../img/envelope.svg);
   position: absolute;
   width: 20px;
@@ -153,7 +153,6 @@ input:focus {
 
 .form-control:nth-child(2):after {
   content: "";
-  color: #fbf8f3;
   background: url(../img/chave.svg);
   position: absolute;
   width: 20px;
