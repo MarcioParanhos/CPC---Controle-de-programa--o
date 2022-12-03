@@ -2,6 +2,7 @@
 const modal = document.querySelector("#ExemploModalCentralizado a")
 const modalExcedente = document.querySelector("#ModalDeleteExcedente a")
 const modalDeleteUser = document.querySelector("#ExemploModalCentralizadoDeleteUser a")
+const modalDeleteSuprimento = document.querySelector("#DeleteSuprimento a")
 
 //Função chamada pelo OnClick no html recebendo um parametro
 function abrirModal(id) {
@@ -14,6 +15,19 @@ function abrirModal(id) {
 
     //Apos inserir o Href no botão do modal abre o Modal para validação do usuario
     $("#ExemploModalCentralizado").modal({
+        show: true
+    });
+}
+function abrirModalSuprimento(id) {
+
+    // Declarando a variavel Link
+    let link = "./config/suprimentoProcess.php?id=" + id
+
+    // Inserindo um elemento dentro do elemento selecionado com QuerySelector
+    modalDeleteSuprimento.setAttribute("href", link)
+
+    //Apos inserir o Href no botão do modal abre o Modal para validação do usuario
+    $("#DeleteSuprimento").modal({
         show: true
     });
 }

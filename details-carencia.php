@@ -10,6 +10,8 @@ $id = $_GET['id'];
 
 $carenciaDao = new CarenciaDAO($conn, $BASE_URL);
 $vagas = $carenciaDao->getCarenciaUnicById($id);
+$suprimentos = $carenciaDao->getSuprimentos($id);
+// $suprimentos = $carenciaDao->getSuprimentos($id);
 
 ?>
 <!-- Container Fluid -->
@@ -195,25 +197,26 @@ $vagas = $carenciaDao->getCarenciaUnicById($id);
                                                         </div>
                                                     </div>
                                                 </div><br>
+                                                <!-- SUPRIMENTO -->
                                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                                     <h6 class="m-0 font-weight-bold text-primary">SUPRIR</h6>
                                                 </div><br>
                                                 <div class="form-row">
                                                     <div class="col-md-3">
                                                         <div class="position-relative form-group"><label for="motivo_suprimento" class="">Motivo Suprimento</label>
-                                                            <input value="AULAS EXTRAS" name="motivo_suprimento" id="motivo_suprimento" type="text" class="form-control form-control-sm">
+                                                            <input required value="" name="motivo_suprimento" id="motivo_suprimento" type="text" class="form-control form-control-sm">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="position-relative form-group">
                                                             <label for="servidor_suprimento" class="">Nome</label>
-                                                            <input value="" name="servidor_suprimento" id="servidor_suprimento" type="text" class="form-control form-control-sm">
+                                                            <input required value="" name="servidor_suprimento" id="servidor_suprimento" type="text" class="form-control form-control-sm">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="cadastro_suprimento" class="">Cadastro</label>
-                                                            <input id="cadastro_suprimento" value="" name="cadastro_suprimento" type="number" class="form-control form-control-sm">
+                                                            <input required id="cadastro_suprimento" value="" name="cadastro_suprimento" type="number" class="form-control form-control-sm">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -221,29 +224,30 @@ $vagas = $carenciaDao->getCarenciaUnicById($id);
                                                     <div class="col-md-1">
                                                         <div class="position-relative form-group">
                                                             <label for="matutino" class="">Mat</label>
-                                                            <input min="0" value="0" name="after_mat" required id="matutino" type="number" class="form-control text-center form-control-sm">
+                                                            <input required min="0" value="0" name="after_mat" required id="matutino" type="number" class="form-control text-center form-control-sm">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
-                                                        <div class="form-group">
+                                                        <div class="position-relative form-group">
                                                             <label for="vespertino" class="">Vesp</label>
-                                                            <input min="0" id="vespertino" value="0" name="after_vesp" type="number" class="form-control text-center form-control-sm" aria-label="Amount (to the nearest dollar)">
+                                                            <input required min="0" value="0" name="after_vesp" required id="vespertino" type="number" class="form-control text-center form-control-sm">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
                                                         <div class="form-group">
                                                             <label for="noturno" class="text-center">Not</label>
-                                                            <input min="0" id="noturno" value="0" name="after_not" type="number" class="form-control text-center form-control-sm" aria-label="Amount (to the nearest dollar)">
+                                                            <input required min="0" id="noturno" value="0" name="after_not" type="number" class="form-control text-center form-control-sm" aria-label="Amount (to the nearest dollar)">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="data_suprimento" class="text-center">Data do suprimento</label>
-                                                        <input id="data_suprimento" value="" name="data_suprimento" type="date" class="form-control form-control-sm" aria-label="Amount (to the nearest dollar)">
+                                                        <input required id="data_suprimento" value="" name="data_suprimento" type="date" class="form-control form-control-sm" aria-label="Amount (to the nearest dollar)">
                                                     </div>
                                                 </div>
                                                 <br>
-                                                <div class="table-responsive mt-2 p-1 table-sm">
-                                                    <table class="table compact nowrap table-hover align-items-center table-flush">
+                                                <div class="table-responsive mt-2 table-sm">
+                                                <h6 class="m-b-1 font-weight-bold">HISTORICO DE SUPRIMENTO</h6>
+                                                    <table id="font-table" class="table compact nowrap table-hover align-items-center table-flush">
                                                         <thead class="thead-light">
                                                             <tr>
                                                                 <th>CADASTRO</th>
@@ -253,30 +257,26 @@ $vagas = $carenciaDao->getCarenciaUnicById($id);
                                                                 <th>MAT</th>
                                                                 <th>VESP</th>
                                                                 <th>NOT</th>
-                                                                <th>DATA</th>
+                                                                <th class="text-center">DATA</th>
+                                                                <th></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
-                                                                <td>92854568</td>
-                                                                <td>MARCIO VINICIUS DE BORBA PARANHOS</td>
-                                                                <td>REMOÇÃO</td>
-                                                                <td class="text-center">FISICA</td>
-                                                                <td class="text-center">2</td>
-                                                                <td class="text-center">2</td>
-                                                                <td class="text-center">2</td>
-                                                                <td>31/11/2022</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>115788954</td>
-                                                                <td>VERA LUCIA DE BORBA</td>
-                                                                <td>AULA EXTRA</td>
-                                                                <td class="text-center">FISICA</td>
-                                                                <td class="text-center">4</td>
-                                                                <td class="text-center">4</td>
-                                                                <td class="text-center">4</td>
-                                                                <td>03/12/2022</td>
-                                                            </tr>
+                                                            <?php foreach ($suprimentos as $suprimento) : ?>
+                                                                <tr>
+                                                                    <td><?= $suprimento['cadastro_suprimento'] ?></td>
+                                                                    <td><?= $suprimento['servidor_suprimento'] ?></td>
+                                                                    <td><?= $suprimento['motivo_suprimento'] ?></td>
+                                                                    <td class=""><?= $suprimento['disciplina'] ?></td>
+                                                                    <td class="text-center"><?= $suprimento['mat_suprimento'] ?></td>
+                                                                    <td class="text-center"><?= $suprimento['vesp_suprimento'] ?></td>
+                                                                    <td class="text-center"><?= $suprimento['not_suprimento'] ?></td>
+                                                                    <td class=""><?= date('d/m/Y', strtotime($suprimento['data_suprimento'])); ?></td>
+                                                                    <td>
+                                                                        <a title="Excluir" class="btn-delete btn btn-sm btn-danger" onclick="abrirModalSuprimento(<?= $suprimento['id'] ?>)"><i class="fa-solid fa-trash"></i></a>
+                                                                    </td>
+                                                                </tr>
+                                                            <?php endforeach; ?>
                                                         </tbody>
                                                     </table>
                                                     <br><br>
@@ -298,6 +298,23 @@ $vagas = $carenciaDao->getCarenciaUnicById($id);
         </div>
     </div>
     <!--Row-->
+</div>
+<!-- Modal -->
+<div class="modal fade" id="DeleteSuprimento" tabindex="-1" role="dialog" aria-labelledby="TituloDeleteSuprimento" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header d-flex justify-content-center">
+                <h4 class="modal-title text-center text-dark" id="TituloDeleteSuprimento"><strong>Excluir Dados</strong></h4>
+            </div>
+            <div class="modal-body">
+                <strong>O registro será excluido permanentemente !</strong>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                <a title="Excluir Carência"><button type="button" class="btn float-right btn-danger"><i class="fa-solid fa-trash"></i> Excluir</button></a>
+            </div>
+        </div>
+    </div>
 </div>
 <!---Container Fluid-->
 <?php

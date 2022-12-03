@@ -22,6 +22,12 @@ class Carencia
     public $noturno;
     public $total;
     public $usuario;
+    public $motivo_suprimento;
+    public $servidor_suprimento;
+    public $cadastro_suprimento;
+    public $mat_suprimento;
+    public $not_suprimento;
+    public $data_suprimento;
 }
 
 interface CarenciaDAOInterface
@@ -37,4 +43,5 @@ interface CarenciaDAOInterface
     public function getDisciplinas();
     public function getMotivoVagas($type);
     public function getCarenciaUnicById($id);
+    public function getSuprimentos($id);
 }

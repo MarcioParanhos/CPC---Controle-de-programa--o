@@ -124,6 +124,50 @@ class CarenciaDAO implements CarenciaDAOInterface
 
     public function update(Carencia $carencia)
     {
+        
+
+        $stmt = $this->conn->prepare("INSERT INTO carencia_suprimentos (
+            id_ref,
+            nte,
+            unidade_escolar,
+            cod_unidade,
+            motivo_suprimento,
+            servidor_suprimento,
+            cadastro_suprimento,
+            disciplina,
+            mat_suprimento,
+            vesp_suprimento,
+            not_suprimento,
+            data_suprimento)
+            VALUES (
+            :id_ref,
+            :nte,
+            :unidade_escolar,
+            :cod_unidade,
+            :motivo_suprimento,
+            :servidor_suprimento,
+            :cadastro_suprimento,
+            :disciplina,
+            :mat_suprimento,
+            :vesp_suprimento,
+            :not_suprimento,
+            :data_suprimento)
+         ");
+
+        $stmt->bindParam(":id_ref", $carencia->id);
+        $stmt->bindParam(":nte", $carencia->nte);
+        $stmt->bindParam(":unidade_escolar", $carencia->unidade_escolar);
+        $stmt->bindParam(":cod_unidade", $carencia->cod_unidade);
+        $stmt->bindParam(":motivo_suprimento", $carencia->motivo_suprimento);
+        $stmt->bindParam(":servidor_suprimento", $carencia->servidor_suprimento);
+        $stmt->bindParam(":cadastro_suprimento", $carencia->cadastro_suprimento);
+        $stmt->bindParam(":disciplina", $carencia->disciplina);
+        $stmt->bindParam(":mat_suprimento", $carencia->mat_suprimento);
+        $stmt->bindParam(":vesp_suprimento", $carencia->vesp_suprimento);
+        $stmt->bindParam(":not_suprimento", $carencia->not_suprimento);
+        $stmt->bindParam(":data_suprimento", $carencia->data_suprimento);
+        $stmt->execute();
+
 
         // Sql de alterar os dados no banco
         $sql = "UPDATE carencias SET
@@ -167,10 +211,12 @@ class CarenciaDAO implements CarenciaDAOInterface
         $stmt->bindParam(":id", $carencia->id);
         $stmt->bindParam(":usuario", $carencia->usuario);
 
+
         // redireciona para a pagina de registro informando a mensagem de registro
         if ($stmt->execute()) {
             header("Location: ../details-carencia.php?id=" . $carencia->id . "");
             $_SESSION["msg"] =  "Registros Alterados com Sucesso";
+            $_SESSION["info_msg"] = 'alert-success';
             die();
         } else {
             echo "Ocorreu um erro: " . $stmt->errorInfo();
@@ -365,5 +411,16 @@ class CarenciaDAO implements CarenciaDAOInterface
         $stmt->execute();
         $vagas = $stmt->fetch();
         return $vagas;
+    }
+
+    public function getSuprimentos($id) {
+
+        $query = "SELECT * FROM carencia_suprimentos WHERE id_ref = :id ";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        $suprimentos = $stmt->fetchAll();
+        return $suprimentos;
+
     }
 }

@@ -31,12 +31,7 @@ $total = filter_input(INPUT_POST, "matutino") + filter_input(INPUT_POST, "vesper
 $type = filter_input(INPUT_POST, "type");
 $id = filter_input(INPUT_POST, "id");
 $usuario = filter_input(INPUT_POST, "usuario");
-$before_mat = filter_input(INPUT_POST, "before_mat");
-$before_vesp = filter_input(INPUT_POST, "before_vesp");
-$before_not = filter_input(INPUT_POST, "before_not");
-$after_mat = filter_input(INPUT_POST, "after_mat");
-$after_vesp = filter_input(INPUT_POST, "after_vesp");
-$after_not = filter_input(INPUT_POST, "after_not");
+
 
 if ($type === "create") {
     // Valida se esta vindo dados
@@ -72,7 +67,19 @@ if ($type === "create") {
     }
 } else if ($type === "update") {
 
-    
+    $before_mat = filter_input(INPUT_POST, "before_mat");
+    $before_vesp = filter_input(INPUT_POST, "before_vesp");
+    $before_not = filter_input(INPUT_POST, "before_not");
+    $after_mat = filter_input(INPUT_POST, "after_mat");
+    $after_vesp = filter_input(INPUT_POST, "after_vesp");
+    $after_not = filter_input(INPUT_POST, "after_not");
+    $motivo_suprimento = filter_input(INPUT_POST, "motivo_suprimento");
+    $servidor_suprimento = filter_input(INPUT_POST, "servidor_suprimento");
+    $cadastro_suprimento = filter_input(INPUT_POST, "cadastro_suprimento");
+    $mat_suprimento = filter_input(INPUT_POST, "after_mat");
+    $vesp_suprimento = filter_input(INPUT_POST, "after_vesp");
+    $not_suprimento = filter_input(INPUT_POST, "after_not");
+    $data_suprimento = filter_input(INPUT_POST, "data_suprimento");
 
     if ($before_mat - $after_mat < 0) {
         header("Location: ../details-carencia.php?id=" .  $id . "");
@@ -83,7 +90,7 @@ if ($type === "create") {
         $new_matutino = ($before_mat - $after_mat);
     }
 
-    if ($before_mat - $after_vesp < 0) {
+    if ($before_vesp - $after_vesp < 0) {
         header("Location: ../details-carencia.php?id=" .  $id . "");
         $_SESSION["msg"] =  "A quantidade de carência por turno nao pode ser menor que 0, Tente novamente.";
         $_SESSION["info_msg"] = 'alert-danger';
@@ -123,6 +130,14 @@ if ($type === "create") {
     $carencia->noturno = $new_noturno;
     $carencia->total = $total;
     $carencia->usuario = $usuario;
+    $carencia->motivo_suprimento = $motivo_suprimento;
+    $carencia->servidor_suprimento = $servidor_suprimento;
+    $carencia->cadastro_suprimento = $cadastro_suprimento;
+    $carencia->mat_suprimento = $mat_suprimento;
+    $carencia->vesp_suprimento = $vesp_suprimento;
+    $carencia->not_suprimento = $not_suprimento;
+    $carencia->data_suprimento = $data_suprimento;
+  
     //Chama a função update responsavel pela alteração dos dados no banco em carenciaDAO.php
     $carenciaDao->update($carencia);
 } else if ($type === "search") {

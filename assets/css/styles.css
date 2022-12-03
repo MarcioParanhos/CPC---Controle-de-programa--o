@@ -2045,6 +2045,18 @@ input {
 }
 
 .voltar-btn {
-    font-size: 0.8rem !important;
-    
+    font-size: 0.8rem !important; 
+}
+
+#font-table td {
+    font-size: 12px !important;
+    margin: 0;
+}
+
+.btn-delete {
+    cursor: pointer;
+    color: #fbf8f3 !important;
+}
+.btn-delete:hover {
+    color: #fc544b !important;
 }

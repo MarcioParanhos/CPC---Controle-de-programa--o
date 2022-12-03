@@ -51,7 +51,7 @@ $ntes = $nteDao->getNtes($nte);
             <tbody>
               <?php foreach ($ntes as $nte) : ?>
                 <tr class="">
-                  <td class="text-center"><?= $nte->municipio  ?></td>
+                  <td class=""><?= $nte->municipio  ?></td>
                   <td class=""><?= $nte->unidade_escolar  ?></td>
                   <td class="text-center"><?= $nte->cod_unidade  ?></td>
                   <td class="text-center"><?= $nte->digitacao  ?></td>
