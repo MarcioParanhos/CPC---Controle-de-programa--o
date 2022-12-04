@@ -213,8 +213,8 @@ $qtdUeesAnexosHomologNte05 = $nteDao->getQtdUeesHomologByTipologia('Homologada',
           </div>
         </div>
       </div>
-      <h6 class="m-2 font-weight-bold">SÍNTESE GERAL DOS NTES VINCULADOS A SEU PERFIL</h6>
       <?php if ($_SESSION['perfil'] != 0) { ?>
+      <h6 class="m-2 font-weight-bold">SÍNTESE GERAL DOS NTES VINCULADOS AO SEU PERFIL</h6>
         <div class="table-responsive mt-2 p-1 ">
           <table class="table compact table-hover  align-items-center table-flush">
             <thead class="bg-primary">
