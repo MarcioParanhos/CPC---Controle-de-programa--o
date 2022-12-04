@@ -16,7 +16,7 @@ $controle_nte = $nteDao->getNtesById($id);
 <!-- Container Fluid -->
 <div class="container-fluid" id="container-wrapper">
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Detalhes | <?= $controle_nte["unidade_escolar"] ?></h1>
+    <h1 class="title_style h3 mb-0 text-gray-800">Detalhes | <?= $controle_nte["unidade_escolar"] ?></h1>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="<?= $BASE_URL ?>home.php">Home</a></li>
       <li class="breadcrumb-item">Ntes</li>

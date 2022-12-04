@@ -43,7 +43,7 @@ if ($nte == 'Todos') {
       </button>
     </div> -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 text-gray-800">Sintese de Programação - Nte ( <?= $nte ?> )</h1>
+      <h1 class="title_style h3 mb-0 text-gray-800">SÍNTESE DE PROGRAMAÇÃO - NTE ( <?= $nte ?> )</h1>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="./home.php">Home</a></li>
         <li class="breadcrumb-item active" aria-current="page">Sintese de Programação</li>
