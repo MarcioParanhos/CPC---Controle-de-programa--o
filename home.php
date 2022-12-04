@@ -5,8 +5,9 @@ require_once("./dao/NteDAO.php");
 require_once("./dao/CarenciaDAO.php");
 
 $nte = $_SESSION['nte_info_status'];
+$nteDao = new Controle_nteDAO($conn, $BASE_URL);
 
-if ($nte == 'Todos') {
+if ($nte == 'todos') {
   $nteDao = new Controle_nteDAO($conn, $BASE_URL);
   $sedes_homologadas = $nteDao->getSedesHomologadas('Homologada');
   $anexos_homologados = $nteDao->getAnexosHomologados('Homologada');
@@ -29,6 +30,23 @@ if ($nte == 'Todos') {
   $vagasReais = $carenciaDao->getVagasReaisByNte('R', $nte);
   $vagasTemp = $carenciaDao->getVagasTempByNte('T', $nte);
 }
+
+// NTE 01
+$qtdUeesNte01 = $nteDao->getQtdUeesNte(1);
+$qtdUeesSedesNte01 = $nteDao->getQtdUeesByTipologia('Sede', 1);
+$qtdUeesAnexosNte01 = $nteDao->getQtdUeesByTipologia('Anexo', 1);
+$qtdUeesSedesDigiadasNte01 = $nteDao->getQtdUeesDigiByTipologia('Concluida','Sede', 1);
+$qtdUeesAnexosDigiadasNte01 = $nteDao->getQtdUeesDigiByTipologia('Concluida','Anexo', 1);
+$qtdUeesSedesHomologNte01 = $nteDao->getQtdUeesHomologByTipologia('Homologada','Sede', 1);
+$qtdUeesAnexosHomologNte01 = $nteDao->getQtdUeesHomologByTipologia('Homologada','Anexo', 1);
+// NTE 05
+$qtdUeesNte05 = $nteDao->getQtdUeesNte(5);
+$qtdUeesSedesNte05 = $nteDao->getQtdUeesByTipologia('Sede', 5);
+$qtdUeesAnexosNte05 = $nteDao->getQtdUeesByTipologia('Anexo', 5);
+$qtdUeesSedesDigiadasNte05 = $nteDao->getQtdUeesDigiByTipologia('Concluida','Sede', 5);
+$qtdUeesAnexosDigiadasNte05 = $nteDao->getQtdUeesDigiByTipologia('Concluida','Anexo', 5);
+$qtdUeesSedesHomologNte05 = $nteDao->getQtdUeesHomologByTipologia('Homologada','Sede', 5);
+$qtdUeesAnexosHomologNte05 = $nteDao->getQtdUeesHomologByTipologia('Homologada','Anexo', 5);
 
 
 
@@ -63,7 +81,7 @@ if ($nte == 'Todos') {
         <div class="input-group-append">
           <select name="nte_search_home" id="nte_search_home" class="form-control-sm">
             <option value="" selected>Selecione o NTE</option>
-            <option value="Todos">Todos</option>
+            <option value="todos">Todos</option>
             <option value="01">01</option>
             <option value="05">05</option>
             <option value="06">06</option>
@@ -195,6 +213,7 @@ if ($nte == 'Todos') {
           </div>
         </div>
       </div>
+      <h6 class="m-2 font-weight-bold">SÍNTESE GERAL DOS NTES VINCULADOS A SEU PERFIL</h6>
       <?php if ($_SESSION['perfil'] != 0) { ?>
         <div class="table-responsive mt-2 p-1 ">
           <table class="table compact table-hover  align-items-center table-flush">
@@ -214,18 +233,18 @@ if ($nte == 'Todos') {
             <?php if ($_SESSION['perfil'] == 4) { ?>
               <tbody>
                 <td class="text-center"><strong>01</strong></td>
-                <td class="text-center"><?= $countUnidadesNte01 ?></td>
-                <td class="text-center"><?= $countUnidadesNte01Sedes ?></td>
-                <td class="text-center"><?= $countUnidadesNte01Anexos ?></td>
+                <td class="text-center"><?= $qtdUeesNte01 ?></td>
+                <td class="text-center"><?= $qtdUeesSedesNte01 ?></td>
+                <td class="text-center"><?= $qtdUeesAnexosNte01 ?></td>
                 <td class="text-center">0</td>
-                <td class="text-center"><?= $countDigitadasSedeNte01 ?></td>
-                <td class="text-center"><?= $countDigitadasAnexoNte01 ?></td>
-                <td class="text-center"><?= $countHomologadasSedeNte01 ?></td>
-                <td class="text-center"><?= $countHomologadasAnexoNte01 ?></td>
+                <td class="text-center"><?= $qtdUeesSedesDigiadasNte01 ?></td>
+                <td class="text-center"><?= $qtdUeesAnexosDigiadasNte01 ?></td>
+                <td class="text-center"><?= $qtdUeesSedesHomologNte01 ?></td>
+                <td class="text-center"><?= $qtdUeesAnexosHomologNte01 ?></td>
                 </tr>
               </tbody>
             <?php } ?>
-            <?php if ($_SESSION['perfil'] == 3) { ?>
+            <?php if ($_SESSION['perfil'] == 1) { ?>
               <tbody>
                 <td class="text-center">02</td>
                 <td class="text-center">29</td>
@@ -269,19 +288,19 @@ if ($nte == 'Todos') {
             <?php } ?>
             <?php if ($_SESSION['perfil'] == 4) { ?>
               <tbody>
-                <td class="text-center"><strong>05</strong></td>
-                <td class="text-center"><?= $countUnidadesNte05 ?></td>
-                <td class="text-center"><?= $countUnidadesNte05Sedes ?></td>
-                <td class="text-center"><?= $countUnidadesNte05Anexos ?></td>
+              <td class="text-center"><strong>05</strong></td>
+                <td class="text-center"><?= $qtdUeesNte05 ?></td>
+                <td class="text-center"><?= $qtdUeesSedesNte05 ?></td>
+                <td class="text-center"><?= $qtdUeesAnexosNte05 ?></td>
                 <td class="text-center">0</td>
-                <td class="text-center"><?= $countDigitadasSedeNte05 ?></td>
-                <td class="text-center"><?= $countDigitadasAnexoNte05 ?></td>
-                <td class="text-center"><?= $countHomologadasSedeNte05 ?></td>
-                <td class="text-center"><?= $countHomologadasAnexoNte05 ?></td>
+                <td class="text-center"><?= $qtdUeesSedesDigiadasNte05 ?></td>
+                <td class="text-center"><?= $qtdUeesAnexosDigiadasNte05 ?></td>
+                <td class="text-center"><?= $qtdUeesSedesHomologNte05 ?></td>
+                <td class="text-center"><?= $qtdUeesAnexosHomologNte05 ?></td>
                 </tr>
               </tbody>
             <?php } ?>
-            <?php if ($_SESSION['perfil'] == 4) { ?>
+            <?php if ($_SESSION['perfil'] == 1) { ?>
               <tbody>
                 <td class="text-center"><strong>06</strong></td>
                 <td class="text-center">29</td>
@@ -295,7 +314,7 @@ if ($nte == 'Todos') {
                 </tr>
               </tbody>
             <?php } ?>
-            <?php if ($_SESSION['perfil'] == 4) { ?>
+            <?php if ($_SESSION['perfil'] == 1) { ?>
               <tbody>
                 <td class="text-center"><strong>07</strong></td>
                 <td class="text-center">29</td>
@@ -337,7 +356,7 @@ if ($nte == 'Todos') {
                 </tr>
               </tbody>
             <?php } ?>
-            <?php if ($_SESSION['perfil'] == 3) { ?>
+            <?php if ($_SESSION['perfil'] == 1) { ?>
               <tbody>
                 <td class="text-center">10</td>
                 <td class="text-center">29</td>
@@ -393,7 +412,7 @@ if ($nte == 'Todos') {
                 </tr>
               </tbody>
             <?php } ?>
-            <?php if ($_SESSION['perfil'] == 3) { ?>
+            <?php if ($_SESSION['perfil'] == 1) { ?>
               <tbody>
                 <td class="text-center">14</td>
                 <td class="text-center">29</td>
@@ -421,7 +440,7 @@ if ($nte == 'Todos') {
                 </tr>
               </tbody>
             <?php } ?>
-            <?php if ($_SESSION['perfil'] == 4) { ?>
+            <?php if ($_SESSION['perfil'] == 1) { ?>
               <tbody>
                 <td class="text-center"><strong>16</strong></td>
                 <td class="text-center">29</td>
@@ -449,7 +468,7 @@ if ($nte == 'Todos') {
                 </tr>
               </tbody>
             <?php } ?>
-            <?php if ($_SESSION['perfil'] == 3) { ?>
+            <?php if ($_SESSION['perfil'] == 1) { ?>
               <tbody>
                 <td class="text-center">18</td>
                 <td class="text-center">29</td>
@@ -505,7 +524,7 @@ if ($nte == 'Todos') {
                 </tr>
               </tbody>
             <?php } ?>
-            <?php if ($_SESSION['perfil'] == 4) { ?>
+            <?php if ($_SESSION['perfil'] == 1) { ?>
               <tbody>
                 <td class="text-center"><strong>22</strong></td>
                 <td class="text-center">29</td>
@@ -519,7 +538,7 @@ if ($nte == 'Todos') {
                 </tr>
               </tbody>
             <?php } ?>
-            <?php if ($_SESSION['perfil'] == 3) { ?>
+            <?php if ($_SESSION['perfil'] == 1) { ?>
               <tbody>
                 <td class="text-center">23</td>
                 <td class="text-center">29</td>
@@ -575,7 +594,7 @@ if ($nte == 'Todos') {
                 </tr>
               </tbody>
             <?php } ?>
-            <?php if ($_SESSION['perfil'] == 3) { ?>
+            <?php if ($_SESSION['perfil'] == 1) { ?>
               <tbody>
                 <td class="text-center">27</td>
                 <td class="text-center">29</td>

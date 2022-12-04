@@ -181,4 +181,37 @@ class Controle_nteDAO implements Controle_nteDAOInterface
         $anexos_digitados = $stmt->fetch();
         return $anexos_digitados[1];
     }
+    public function getQtdUeesNte ($nte) {
+        $stmt = $this->conn->prepare("SELECT homologacao, count(*) as total FROM controle_ntes WHERE nte = :nte ");
+        $stmt->bindParam(":nte", $nte);
+        $stmt->execute();
+        $qtdUeesNte = $stmt->fetch();
+        return $qtdUeesNte[1];
+    }
+    public function getQtdUeesByTipologia ($tipologia, $nte) {
+        $stmt = $this->conn->prepare("SELECT homologacao, count(*) as total FROM controle_ntes WHERE nte = :nte AND tipologia = :tipologia ");
+        $stmt->bindParam(":nte", $nte);
+        $stmt->bindParam(":tipologia", $tipologia);
+        $stmt->execute();
+        $qtdUeesByTipologia = $stmt->fetch();
+        return $qtdUeesByTipologia[1];
+    }
+    public function getQtdUeesDigiByTipologia($digitacao, $tipologia, $nte) {
+        $stmt = $this->conn->prepare("SELECT homologacao, count(*) as total FROM controle_ntes WHERE nte = :nte AND tipologia = :tipologia AND digitacao = :digitacao ");
+        $stmt->bindParam(":nte", $nte);
+        $stmt->bindParam(":tipologia", $tipologia);
+        $stmt->bindParam(":digitacao", $digitacao);
+        $stmt->execute();
+        $qtdUeesDigiByTipologia = $stmt->fetch();
+        return $qtdUeesDigiByTipologia[1]; 
+    }
+    public function getQtdUeesHomologByTipologia($homologacao, $tipologia, $nte) {
+        $stmt = $this->conn->prepare("SELECT homologacao, count(*) as total FROM controle_ntes WHERE nte = :nte AND tipologia = :tipologia AND homologacao = :homologacao ");
+        $stmt->bindParam(":nte", $nte);
+        $stmt->bindParam(":tipologia", $tipologia);
+        $stmt->bindParam(":homologacao", $homologacao);
+        $stmt->execute();
+        $qtdUeesHomologByTipologia = $stmt->fetch();
+        return $qtdUeesHomologByTipologia[1]; 
+    }
 }
