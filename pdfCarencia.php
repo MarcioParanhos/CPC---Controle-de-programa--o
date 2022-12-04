@@ -15,6 +15,7 @@ $type = $_GET['type'];
 $id = $_GET['id'];
 
 if ($type == "r") {
+    $tipo_vaga = "REAL";
     $query = "SELECT * FROM carencias WHERE id_ref = :id_ref AND tipo_vaga = 'R' AND ano_ref = '2022'";
     $stmt = $conn->prepare($query);
     $stmt->bindParam(":id_ref", $id);
@@ -27,13 +28,23 @@ if ($type == "r") {
     $stmt->execute();
     $controle_nte = $stmt->fetch();
 
-    $query = "SELECT sum(matutino) FROM carencias WHERE id = :id";
+
+} else if ($type == "t") {
+    $tipo_vaga = "TEMPORÁRIA";
+    $query = "SELECT * FROM carencias WHERE id_ref = :id_ref AND tipo_vaga = 'T' AND ano_ref = '2022'";
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(":id_ref", $id);
+    $stmt->execute();
+    $carencias = $stmt->fetchAll();
+
+    $query = "SELECT * FROM controle_ntes WHERE id = :id";
     $stmt = $conn->prepare($query);
     $stmt->bindParam(":id", $id);
     $stmt->execute();
-    $countMatutino = $stmt->fetch();
+    $controle_nte = $stmt->fetch();
 
 }
+
 
 
 $html = '
@@ -51,7 +62,9 @@ $html = '
     <title>Relatorio de Carencia</title>
 
     <style>
-
+        .title_primary {
+            padding-left: 30px;
+        }
         .data-atual {
             position: absolute;
             font-size: 12px;
@@ -212,7 +225,7 @@ $html = '
 <body>
     <div class="row">
         <div class="col">
-            <h3>RESUMO DE VAGA REAL</h3>
+            <h3 class="title_primary">RESUMO DE VAGA '. $tipo_vaga .'</h3>
         </div>
         <div id="invoice">
             <div class="invoice overflow-auto">
@@ -261,7 +274,7 @@ $html = '
                                     $html .= '<td>' . $carencia["nome"] . '</td>';
                                     $html .= '<td>' . $carencia["cadastro"] . '</td>';
                                     $html .= '<td>' . $carencia["motivo_vaga"] . '</td>';
-                                    $html .= '<td>' . 'Real' . '</td>';
+                                    $html .= '<td>' . $carencia["tipo_vaga"] . '</td>';
                                     $html .= '<td>' . date('d/m/Y', strtotime($carencia["inicio_vaga"])) . '</td>';
                                     $html .= '</tr>';
                                 }

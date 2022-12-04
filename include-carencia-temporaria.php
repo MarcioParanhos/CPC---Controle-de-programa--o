@@ -62,8 +62,8 @@ $controle_nte = $nteDao->getNtesById($id);
                     <h6 class="m-0 font-weight-bold text-primary"></h6>
                     <?php if (!empty($controle_nte["id"])) { ?>
                         <div>
-                            <a target="_blank" title="Gerar PDF" href="pdfCarencia.php?id=<?= $controle_nte["id"] ?>"><button class="btn-sm btn btn-success">PDF <i class="fa-solid fa-file-export"></i></button></a>
-                            <a title="Gerar PDF" href="gerar_planilha.php?tipo=r&id=<?= $controle_nte["id"] ?>"><button class="btn-sm btn btn-success">Excel <i class="fa-solid fa-file-export"></i></button></a>
+                        <a target="_blank" title="Gerar PDF" href="pdfCarencia.php?id=<?= $controle_nte["id"] ?>&type=t"><button class="btn-sm btn btn-success">PDF <i class="fa-solid fa-file-export"></i></button></a>
+                        <a title="Gerar Excell" href="gerar_planilha.php?tipo=t&id=<?= $controle_nte["id"] ?>"><button class="btn-sm btn btn-success">Excel <i class="fa-solid fa-file-export"></i></button></a>
                             <a title="Adicionar Carência Real" href="include-carencia.php?id=<?= $controle_nte["id"] ?>"><button class="btn-sm btn btn-success">Real <i class="fa-solid fa-magnifying-glass-plus"></i></button></a>
                         </div>
                     <?php } ?>
@@ -279,7 +279,27 @@ $controle_nte = $nteDao->getNtesById($id);
                                                             <td class="text-center"></td>
                                                         </tr>
                                                     </tbody>
-
+                                                </table>
+                                                <br>
+                                                <table class="table table-sm table-bordered">
+                                                    <thead>
+                                                        <tr class="bg-primary text-center">
+                                                            <th scope="col">REDA 20H</th>
+                                                            <th scope="col">REDA 40H</th>
+                                                            <th scope="col">EFETIVO 20H</th>
+                                                            <th scope="col">EFETIVO 40H</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <br>
+                                                    <h6 class="m-b-1 font-weight-bold">QUANTITATIVO DE SERVIDOR POR REGIME</h6>
+                                                        <tr class="text-center">
+                                                            <td><?= number_format(($countMatTemp + $countNotTemp + $countVespTemp) / 16, 1, '.', ''); ?></td>
+                                                            <td><?= number_format(($countMatTemp + $countNotTemp + $countVespTemp) / 32, 1, '.', ''); ?></td>
+                                                            <td><?= number_format(($countMatTemp + $countNotTemp + $countVespTemp) / 13, 1, '.', ''); ?></td>
+                                                            <td><?= number_format(($countMatTemp + $countNotTemp + $countVespTemp) / 26, 1, '.', ''); ?></td>
+                                                        </tr>
+                                                    </tbody>
                                                 </table>
                                                 <br>
                                                 R - Real <br>

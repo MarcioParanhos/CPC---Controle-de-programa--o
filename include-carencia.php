@@ -65,7 +65,7 @@ $controle_nte = $nteDao->getNtesById($id);
                     <?php if (!empty($controle_nte["id"])) { ?>
                         <div>
                             <a target="_blank" title="Gerar PDF" href="pdfCarencia.php?id=<?= $controle_nte["id"] ?>&type=r"><button class="btn-sm btn btn-success">PDF <i class="fa-solid fa-file-export"></i></button></a>
-                            <a title="Gerar PDF" href="gerar_planilha.php?tipo=r&id=<?= $controle_nte["id"] ?>"><button class="btn-sm btn btn-success">Excel <i class="fa-solid fa-file-export"></i></button></a>
+                            <a title="Gerar Excell" href="gerar_planilha.php?tipo=r&id=<?= $controle_nte["id"] ?>"><button class="btn-sm btn btn-success">Excel <i class="fa-solid fa-file-export"></i></button></a>
                             <a title="Adicionar Carência Temporária" href="include-carencia-temporaria.php?id=<?= $controle_nte["id"] ?>"><button class="btn-sm btn btn-success">Temporária <i class="fa-solid fa-magnifying-glass-plus"></i></button></a>
                         </div>
                     <?php } ?>
@@ -288,7 +288,7 @@ $controle_nte = $nteDao->getNtesById($id);
                                                     </thead>
                                                     <tbody>
                                                         <br>
-                                                    <h6 class="m-b-1 font-weight-bold">QUANTITATIVO DE SERVIDOR POR REGIME</h6>
+                                                        <h6 class="m-b-1 font-weight-bold">QUANTITATIVO DE SERVIDOR POR REGIME</h6>
                                                         <tr class="text-center">
                                                             <td><?= number_format(($countMatReal + $countNotReal + $countVespReal) / 16, 1, '.', ''); ?></td>
                                                             <td><?= number_format(($countMatReal + $countNotReal + $countVespReal) / 32, 1, '.', ''); ?></td>

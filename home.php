@@ -30,8 +30,28 @@ include("layouts/header.php");
           </button>
       </div>
     <?php endif; ?>
+    <!-- SEARCH PARA SELECIONAR O GERAL DE CADA NTE -->
+    <div class="d-flex flex-row align-items-center justify-content-end">
+      <form class="navbar-search" action="<?= $BASE_URL ?>config/carenciaProcess.php" method="post">
+        <div class="input-group-append">
+          <select name="nte_search_home" id="nte_search_home" class="form-control-sm">
+            <option value="" selected>Selecione o NTE</option>
+              <option value="1">01</option>
+              <option value="1">05</option>
+              <option value="1">06</option>
+              <option value="1">07</option>
+              <option value="1">16</option>
+              <option value="1">22</option>
+          </select>
+          <input hidden value="search" name="type" type="text">
+          <button class="btn btn-sm btn-primary" type="submit">
+            <i class="fa-solid fa-search"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+    <br>
     <div class="row mb-3">
-      <!-- Earnings (Monthly) Card Example -->
       <div class="col-xl-3 col-md-6 mb-4">
         <div class="card h-100">
           <div class="card-body borded-left">
@@ -40,8 +60,6 @@ include("layouts/header.php");
                 <div class="text-xs font-weight-bold text-uppercase mb-1">Sedes Homologadas</div>
                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $countHomologadasSede ?></div>
                 <div class="mt-2 mb-0 text-muted text-xs">
-                  <!-- <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                        <span>Since last month</span> -->
                 </div>
               </div>
               <div class="col-auto">
@@ -59,8 +77,6 @@ include("layouts/header.php");
                 <div class="text-xs font-weight-bold text-uppercase mb-1">Unidades Sede Digitadas</div>
                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $countDigitadasSede ?></div>
                 <div class="mt-2 mb-0 text-muted text-xs">
-                  <!-- <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
-                        <span>Since last years</span> -->
                 </div>
               </div>
             </div>
@@ -75,8 +91,6 @@ include("layouts/header.php");
                 <div class="text-xs font-weight-bold text-uppercase mb-1">Sedes Pendentes Homologar</div>
                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $countHomologadasPendentesSedes ?></div>
                 <div class="mt-2 mb-0 text-muted text-xs">
-                  <!-- <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                        <span>Since yesterday</span> -->
                 </div>
               </div>
             </div>
@@ -91,8 +105,6 @@ include("layouts/header.php");
                 <div class="text-xs font-weight-bold text-uppercase mb-1">Total de Carencia Real</div>
                 <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $countCarencia_real ?></div>
                 <div class="mt-2 mb-0 text-muted text-xs">
-                  <!-- <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 20.4%</span>
-                        <span>Since last month</span>-->
                 </div>
               </div>
             </div>
@@ -107,8 +119,6 @@ include("layouts/header.php");
                 <div class="text-xs font-weight-bold text-uppercase mb-1">Anexos Homologados</div>
                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $countHomologadasAnexo ?></div>
                 <div class="mt-2 mb-0 text-muted text-xs">
-                  <!-- <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                        <span>Since yesterday</span> -->
                 </div>
               </div>
             </div>
@@ -123,8 +133,6 @@ include("layouts/header.php");
                 <div class="text-xs font-weight-bold text-uppercase mb-1">Anexos Digitados</div>
                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $countDigitadasAnexo ?></div>
                 <div class="mt-2 mb-0 text-muted text-xs">
-                  <!-- <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                        <span>Since yesterday</span> -->
                 </div>
               </div>
             </div>
@@ -139,8 +147,6 @@ include("layouts/header.php");
                 <div class="text-xs font-weight-bold text-uppercase mb-1">Anexos Pendentes Homologar</div>
                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $countHomologadasPendentesAnexos ?></div>
                 <div class="mt-2 mb-0 text-muted text-xs">
-                  <!-- <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                        <span>Since yesterday</span> -->
                 </div>
               </div>
             </div>
@@ -155,8 +161,6 @@ include("layouts/header.php");
                 <div class="text-xs font-weight-bold text-uppercase mb-1">Total de Carencia Temporaria</div>
                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $countCarencia_temp ?></div>
                 <div class="mt-2 mb-0 text-muted text-xs">
-                  <!-- <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                        <span>Since yesterday</span> -->
                 </div>
               </div>
             </div>

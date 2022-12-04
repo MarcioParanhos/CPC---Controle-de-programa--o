@@ -163,7 +163,6 @@ if ($type == "register") {
         echo "Ocorreu um erro: " . $stmt->errorInfo();
     }
 } else {
-
     session_destroy();
     header('Location: ../index.php');
     exit();

@@ -2064,3 +2064,6 @@ input {
     font-weight: bold;
     color: #232323;
 }
+.input-group-append {
+    gap: 3px !important;
+}
