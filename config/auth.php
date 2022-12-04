@@ -77,6 +77,7 @@ if ($type == "register") {
             $_SESSION['perfil'] = $user['perfil'];
             $_SESSION['email'] = $user['email'];
             $_SESSION['cadastro_cpf'] = $user['cadastro_cpf'];
+            $_SESSION['nte_info_status'] = 'all';
         endforeach;
     } else {
         //redireciona o usuario caso nao autentique

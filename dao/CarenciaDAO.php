@@ -124,7 +124,7 @@ class CarenciaDAO implements CarenciaDAOInterface
 
     public function update(Carencia $carencia)
     {
-        
+
 
         $stmt = $this->conn->prepare("INSERT INTO carencia_suprimentos (
             id_ref,
@@ -413,14 +413,38 @@ class CarenciaDAO implements CarenciaDAOInterface
         return $vagas;
     }
 
-    public function getSuprimentos($id) {
-
+    public function getSuprimentos($id)
+    {
         $query = "SELECT * FROM carencia_suprimentos WHERE id_ref = :id ";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":id", $id);
         $stmt->execute();
         $suprimentos = $stmt->fetchAll();
         return $suprimentos;
+    }
 
+    public function getVagas($tipo_vaga){
+        $stmt =$this->conn->prepare("SELECT sum(total) as total FROM carencias WHERE tipo_vaga = :tipo_vaga ");
+        $stmt->bindParam(":tipo_vaga", $tipo_vaga);
+        $stmt->execute();
+        $vagasReais = $stmt->fetch();
+        return $vagasReais['total'];
+    }
+
+    public function getVagasReaisByNte($tipo_vaga, $nte){
+        $stmt =$this->conn->prepare("SELECT sum(total) as total FROM carencias WHERE tipo_vaga = :tipo_vaga AND nte = :nte ");
+        $stmt->bindParam(":tipo_vaga", $tipo_vaga);
+        $stmt->bindParam(":nte", $nte);
+        $stmt->execute();
+        $vagasReais = $stmt->fetch();
+        return $vagasReais['total'];
+    }
+    public function getVagasTempByNte($tipo_vaga, $nte){
+        $stmt =$this->conn->prepare("SELECT sum(total) as total FROM carencias WHERE tipo_vaga = :tipo_vaga AND nte = :nte ");
+        $stmt->bindParam(":tipo_vaga", $tipo_vaga);
+        $stmt->bindParam(":nte", $nte);
+        $stmt->execute();
+        $vagasTemp = $stmt->fetch();
+        return $vagasTemp['total'];
     }
 }

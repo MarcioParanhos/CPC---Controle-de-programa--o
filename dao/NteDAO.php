@@ -110,4 +110,75 @@ class Controle_nteDAO implements Controle_nteDAOInterface
 
         return $nte;
     }
+
+    public function getSedesHomologadas($homologacao)
+    {
+        $stmt = $this->conn->prepare("SELECT homologacao, count(*) as total FROM controle_ntes WHERE homologacao = :homologacao AND tipologia = 'Sede'");
+        $stmt->bindParam(":homologacao", $homologacao);
+        $stmt->execute();
+        $sedes_homologadas = $stmt->fetch();
+        return $sedes_homologadas[1];
+    }
+    public function getSedesHomologadasByNte($homologacao, $nte)
+    {
+        $stmt = $this->conn->prepare("SELECT homologacao, count(*) as total FROM controle_ntes WHERE homologacao = :homologacao AND nte = :nte AND tipologia = 'Sede'");
+        $stmt->bindParam(":homologacao", $homologacao);
+        $stmt->bindParam(":nte", $nte);
+        $stmt->execute();
+        $sedes_homologadas = $stmt->fetch();
+        return $sedes_homologadas[1];
+    }
+
+    public function getAnexosHomologados($homologacao)
+    {
+        $stmt = $this->conn->prepare("SELECT homologacao, count(*) as total FROM controle_ntes WHERE homologacao = :homologacao AND tipologia = 'Anexo'");
+        $stmt->bindParam(":homologacao", $homologacao);
+        $stmt->execute();
+        $anexos_homologados = $stmt->fetch();
+        return $anexos_homologados[1];
+    }
+
+    public function getAnexosHomologadosByNte($homologacao, $nte)
+    {
+        $stmt = $this->conn->prepare("SELECT homologacao, count(*) as total FROM controle_ntes WHERE homologacao = :homologacao AND nte = :nte AND tipologia = 'Anexo'");
+        $stmt->bindParam(":homologacao", $homologacao);
+        $stmt->bindParam(":nte", $nte);
+        $stmt->execute();
+        $anexos_homologados = $stmt->fetch();
+        return $anexos_homologados[1];
+    }
+
+    public function getSedesDigitadas()
+    {
+        $stmt = $this->conn->prepare("SELECT digitacao, count(*) as total FROM controle_ntes WHERE digitacao = 'Concluida' AND tipologia = 'Sede'");
+        $stmt->execute();
+        $sedes_digitadas = $stmt->fetch();
+        return $sedes_digitadas[1];
+    }
+
+    public function getSedesDigitadasByNte($nte)
+    {
+        $stmt = $this->conn->prepare("SELECT digitacao, count(*) as total FROM controle_ntes WHERE digitacao = 'Concluida' AND nte = :nte AND tipologia = 'Sede'");
+        $stmt->bindParam(":nte", $nte);
+        $stmt->execute();
+        $sedes_digitadas = $stmt->fetch();
+        return $sedes_digitadas[1];
+    }
+
+    public function getAnexosDigitados()
+    {
+        $stmt = $this->conn->prepare("SELECT digitacao, count(*) as total FROM controle_ntes WHERE digitacao = 'Concluida' AND tipologia = 'Anexo'");
+        $stmt->execute();
+        $anexos_digitados = $stmt->fetch();
+        return $anexos_digitados[1];
+    }
+
+    public function getAnexosDigitadoByNte($nte)
+    {
+        $stmt = $this->conn->prepare("SELECT digitacao, count(*) as total FROM controle_ntes WHERE digitacao = 'Concluida' AND nte = :nte AND tipologia = 'Anexo'");
+        $stmt->bindParam(":nte", $nte);
+        $stmt->execute();
+        $anexos_digitados = $stmt->fetch();
+        return $anexos_digitados[1];
+    }
 }

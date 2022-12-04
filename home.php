@@ -1,9 +1,36 @@
 <?php
 
-include_once('./crud/read-home.php');
 include("layouts/header.php");
-// $time = $red / 60;
-// $number_format = number_format($time, 2, '.', '');
+require_once("./dao/NteDAO.php");
+require_once("./dao/CarenciaDAO.php");
+
+$nte = $_SESSION['nte_info_status'];
+
+if ($nte == 'Todos') {
+  $nteDao = new Controle_nteDAO($conn, $BASE_URL);
+  $sedes_homologadas = $nteDao->getSedesHomologadas('Homologada');
+  $anexos_homologados = $nteDao->getAnexosHomologados('Homologada');
+  $sedes_digitadas = $nteDao->getSedesDigitadas();
+  $anexos_digitados = $nteDao->getAnexosDigitados();
+  $sedes_pendente_homologar = $nteDao->getSedesHomologadas('Pendente');
+  $anexos_pendente_homologar = $nteDao->getAnexosHomologados('Pendente');
+  $carenciaDao = new CarenciaDAO($conn, $BASE_URL);
+  $vagasReais = $carenciaDao->getVagas('R');
+  $vagasTemp = $carenciaDao->getVagas('T');
+} else {
+  $nteDao = new Controle_nteDAO($conn, $BASE_URL);
+  $sedes_homologadas = $nteDao->getSedesHomologadasByNte('Homologada', $nte);
+  $anexos_homologados = $nteDao->getAnexosHomologadosByNte('Homologada', $nte);
+  $sedes_digitadas = $nteDao->getSedesDigitadasByNte($nte);
+  $anexos_digitados = $nteDao->getAnexosDigitadoByNte($nte);
+  $sedes_pendente_homologar = $nteDao->getSedesHomologadasByNte('Pendente', $nte);
+  $anexos_pendente_homologar = $nteDao->getAnexosHomologadosByNte('Pendente', $nte);
+  $carenciaDao = new CarenciaDAO($conn, $BASE_URL);
+  $vagasReais = $carenciaDao->getVagasReaisByNte('R', $nte);
+  $vagasTemp = $carenciaDao->getVagasTempByNte('T', $nte);
+}
+
+
 
 ?>
 <?php if ($_SESSION['perfil'] != 10) { ?>
@@ -16,10 +43,10 @@ include("layouts/header.php");
       </button>
     </div> -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+      <h1 class="h3 mb-0 text-gray-800">Sintese de Programação - Nte ( <?= $nte ?> )</h1>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="./home.php">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+        <li class="breadcrumb-item active" aria-current="page">Sintese de Programação</li>
       </ol>
     </div>
     <?php if (isset($printMsg) && $printMsg != '') : ?>
@@ -32,16 +59,17 @@ include("layouts/header.php");
     <?php endif; ?>
     <!-- SEARCH PARA SELECIONAR O GERAL DE CADA NTE -->
     <div class="d-flex flex-row align-items-center justify-content-end">
-      <form class="navbar-search" action="<?= $BASE_URL ?>config/carenciaProcess.php" method="post">
+      <form class="navbar-search" action="<?= $BASE_URL ?>config/homeProcess.php" method="post">
         <div class="input-group-append">
           <select name="nte_search_home" id="nte_search_home" class="form-control-sm">
             <option value="" selected>Selecione o NTE</option>
-              <option value="1">01</option>
-              <option value="1">05</option>
-              <option value="1">06</option>
-              <option value="1">07</option>
-              <option value="1">16</option>
-              <option value="1">22</option>
+            <option value="Todos">Todos</option>
+            <option value="01">01</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="16">16</option>
+            <option value="22">22</option>
           </select>
           <input hidden value="search" name="type" type="text">
           <button class="btn btn-sm btn-primary" type="submit">
@@ -58,7 +86,7 @@ include("layouts/header.php");
             <div class="row align-items-center">
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-uppercase mb-1">Sedes Homologadas</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $countHomologadasSede ?></div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $sedes_homologadas ?></div>
                 <div class="mt-2 mb-0 text-muted text-xs">
                 </div>
               </div>
@@ -75,7 +103,7 @@ include("layouts/header.php");
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-uppercase mb-1">Unidades Sede Digitadas</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $countDigitadasSede ?></div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $sedes_digitadas ?></div>
                 <div class="mt-2 mb-0 text-muted text-xs">
                 </div>
               </div>
@@ -89,7 +117,7 @@ include("layouts/header.php");
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-uppercase mb-1">Sedes Pendentes Homologar</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $countHomologadasPendentesSedes ?></div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $sedes_pendente_homologar ?></div>
                 <div class="mt-2 mb-0 text-muted text-xs">
                 </div>
               </div>
@@ -103,7 +131,7 @@ include("layouts/header.php");
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-uppercase mb-1">Total de Carencia Real</div>
-                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $countCarencia_real ?></div>
+                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $vagasReais ?></div>
                 <div class="mt-2 mb-0 text-muted text-xs">
                 </div>
               </div>
@@ -117,7 +145,7 @@ include("layouts/header.php");
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-uppercase mb-1">Anexos Homologados</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $countHomologadasAnexo ?></div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $anexos_homologados ?></div>
                 <div class="mt-2 mb-0 text-muted text-xs">
                 </div>
               </div>
@@ -131,7 +159,7 @@ include("layouts/header.php");
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-uppercase mb-1">Anexos Digitados</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $countDigitadasAnexo ?></div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $anexos_digitados ?></div>
                 <div class="mt-2 mb-0 text-muted text-xs">
                 </div>
               </div>
@@ -145,7 +173,7 @@ include("layouts/header.php");
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-uppercase mb-1">Anexos Pendentes Homologar</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $countHomologadasPendentesAnexos ?></div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $anexos_pendente_homologar ?></div>
                 <div class="mt-2 mb-0 text-muted text-xs">
                 </div>
               </div>
@@ -159,7 +187,7 @@ include("layouts/header.php");
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-uppercase mb-1">Total de Carencia Temporaria</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $countCarencia_temp ?></div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $vagasTemp ?></div>
                 <div class="mt-2 mb-0 text-muted text-xs">
                 </div>
               </div>

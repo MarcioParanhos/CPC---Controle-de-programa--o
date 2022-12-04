@@ -3,47 +3,47 @@
 include('config/conect.php');
 
 // CONCLUIDAS SEDE
-$sql = "SELECT homologacao, count(*) as total FROM controle_ntes WHERE homologacao = 'Homologada' AND tipologia = 'Sede'";
-$sql = $conn->query($sql);
-$sql = $sql->fetch();
-$countHomologadasSede = $sql['total'];
-// CONCLUIDAS ANEXO
-$sql = "SELECT homologacao, count(*) as total FROM controle_ntes WHERE homologacao = 'Homologada' AND tipologia = 'Anexo'";
-$sql = $conn->query($sql);
-$sql = $sql->fetch();
-$countHomologadasAnexo = $sql['total'];
+// $sql = "SELECT homologacao, count(*) as total FROM controle_ntes WHERE homologacao = 'Homologada' AND tipologia = 'Sede'";
+// $sql = $conn->query($sql);
+// $sql = $sql->fetch();
+// $countHomologadasSede = $sql['total'];
+// // CONCLUIDAS ANEXO
+// $sql = "SELECT homologacao, count(*) as total FROM controle_ntes WHERE homologacao = 'Homologada' AND tipologia = 'Anexo'";
+// $sql = $conn->query($sql);
+// $sql = $sql->fetch();
+// $countHomologadasAnexo = $sql['total'];
 // CONCLUIDAS DIGITAÇÃO SEDE
-$sql = "SELECT digitacao, count(*) as total FROM controle_ntes WHERE digitacao = 'Concluida' AND tipologia = 'Sede'";
-$sql = $conn->query($sql);
-$sql = $sql->fetch();
-$countDigitadasSede = $sql['total'];
+// $sql = "SELECT digitacao, count(*) as total FROM controle_ntes WHERE digitacao = 'Concluida' AND tipologia = 'Sede'";
+// $sql = $conn->query($sql);
+// $sql = $sql->fetch();
+// $countDigitadasSede = $sql['total'];
 // CONCLUIDAS DIGITAÇÃO ANEXO
-$sql = "SELECT digitacao, count(*) as total FROM controle_ntes WHERE digitacao = 'Concluida' AND tipologia = 'Anexo'";
-$sql = $conn->query($sql);
-$sql = $sql->fetch();
-$countDigitadasAnexo = $sql['total'];
+// $sql = "SELECT digitacao, count(*) as total FROM controle_ntes WHERE digitacao = 'Concluida' AND tipologia = 'Anexo'";
+// $sql = $conn->query($sql);
+// $sql = $sql->fetch();
+// $countDigitadasAnexo = $sql['total'];
 // CARENCIA REAL
-$sql = "SELECT sum(total) as total FROM carencias WHERE tipo_vaga = 'R' ";
-$stmt = $conn->prepare($sql);
-$stmt->execute();
-$stmt = $stmt->fetch();
-$countCarencia_real = $stmt['total'];
-// CARENCIA TEMPORARIA
-$sql = "SELECT sum(total) as total FROM carencias WHERE tipo_vaga = 'T' ";
-$stmt = $conn->prepare($sql);
-$stmt->execute();
-$stmt = $stmt->fetch();
-$countCarencia_temp = $stmt['total'];
+// $sql = "SELECT sum(total) as total FROM carencias WHERE tipo_vaga = 'R' ";
+// $stmt = $conn->prepare($sql);
+// $stmt->execute();
+// $stmt = $stmt->fetch();
+// $countCarencia_real = $stmt['total'];
+// // CARENCIA TEMPORARIA
+// $sql = "SELECT sum(total) as total FROM carencias WHERE tipo_vaga = 'T' ";
+// $stmt = $conn->prepare($sql);
+// $stmt->execute();
+// $stmt = $stmt->fetch();
+// $countCarencia_temp = $stmt['total'];
 // PENDENTE HOMOLOGAR SEDE
-$sql = "SELECT homologacao, count(*) as total FROM controle_ntes WHERE homologacao = 'Pendente' AND tipologia = 'Sede'";
-$sql = $conn->query($sql);
-$sql = $sql->fetch();
-$countHomologadasPendentesSedes = $sql['total'];
-// PENDENTE HOMOLOGAR ANEXO
-$sql = "SELECT homologacao, count(*) as total FROM controle_ntes WHERE homologacao = 'Pendente' AND tipologia = 'Anexo'";
-$sql = $conn->query($sql);
-$sql = $sql->fetch();
-$countHomologadasPendentesAnexos = $sql['total'];
+// $sql = "SELECT homologacao, count(*) as total FROM controle_ntes WHERE homologacao = 'Pendente' AND tipologia = 'Sede'";
+// $sql = $conn->query($sql);
+// $sql = $sql->fetch();
+// $countHomologadasPendentesSedes = $sql['total'];
+// // PENDENTE HOMOLOGAR ANEXO
+// $sql = "SELECT homologacao, count(*) as total FROM controle_ntes WHERE homologacao = 'Pendente' AND tipologia = 'Anexo'";
+// $sql = $conn->query($sql);
+// $sql = $sql->fetch();
+// $countHomologadasPendentesAnexos = $sql['total'];
 
 
 // INFORMAÇÕES DO NTE 01
